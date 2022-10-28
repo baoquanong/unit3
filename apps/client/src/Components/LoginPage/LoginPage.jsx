@@ -1,12 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import "./LoginPage.css";
 
 function LoginPage() {
+  // setting up navigation
+  const navigate = useNavigate();
+
   // setting up state
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
   });
+
+  const [error, setError] = useState("");
 
   // function to handle onChange
   const handleChange = (event, field) => {
@@ -16,8 +24,8 @@ function LoginPage() {
 
   return (
     <div id="login-page">
-      <h1>LOGIN</h1>
-      <form autoComplete="off">
+      <form id="login-form" autoComplete="off">
+        <h1>LOGIN</h1>
         <div id="inputs">
           <label>
             Username:
@@ -38,6 +46,12 @@ function LoginPage() {
         </div>
         <button>Let's Go!</button>
       </form>
+      <p>
+        Don't have an account yet? <br />
+        Click {" "}
+        <span onClick={() => navigate("/signup")}>here</span>
+        {" "} to sign up!
+      </p>
     </div>
   );
 };
