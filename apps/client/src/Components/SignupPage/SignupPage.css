@@ -1,5 +1,5 @@
-#login-page {
-    margin: 100px 0;
+#signup-page {
+    margin: 50px 0;
 
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     gap: 25px;
 }
 
-#login-form {
+#signup-form {
     background: lightsteelblue;
     box-shadow: 5px 5px 5px slategray;
     padding: 50px;
@@ -17,13 +17,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
-#login-form > h1 {
+#signup-form > h1 {
     color: midnightblue;
     letter-spacing: 3px;
-    margin: 0;
+    margin: 0 0 10px;
 }
 
 #inputs, label {
@@ -44,7 +44,13 @@
     border-radius: 3px;
 }
 
-#login-form > #error-msg {
+#error-msgs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+#error-msgs > .error-msg {
     max-width: 200px;
     margin: 0;
 
@@ -54,7 +60,7 @@
     font-style: italic;
 }
 
-#login-form > button {
+#signup-form > button {
     background: midnightblue;
     width: 100px;
     height: 35px;
@@ -68,7 +74,7 @@
     letter-spacing: 1px;
 }
 
-#login-form > button:hover {
+#signup-form > button:hover {
     background: ghostwhite;
     border: 2px solid midnightblue;
     box-shadow: 1px 1px midnightblue;
@@ -78,17 +84,17 @@
     cursor: pointer;
 }
 
-#login-page > p {
+#signup-page > p {
     color: darkslategray;
     letter-spacing: 0.5px;
     text-align: center;
 }
 
-#login-page > p > span {
+#signup-page > p > span {
     text-decoration: underline;
 }
 
-#login-page > p > span:hover {
+#signup-page > p > span:hover {
     /* color: midnightblue; */
     font-weight: bold;
     cursor: pointer;

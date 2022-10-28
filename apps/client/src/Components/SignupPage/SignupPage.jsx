@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import "./SignupPage.css";
 
 function SignupPage() {
+  // setting up navigate
+  const navigate = useNavigate();
+
   // setting up state
   const [loginDetails, setLoginDetails] = useState({
     email: "",
@@ -56,18 +62,26 @@ function SignupPage() {
             />
           </label>
         </div>
-        {
-          !error ?
-          <></> :
-          <p className="error-msg">*{error}</p>
-        }
-        {
-          loginDetails.password === loginDetails.pwConfirm ?
-          <></> :
-          <p className="error-msg">*passwords do not match</p>
-        }
+        <div id="error-msgs">
+          {
+            !error ?
+            <></> :
+            <p className="error-msg">*{error}</p>
+          }
+          {
+            loginDetails.password === loginDetails.pwConfirm ?
+            <></> :
+            <p className="error-msg">*passwords do not match</p>
+          }
+        </div>
         <button>Sign Up</button>
       </form>
+      <p>
+        Already have an account? <br />
+        Click {" "}
+        <span onClick={() => navigate("/login")}>here</span>
+        {" "} to log in!
+      </p>
     </div>
   );
 };
