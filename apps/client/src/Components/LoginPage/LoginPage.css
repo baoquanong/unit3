@@ -9,7 +9,9 @@
 
 #login-form {
     background: lightsteelblue;
+    box-shadow: 5px 5px 5px slategray;
     padding: 50px;
+    border: 2px solid slategray;
     border-radius: 20px;
 
     display: flex;
@@ -37,6 +39,7 @@
 }
 
 #inputs > label > input {
+    width: 200px;
     border: 2px solid slategray;
     border-radius: 3px;
 }
@@ -53,6 +56,16 @@
     font-family: 'Lato', sans-serif;
     font-size: 15px;
     letter-spacing: 1px;
+}
+
+#login-form > #error-msg {
+    max-width: 200px;
+    margin: 0;
+
+    color: maroon;
+    text-align: center;
+    letter-spacing: 1px;
+    font-style: italic;
 }
 
 #login-form > button:hover {

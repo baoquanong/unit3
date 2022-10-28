@@ -29,11 +29,11 @@ function LoginPage() {
 
     // if-else to check for missing details before making fetch call
     if (!loginDetails.username && !loginDetails.password) {
-      setError("please enter valid username and password");
+      setError("*please enter valid username and password");
     } else if (!loginDetails.username) {
-      setError("please enter valid username");
+      setError("*please enter valid username");
     } else if (!loginDetails.password) {
-      setError("please enter valid password");
+      setError("*please enter valid password");
     }
   };
   
@@ -63,7 +63,7 @@ function LoginPage() {
         {
           !error ?
           <></> :
-          <p>{error}</p>
+          <p id="error-msg">{error}</p>
         }
         <button>Let's Go!</button>
       </form>
