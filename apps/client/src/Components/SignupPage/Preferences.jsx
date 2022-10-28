@@ -9,7 +9,7 @@ const Preferences = () => {
 
     return (
         <div id="preferences">
-            <form autoComplete="off">
+            <form id="preferences-form" autoComplete="off">
                 <h1>PREFERENCES</h1>
                 <p>
                     Tell us more about yourself and what you're looking for! <br />
@@ -17,33 +17,35 @@ const Preferences = () => {
                 </p>
                 <section id="interests">
                     <legend>I'm interested in helping/looking for help in these areas:</legend>
-                    <label>
-                        <input type="checkbox" name="handywork" />
-                        Handywork
-                    </label>
-                    <label>
-                        <input type="checkbox" name="cleaning" />
-                        Cleaning
-                    </label>
-                    <label>
-                        <input type="checkbox" name="caregiving" />
-                        Caregiving
-                    </label>
-                    <label>
-                        <input type="checkbox" name="pets" />
-                        Pets
-                    </label>
-                    <label>
-                        <input type="checkbox" name="events" />
-                        Events
-                    </label>
-                    <label>
-                        <input type="checkbox" name="education" />
-                        Education
-                    </label>
+                    <div id="check-inputs">
+                        <label>
+                            <input type="checkbox" name="handywork" />
+                            Handywork
+                        </label>
+                        <label>
+                            <input type="checkbox" name="cleaning" />
+                            Cleaning
+                        </label>
+                        <label>
+                            <input type="checkbox" name="caregiving" />
+                            Caregiving
+                        </label>
+                        <label>
+                            <input type="checkbox" name="pets" />
+                            Pets
+                        </label>
+                        <label>
+                            <input type="checkbox" name="events" />
+                            Events
+                        </label>
+                        <label>
+                            <input type="checkbox" name="education" />
+                            Education
+                        </label>
+                    </div>
                 </section>
-                <label>
-                    Here's a little bit about myself:
+                <label id="description">
+                    A little bit about myself/my skills:
                     <textarea type="text" name="description" />
                 </label>
                 <button>Create My Account</button>

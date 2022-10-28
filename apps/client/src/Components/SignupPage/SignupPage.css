@@ -1,4 +1,5 @@
-#signup-page {
+/* ====== Signup Page ====== */
+#signup-page, #preferences {
     margin: 75px 0;
 
     display: flex;
@@ -7,7 +8,7 @@
     gap: 25px;
 }
 
-#signup-form {
+#signup-form, #preferences-form {
     background: lightsteelblue;
     box-shadow: 5px 5px 5px slategray;
     padding: 50px;
@@ -20,7 +21,7 @@
     gap: 20px;
 }
 
-#signup-form > h1 {
+#signup-form > h1, #preferences-form > h1 {
     color: midnightblue;
     letter-spacing: 3px;
     margin: 0 0 10px;
@@ -90,6 +91,89 @@
 
 #signup-page > p > span:hover {
     /* color: midnightblue; */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ====== Preferences ====== */
+#preferences-form > p {
+    margin: 0;
+
+    color: darkslategray;
+    text-align: center;
+    font-style: italic;
+}
+
+#interests {
+    margin-top: 20px;
+    color: darkslategray;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#interests > legend {
+    color: midnightblue;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+#check-inputs {
+    max-width: 350px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#check-inputs > label {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#description {
+    margin-top: 20px;
+
+    color: midnightblue;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#description > textarea {
+    border: 2px solid slategray;
+    width: 350px;
+    height: 50px;
+}
+
+#preferences-form > button {
+    background: midnightblue;
+    width: 200px;
+    height: 35px;
+    margin: 30px 0 0;
+    border: none;
+    border-radius: 5px;
+
+    color: ghostwhite;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+#preferences-form > button:hover {
+    background: ghostwhite;
+    border: 2px solid midnightblue;
+    box-shadow: 1px 1px midnightblue;
+
+    color: midnightblue;
     font-weight: bold;
     cursor: pointer;
 }
