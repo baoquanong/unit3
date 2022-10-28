@@ -22,9 +22,25 @@ function LoginPage() {
     setLoginDetails({...loginDetails, [`${field}`]: event.target.value});
   };
 
+  // function to handle login and check for empty fields
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("current login details:", loginDetails);
+
+    // if-else to check for missing details before making fetch call
+    if (!loginDetails.username && !loginDetails.password) {
+      setError("please enter valid username and password");
+    } else if (!loginDetails.username) {
+      setError("please enter valid username");
+    } else if (!loginDetails.password) {
+      setError("please enter valid password");
+    }
+  };
+  
+
   return (
     <div id="login-page">
-      <form id="login-form" autoComplete="off">
+      <form id="login-form" autoComplete="off" onSubmit={handleSubmit}>
         <h1>LOGIN</h1>
         <div id="inputs">
           <label>
@@ -44,6 +60,11 @@ function LoginPage() {
             />
           </label>
         </div>
+        {
+          !error ?
+          <></> :
+          <p>{error}</p>
+        }
         <button>Let's Go!</button>
       </form>
       <p>
