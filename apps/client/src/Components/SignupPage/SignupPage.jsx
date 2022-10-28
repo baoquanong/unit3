@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { DataContext } from "../../App";
 import "./SignupPage.css";
 
 function SignupPage() {
+  // setting up context
+  const { state, setState } = useContext(DataContext);
+
   // setting up navigate
   const navigate = useNavigate();
 
   // setting up state
   const [loginDetails, setLoginDetails] = useState({
     email: "",
-    usename: "",
+    username: "",
     password: "",
     pwConfirm: ""
   });
@@ -24,9 +28,29 @@ function SignupPage() {
 
   };
 
+  // function to handle onNext
+  const onNext = () => {
+    event.preventDefault();
+
+    // checking for missing inputs
+    if (!loginDetails.email) {
+      setError("please fill in email");
+    } else if (!loginDetails.username) {
+      setError("please fill in username");
+    } else if (!loginDetails.password || !loginDetails.pwConfirm) {
+      setError("please fill in password");
+    } else if (loginDetails.password !== loginDetails.pwConfirm) {
+      setError("passwords do not match")
+    } else {
+      delete loginDetails.pwConfirm;
+      setState({...state, currSignupInfo: loginDetails}); // setting info to a state before moving on to get preferences
+      navigate("/signup/preferences");
+    }
+  };
+
   return (
     <div id="signup-page">
-      <form id="signup-form" autoComplete="off">
+      <form id="signup-form" autoComplete="off" onSubmit={onNext}>
         <h1>SIGN UP</h1>
         <div id="inputs">
           <label>
@@ -61,20 +85,13 @@ function SignupPage() {
               onChange={() => handleChange(event, "pwConfirm")}
             />
           </label>
-        </div>
-        <div id="error-msgs">
-          {
-            !error ?
-            <></> :
-            <p className="error-msg">*{error}</p>
-          }
-          {
-            loginDetails.password === loginDetails.pwConfirm ?
-            <></> :
-            <p className="error-msg">*passwords do not match</p>
-          }
-        </div>
-        <button>Sign Up</button>
+        </div>        
+        {
+          !error ?
+          <></> :
+          <p id="error-msg">*{error}</p>
+        }
+        <button>Next</button>
       </form>
       <p>
         Already have an account? <br />

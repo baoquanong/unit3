@@ -1,5 +1,5 @@
 #signup-page {
-    margin: 50px 0;
+    margin: 75px 0;
 
     display: flex;
     flex-direction: column;
@@ -26,31 +26,25 @@
     margin: 0 0 10px;
 }
 
-#inputs, label {
+#user-info, label {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#inputs > label {
+#user-info > label {
     gap: 2px;
 
     color: darkslategray;
 }
 
-#inputs > label > input {
+#user-info > label > input {
     width: 200px;
     border: 2px solid slategray;
     border-radius: 3px;
 }
 
-#error-msgs {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-#error-msgs > .error-msg {
+#error-msg {
     max-width: 200px;
     margin: 0;
 
