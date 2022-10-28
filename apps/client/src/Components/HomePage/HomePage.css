@@ -1,0 +1,34 @@
+#home-page {
+    background: ghostwhite;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#home-page > button {
+    background: midnightblue;
+    width: 100px;
+    height: 35px;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+
+    color: ghostwhite;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+}
+
+#home-page > button:hover {
+    background: ghostwhite;
+    border: 2px solid midnightblue;
+    box-shadow: 1px 1px midnightblue;
+
+    color: midnightblue;
+    font-weight: bold;
+    cursor: pointer;
+}
