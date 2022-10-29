@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 #signup-form, #preferences-form {
@@ -24,7 +24,8 @@
 #signup-form > h1, #preferences-form > h1 {
     color: midnightblue;
     letter-spacing: 3px;
-    margin: 0 0 10px;
+    margin: 0;
+    /* margin: 0 0 10px; */
 }
 
 #user-info, label {

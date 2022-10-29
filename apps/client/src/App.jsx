@@ -6,13 +6,21 @@ import HomePage from "./Components/HomePage/HomePage";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
 import Preferences from "./Components/SignupPage/Preferences";
+import Profile from "./Components/Profile/Profile";
 
 export const DataContext = createContext();
 
 const App = () => {
     // setting up state
     const [state, setState] = useState({
-        currSignupInfo: {},
+        currSignupInfo: {}, // info of person currently in signup process
+        currUserInfo: { // user info of person currently logged in
+            email: "sally@mail.com",
+            username: "Sally Ng",
+            password: "secret",
+            interests: ["Handywork", "Elderly"],
+            aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs"
+        }, 
     });
 
     return (
@@ -28,7 +36,7 @@ const App = () => {
                             <Route path="/jobs" element={"Find Jobs Page"} />
                             <Route path="/jobs/create" element={"Create Job Page"} />
                             <Route path="/jobs/:id" element={"Job Detail Page"} />
-                            <Route path="/user" element={"My User Page"} />
+                            <Route path="/profile" element={<Profile />} />
                             <Route path="/user/info" element={"My User Info"} />
                             <Route path="/user/jobs" element={"My Job Info"} />
                             <Route path="/user/reviews" element={"My User Reviews"} />

@@ -14,7 +14,7 @@ function Navbar() {
         <div id="tabs">
           <Link to="/jobs">Find Jobs</Link>
           <Link to="/jobs/create">Create Job</Link>
-          <Link to="/user">My Profile</Link>
+          <Link to="/profile">My Profile</Link>
         </div>
       </div>
       <Outlet />
