@@ -19,7 +19,8 @@ const App = () => {
             username: "Sally Ng",
             password: "secret",
             interests: ["Handywork", "Elderly"],
-            aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs"
+            aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs",
+            img: "https://api.multiavatar.com/Sally Ng.png"
         }, 
     });
 

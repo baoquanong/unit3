@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
+
 import { DataContext } from '../../App';
+import "./Profile.css";
 
 function Profile() {
   // setting up context
@@ -8,21 +10,26 @@ function Profile() {
 
   return (
     <div id="profile">
-      <div>
-        <img src="https://xsgames.co/randomusers/avatar.php?g=female" />
-        <h3>{user.username}</h3>
-        <div id="profile-interests">
-          <p>Interests/Capabilities</p>
+      <div id="user-info">
+        <img src={user.img} />
+        <h2>{user.username.toUpperCase()}</h2>
+        <div id="about-me">
+          <p className="header">ABOUT ME</p>
+          <p>{user.aboutMe}</p>
+        </div>
+        <div id="user-interests">
+          <p className="header">INTERESTS/CAPABILITIES</p>
           <div id="interests">
             {
-              user.interests.map((interest, index) => {
+              user?.interests.map((interest, index) => {
                 return(
-                  <p key={index}>{interest}</p>
+                  <p key={index} className="interest">{interest}</p>
                 )
               })
             }
           </div>
         </div>
+        <button>Edit Profile</button>
       </div>
     </div>
   );
