@@ -1,13 +1,18 @@
+/* ====== User Profile ====== */
 #profile {
+    padding: 50px 0;
+
     display: flex;
     justify-content: center;
-    padding: 75px 0;
+    gap: 20px;
 }
 
 #user-info {
-    border: 5px solid midnightblue;
+    /* background: lightslategrey; */
+    /* border: 3px solid midnightblue; */
+    /* border-right: 5px solid midnightblue; */
     padding: 30px;
-    border-radius: 25px;
+    /* border-radius: 25px; */
 
     display: flex;
     flex-direction: column;
@@ -67,11 +72,13 @@
 }
 
 #interests {
-    max-width: 200px;
+    max-width: 250px;
     margin: 0;
 
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -82,6 +89,7 @@
     border-radius: 5px;
 
     /* font-weight: bold; */
+    color: darkslategray;
     letter-spacing: 1px;
 }
 
@@ -105,4 +113,52 @@
     color: midnightblue;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* ====== Reviews ====== */
+#user-reviews {
+    /* background: slategrey; */
+    /* border: 3px solid midnightblue; */
+    width: 500px;
+    padding: 30px;
+    /* border-radius: 25px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#user-reviews > h3 {
+    color: midnightblue;
+    letter-spacing: 1px;
+}
+
+#reviews {
+    height: 560px;
+    overflow-y: scroll;
+    padding: 0 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review {
+    background: slategray;
+    padding: 15px 20px;
+    border-radius: 20px;
+
+    text-align: justify;
+}
+
+.review > h4, p {
+    margin: 0;
+
+    color: white;
+}
+
+.hired {
+    margin-bottom: 5px;
+    font-style: italic;
 }

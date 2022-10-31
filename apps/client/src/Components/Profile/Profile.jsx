@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 
+import Reviews from "./Reviews";
 import { DataContext } from '../../App';
 import "./Profile.css";
 
@@ -31,6 +32,7 @@ function Profile() {
         </div>
         <button>Edit Profile</button>
       </div>
+      <Reviews />
     </div>
   );
 };

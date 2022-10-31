@@ -18,7 +18,7 @@ const App = () => {
             email: "sally@mail.com",
             username: "Sally Ng",
             password: "secret",
-            interests: ["Handywork", "Elderly"],
+            interests: ["Handywork", "Caregiving"],
             aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs",
             img: "https://api.multiavatar.com/Sally Ng.png"
         }, 
