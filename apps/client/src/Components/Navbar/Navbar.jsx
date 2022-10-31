@@ -6,7 +6,7 @@ function Navbar() {
     <div id="navbar">
       <div id="tabs">
         <Link to="/jobs">Find Jobs</Link>
-        <Link to="/jobs/create">Create Job</Link>
+        <Link to="/jobs/create"> Create Job</Link>
         <Link to="/user">My Profile</Link>
       </div>
       <Outlet />
