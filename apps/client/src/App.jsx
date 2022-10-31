@@ -7,6 +7,7 @@ import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
 import Preferences from "./Components/SignupPage/Preferences";
 import Profile from "./Components/Profile/Profile";
+import UserJobs from "./Components/UserJobs/UserJobs";
 
 export const DataContext = createContext();
 
@@ -37,10 +38,8 @@ const App = () => {
                             <Route path="/jobs" element={"Find Jobs Page"} />
                             <Route path="/jobs/create" element={"Create Job Page"} />
                             <Route path="/jobs/:id" element={"Job Detail Page"} />
-                            <Route path="/profile" element={<Profile />} />
-                            <Route path="/user/info" element={"My User Info"} />
-                            <Route path="/user/jobs" element={"My Job Info"} />
-                            <Route path="/user/reviews" element={"My User Reviews"} />
+                            <Route path="/user" element={<Profile />} />
+                            <Route path="/user/jobs" element={<UserJobs />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>
