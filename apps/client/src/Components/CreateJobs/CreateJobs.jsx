@@ -33,6 +33,7 @@ function CreateJobs() {
       <input type="text" placeholder="text" name="jobTitle"></input>
       <br />
       <button>POST JOB</button>
+      {/* need to add the submit function to post job */}
     </div>
   );
 }
