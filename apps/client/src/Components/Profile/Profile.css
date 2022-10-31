@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 #user-info > img {
@@ -31,7 +31,7 @@
 #user-info > h2 {
     /* background: midnightblue; */
     width: 200px;
-    padding: 10px 20px;
+    padding: 10px 20px 0;
     margin: 0;
     border-radius: 10px;
 
@@ -40,6 +40,14 @@
     font-weight: bolder;
     letter-spacing: 3px;
     text-align: center;
+}
+
+#rating {
+    margin: 0;
+    margin-bottom: 10px;
+
+    color: darkslategray;
+    font-weight: bold;
 }
 
 #user-interests, #about-me {
@@ -148,17 +156,28 @@
     background: slategray;
     padding: 15px 20px;
     border-radius: 20px;
+    /* margin: 0; */
 
+    color: white;
     text-align: justify;
 }
 
-.review > h4, p {
-    margin: 0;
+.review > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    color: white;
+.review > div > h4, p {
+    margin: 0;
 }
 
 .hired {
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     font-style: italic;
+}
+
+.rating {
+    margin-bottom: 10px;
+    font-weight: bold;
 }
