@@ -1,0 +1,95 @@
+#login-page {
+    margin: 100px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+#login-form {
+    background: lightsteelblue;
+    box-shadow: 5px 5px 5px slategray;
+    padding: 50px;
+    border: 2px solid slategray;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#login-form > h1 {
+    color: midnightblue;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+#inputs, label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#inputs > label {
+    gap: 2px;
+
+    color: darkslategray;
+}
+
+#inputs > label > input {
+    width: 200px;
+    border: 2px solid slategray;
+    border-radius: 3px;
+}
+
+#login-form > #error-msg {
+    max-width: 200px;
+    margin: 0;
+
+    color: maroon;
+    text-align: center;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+#login-form > button {
+    background: midnightblue;
+    width: 100px;
+    height: 35px;
+    margin: 10px 0 0;
+    border: none;
+    border-radius: 5px;
+
+    color: ghostwhite;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+#login-form > button:hover {
+    background: ghostwhite;
+    border: 2px solid midnightblue;
+    box-shadow: 1px 1px midnightblue;
+
+    color: midnightblue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#login-page > p {
+    color: darkslategray;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+#login-page > p > span {
+    text-decoration: underline;
+}
+
+#login-page > p > span:hover {
+    /* color: midnightblue; */
+    font-weight: bold;
+    cursor: pointer;
+}
