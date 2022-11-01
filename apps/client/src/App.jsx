@@ -1,5 +1,8 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CreateJobs from "./Components/CreateJobs/CreateJobs";
+import FindJobs from "./Components/FindJobs/FindJobs";
+import JobDetails from "./Components/JobDetails/JobDetails";
 
 import Navbar from "./Components/Navbar/Navbar";
 import HomePage from "./Components/HomePage/HomePage";
@@ -35,9 +38,9 @@ const App = () => {
                             <Route path="/login" element={<LoginPage />} />
                             <Route path="/signup" element={<SignupPage />} />
                             <Route path="/signup/preferences" element={<Preferences />} />
-                            <Route path="/jobs" element={"Find Jobs Page"} />
-                            <Route path="/jobs/create" element={"Create Job Page"} />
-                            <Route path="/jobs/:id" element={"Job Detail Page"} />
+                            <Route path="/jobs" element={<FindJobs />} />
+                            <Route path="/jobs/create" element={<CreateJobs />} />
+                            <Route path="/jobs/:id" element={<JobDetails />} />
                             <Route path="/user" element={<Profile />} />
                             <Route path="/user/jobs" element={<UserJobs />} />
                         </Route>
