@@ -5,7 +5,10 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
-
+const { appendFile } = require("fs");
+const JobController = require("./Controllers/JobController");
+const ReviewController = require("./Controllers/ReviewController");
+const UserController = require("./Controllers/UserController");
 
 const port = process.env.PORT ?? 3000;
 const app = express();
@@ -17,6 +20,9 @@ mongoose.connect(mongoURI);
 // MIDDLEWARE
 app.use(cors());
 app.use(express.json());
+app.use("/api/jobs", JobController);
+app.use("/api/reviews", ReviewController);
+app.use("/api/users", UserController);
 
 // ROUTES
 // test route
