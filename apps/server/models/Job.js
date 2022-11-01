@@ -4,12 +4,12 @@ const jobSchema = mongoose.Schema({
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    // required: false,
   },
   acceptedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    // required: true,
   },
   description: { type: String },
   jobType: { type: String, required: true },
