@@ -6,11 +6,12 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
 
-const port = 3000;
+
+const port = process.env.PORT ?? 3000;
 const app = express();
 
 // MONGODB CONNECTION
-const mongoURI = "mongodb://localhost:27017/project-3";
+const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI);
 
 // MIDDLEWARE
@@ -20,14 +21,14 @@ app.use(express.json());
 // ROUTES
 // test route
 app.get("/", (req, res) => {
-    res.json({ msg: "hello world" });
+  res.json({ msg: "hello world" });
 });
 
 // CONNECT TO MONGO & LISTEN
 mongoose.connection.on("connected", (req, res) => {
-    console.log("connected to mongodb");
+  console.log("connected to mongodb");
 
-    app.listen(port, () => {
-        console.log("currently listening on port", port);
-    });
+  app.listen(port, () => {
+    console.log("currently listening on port", port);
+  });
 });
