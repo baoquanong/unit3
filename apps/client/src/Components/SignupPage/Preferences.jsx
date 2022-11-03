@@ -40,7 +40,7 @@ const Preferences = () => {
             if (response.ok) {
                 console.log("successfully updated user details!");
                 setState({...state, loggedIn: data.userInfo});
-                navigate("/jobs");
+                navigate("/user");
             } else {
                 console.log("data error:", data.error);
             }

@@ -44,7 +44,7 @@ function LoginPage() {
       if (response.ok) {
         console.log("successfully logged in!");
         setState({...state, loggedIn: data.userInfo});
-        navigate("/jobs");
+        navigate("/user");
       } else {
         setError(data.error);
       }

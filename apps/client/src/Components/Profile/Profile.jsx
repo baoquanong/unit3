@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Reviews from "./Reviews";
 import { DataContext } from '../../App';
@@ -10,14 +11,18 @@ function Profile() {
   const { state, setState } = useContext(DataContext);
   const user = state.loggedIn;
 
+  // setting up navigate
+  const navigate = useNavigate();
+
+  // calculating ratings
   const totalRating = reviews.reduce((total, num) => total + num.stars, 0);
   const avgRating = totalRating/reviews.length;
 
   return (
     <div id="profile">
       <div id="user-info">
-        <img src={user.img} />
-        <h2>{user.username.toUpperCase()}</h2>
+        <img src={user?.img} />
+        <h2>{user?.username.toUpperCase()}</h2>
         <p id="rating">Average Rating: {avgRating}/5</p>
         {
           !user.description ?
@@ -43,7 +48,7 @@ function Profile() {
             </div>
           </div>
         }
-        <button>Edit Profile</button>
+        <button onClick={() => navigate("/user/edit")}>Edit Profile</button>
       </div>
       <Reviews />
     </div>
