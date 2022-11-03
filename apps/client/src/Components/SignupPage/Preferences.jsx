@@ -1,14 +1,18 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
 
 const Preferences = () => {
-       // setting up context
+    // setting up context
     const { state, setState } = useContext(DataContext);
+    const currUserInfo = state.loggedIn;
+
+    // setting up navigation
+    const navigate = useNavigate();
 
     // function to handle onSubmit
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         // formatting data from form to fit format required by schema
@@ -18,8 +22,32 @@ const Preferences = () => {
 
         const userPrefs = {
             skills: userSkills,
-            description: userData.description
+            description: userData.description,
+            img: `https://api.multiavatar.com/${currUserInfo.username}.png`
         };
+
+        try {
+            const response = await fetch(`/api/users/${currUserInfo._id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userPrefs),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully updated user details!");
+                setState({...state, loggedIn: data.userInfo});
+                navigate("/jobs");
+            } else {
+                console.log("data error:", data.error);
+            }
+        }
+        catch (error) {
+            console.log("error:", error);
+        }
     };
 
     return (
@@ -29,7 +57,7 @@ const Preferences = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit}
             >
-                <h1>PREFERENCES</h1>
+                <h1>WELCOME, {currUserInfo.username.toUpperCase()}</h1>
                 <p>
                     Tell us more about yourself and what you're looking for! <br />
                     Your preferences can always be updated later in your profile

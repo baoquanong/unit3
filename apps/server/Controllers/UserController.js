@@ -53,5 +53,23 @@ router.post("/signup", async (req, res) => {
     }
 });
 
+// update existing user route
+router.put("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const user = await User.findOneAndUpdate(
+            {_id: id},
+            req.body,
+            { new: true }
+        ).exec();
+        
+        res.json({ userInfo: user });
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
+
 // EXPORT
 module.exports = router;
