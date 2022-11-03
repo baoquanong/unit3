@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
-const { appendFile } = require("fs");
+// const { appendFile } = require("fs");
+
 const JobController = require("./Controllers/JobController");
 const ReviewController = require("./Controllers/ReviewController");
 const UserController = require("./Controllers/UserController");
@@ -19,6 +20,14 @@ mongoose.connect(mongoURI);
 
 // MIDDLEWARE
 app.use(cors());
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+}));
+
 app.use(express.json());
 app.use("/api/jobs", JobController);
 app.use("/api/reviews", ReviewController);
