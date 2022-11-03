@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
 import "./EditProfile.css";
@@ -7,6 +8,9 @@ const EditProfile = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
     const originalInfo = structuredClone(state.loggedIn);
+
+    // setting up navigation
+    const navigate = useNavigate();
 
     // setting up state
     const [edits, setEdits] = useState(originalInfo);
@@ -24,8 +28,6 @@ const EditProfile = () => {
                 <input
                     type="checkbox"
                     name={skill}
-                    // checked={skills[{skill}]}
-                    // onChange={handleCheckChange}
                 />
                 {skill}
             </label>
@@ -36,11 +38,33 @@ const EditProfile = () => {
     const handleUpdate = async (event) => {
         event.preventDefault();
 
+        // formatting inputs
         const userData = Object.fromEntries(new FormData(event.target));
-        console.log("userData:", userData);
+        const userKeys = Object.keys(userData).sort().reverse().splice(4);
+        edits.skills = userKeys;
+        
+        const url = "/api/users/" + edits._id;
 
-        const userKeys = Object.keys(userData).sort();
-        console.log("userKeys:", userKeys);
+        try {
+          const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(edits),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            console.log("info successfully updated");
+            setState({...state, loggedIn: edits});
+            navigate("/user");
+          }
+        }
+        catch (error) {
+            console.log("error");
+        }
     };
 
     return (
@@ -71,7 +95,7 @@ const EditProfile = () => {
                         Password:
                         <input
                             type="password"
-                            name="username"
+                            name="password"
                             value={edits?.password}
                             onChange={() => handleChange(event, "password")}
                         />
@@ -89,7 +113,7 @@ const EditProfile = () => {
                         type="text"
                         name="description"
                         value={edits?.description}
-                        onChange={() => handleEdits(event, "description")}
+                        onChange={() => handleChange(event, "description")}
                     />
                 </label>
                 <button id="update-btn">Update Profile</button>
