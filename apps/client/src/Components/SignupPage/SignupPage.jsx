@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { DataContext } from "../../App";
 import "./SignupPage.css";
 
 function SignupPage() {
+  // setting up context
+  const { state, setState } = useContext(DataContext);
+
   // setting up navigate
   const navigate = useNavigate();
 
@@ -28,6 +32,7 @@ function SignupPage() {
     event.preventDefault();
 
     try {
+      // initial fetch request to create a new user
       const response = await fetch("/api/users/signup", {
         method: "POST",
         headers: {
@@ -40,9 +45,10 @@ function SignupPage() {
 
       if (response.ok) {
         console.log("new account successfully created!");
+        setState({...state, currSignupInfo: {email: userDetails.email, password: userDetails.password}});
         navigate("/signup/preferences");
       } else {
-        console.log("data:", data);
+        console.log("data error:", data.error);
         setError(data.error);
       }
     }

@@ -1,4 +1,5 @@
 // DEPENDANCIES
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 
@@ -16,28 +17,22 @@ router.get("/seed", async (req, res) => {
 
 // login route
 router.post("/login", async (req, res) => {
-    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({email: req.body.email}).exec();
 
-    if (!email) {
-        res.status(400).json({ error: "Please enter email" });
-    } else if (!password) {
-        res.status(400).json({ error: "Please enter password" });
-    } else {
-        try {
-            const user = await User.findOne(email).exec();
-            if (!user) {
-                res.status(400).json({ error: "User not found" });
+        if (user.length === 0) {
+            res.status(400).json({ error: "No user found"})
+        } else {
+            if (user.password === req.body.password) {
+                req.session.userID = user._id;
+                res.json({ userInfo: user });
             } else {
-                if (password === user.password) {
-                    res.status(200).json({ msg: "Login ok"});
-                } else {
-                    res.status(400).json({ error: "Please enter correct password" })
-                }
+                res.status(400).json({ error: "Wrong password" });
             }
         }
-        catch (error) {
-            res.status(500).json({ error: error });
-        }
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
     }
 });
 

@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
 
 const Preferences = () => {
-    // setting up context
+       // setting up context
     const { state, setState } = useContext(DataContext);
 
     // function to handle onSubmit

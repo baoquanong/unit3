@@ -17,14 +17,8 @@ export const DataContext = createContext();
 const App = () => {
     // setting up global state
     const [state, setState] = useState({
-        currUserInfo: { // user info of person currently logged in
-            email: "sally@mail.com",
-            username: "Sally Ng",
-            password: "secret",
-            interests: ["Handywork", "Caregiving"],
-            aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs",
-            img: "https://api.multiavatar.com/Sally Ng.png"
-        }, 
+        currSignupInfo: {},
+        loggedIn: {}
     });
 
     return (
