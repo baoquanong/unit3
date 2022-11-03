@@ -15,9 +15,8 @@ import UserJobs from "./Components/UserJobs/UserJobs";
 export const DataContext = createContext();
 
 const App = () => {
-    // setting up state
+    // setting up global state
     const [state, setState] = useState({
-        currSignupInfo: {}, // info of person currently in signup process
         currUserInfo: { // user info of person currently logged in
             email: "sally@mail.com",
             username: "Sally Ng",

@@ -47,10 +47,10 @@ router.post("/signup", async (req, res) => {
         const user = await User.find({email: req.body.email});
 
         if (user) {
-            res.status(400).json({ error: "Account with this email already exists. Please log in or use an alternative email" })
+            res.status(409).json({ error: "Account with this email already exists. Please log in or use an alternative email" })
         } else if (!user) {
             const newUser = await User.create(req.body);
-            res.status(202).json(newUser);
+            res.status(201).json(newUser);
         }
     }
     catch (error) {

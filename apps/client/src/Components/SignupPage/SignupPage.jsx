@@ -19,6 +19,8 @@ function SignupPage() {
     pwConfirm: ""
   });
 
+  const [error, setError] = useState("");
+
   // function to handle onChange
   const handleChange = (event, field) => {
     // console.log(event.target.value);
@@ -26,14 +28,42 @@ function SignupPage() {
 
   };
 
-  // function to handle onNext
-  const onNext = () => {
+  // function to handle onSignUp
+  const onSignUp = async (event) => {
     event.preventDefault();
+    const user = Object.fromEntries(new FormData(event.target));
+
+    try {
+      const response = await fetch("/api/users/signup", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user),
+      });
+      
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("new account successfully created!");
+        navigate("/signup/preferences");
+      } else {
+       setError(data.error);
+      }
+    }
+    catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div id="signup-page">
-      <form id="signup-form" autoComplete="off" onSubmit={onNext}>
+      <form
+        method="post"
+        id="signup-form"
+        autoComplete="off"
+        onSubmit={onSignUp}
+      >
         <h1>SIGN UP</h1>
         <div id="inputs">
           <label>
@@ -77,6 +107,11 @@ function SignupPage() {
           userDetails.password === userDetails.pwConfirm ?
           <></> :
           <p id="error-msg">Passwords do not match</p>
+        }
+        {
+          !error ?
+          <></> :
+          <p id="error-msg">{error}</p>
         }
         <button>Sign Up</button>
       </form>
