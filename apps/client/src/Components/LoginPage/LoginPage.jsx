@@ -18,6 +18,8 @@ function LoginPage() {
     password: "",
   });
 
+  const [error, setError] = useState("");
+
   // function to handle onChange
   const handleChange = (event, field) => {
     console.log(event.target.value);
@@ -43,6 +45,8 @@ function LoginPage() {
         console.log("successfully logged in!");
         setState({...state, loggedIn: data.userInfo});
         navigate("/jobs");
+      } else {
+        setError(data.error);
       }
     }
     catch (error) {
@@ -60,7 +64,7 @@ function LoginPage() {
             Email:
             <input
               type="email"
-              required="true"
+              required={true}
               value={loginDetails.email}
               onChange={() => handleChange(event, "email")}
             />
@@ -69,12 +73,17 @@ function LoginPage() {
             Password:
             <input
               type="password"
-              required="true"
+              required={true}
               value={loginDetails.password}
               onChange={() => handleChange(event, "password")}
             />
           </label>
         </div>
+        {
+          !error ?
+          <></> :
+          <p id="error-msg">{error}</p>
+        }
         <button>Let's Go!</button>
       </form>
       <p>
