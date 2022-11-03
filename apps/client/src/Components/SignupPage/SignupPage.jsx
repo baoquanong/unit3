@@ -1,13 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { DataContext } from "../../App";
 import "./SignupPage.css";
 
 function SignupPage() {
-  // setting up context
-  const { state, setState } = useContext(DataContext);
-
   // setting up navigate
   const navigate = useNavigate();
 
@@ -25,13 +21,11 @@ function SignupPage() {
   const handleChange = (event, field) => {
     // console.log(event.target.value);
     setUserDetails({...userDetails, [`${field}`]: event.target.value});
-
   };
 
   // function to handle onSignUp
   const onSignUp = async (event) => {
     event.preventDefault();
-    const user = Object.fromEntries(new FormData(event.target));
 
     try {
       const response = await fetch("/api/users/signup", {
@@ -39,7 +33,7 @@ function SignupPage() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(userDetails),
       });
       
       const data = await response.json();
@@ -48,7 +42,8 @@ function SignupPage() {
         console.log("new account successfully created!");
         navigate("/signup/preferences");
       } else {
-       setError(data.error);
+        console.log("data:", data);
+        setError(data.error);
       }
     }
     catch (error) {
@@ -59,8 +54,8 @@ function SignupPage() {
   return (
     <div id="signup-page">
       <form
-        method="post"
         id="signup-form"
+        method="post"
         autoComplete="off"
         onSubmit={onSignUp}
       >
@@ -70,7 +65,7 @@ function SignupPage() {
             Email:
             <input
               type="email"
-              required="true"
+              required={true}
               value={userDetails.email}
               onChange={() => handleChange(event, "email")}
             />
@@ -79,7 +74,7 @@ function SignupPage() {
             Username:
             <input
               type="text"
-              required="true"
+              required={true}
               value={userDetails.username}
               onChange={() => handleChange(event, "username")}
             />
@@ -88,7 +83,7 @@ function SignupPage() {
             Password:
             <input
               type="password"
-              required="true"
+              required={true}
               value={userDetails.password}
               onChange={() => handleChange(event, "password")}
             />
@@ -97,7 +92,7 @@ function SignupPage() {
             Confirm Password:
             <input
               type="password"
-              required="true"
+              required={true}
               value={userDetails.pwConfirm}
               onChange={() => handleChange(event, "pwConfirm")}
             />

@@ -44,13 +44,13 @@ router.post("/login", async (req, res) => {
 // create new user route
 router.post("/signup", async (req, res) => {
     try {
-        const user = await User.find({email: req.body.email});
+        const user = await User.find({ email: req.body.email }).exec();
 
-        if (user) {
+        if (user.length !== 0) {
             res.status(409).json({ error: "Account with this email already exists. Please log in or use an alternative email" })
-        } else if (!user) {
+        } else if (user.length === 0) {
             const newUser = await User.create(req.body);
-            res.status(201).json(newUser);
+            res.status(201).json({ userInfo: newUser });
         }
     }
     catch (error) {
