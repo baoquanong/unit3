@@ -27,8 +27,8 @@ function SignupPage() {
     setUserDetails({...userDetails, [`${field}`]: event.target.value});
   };
 
-  // function to handle onSignUp
-  const onSignUp = async (event) => {
+  // function to handle Next
+  const handleNext = async (event) => {
     event.preventDefault();
 
     try {
@@ -45,11 +45,33 @@ function SignupPage() {
 
       if (response.ok) {
         console.log("new account successfully created!");
-        setState({...state, currSignupInfo: {email: userDetails.email, password: userDetails.password}});
-        navigate("/signup/preferences");
+        // navigate("/signup/preferences");
       } else {
         console.log("data error:", data.error);
         setError(data.error);
+        return;
+      }
+
+      // consolidating data for login
+      const userLogin = {email: userDetails.email, password: userDetails.password}
+
+      // subsequent fetch request to automatically log in
+      const response2 = await fetch("/api/users/login", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userLogin),
+      });
+
+      const data2 = await response2.json();
+
+      if (response.ok) {
+        console.log("successfully logged in!");
+        setState({...state, loggedIn: data.userInfo});
+        navigate("/signup/preferences");
+      } else {
+        console.log("data2 error:", data2.error);
       }
     }
     catch (error) {
@@ -63,7 +85,7 @@ function SignupPage() {
         id="signup-form"
         method="post"
         autoComplete="off"
-        onSubmit={onSignUp}
+        onSubmit={handleNext}
       >
         <h1>SIGN UP</h1>
         <div id="inputs">
@@ -114,7 +136,7 @@ function SignupPage() {
           <></> :
           <p id="error-msg">{error}</p>
         }
-        <button>Sign Up</button>
+        <button>Next</button>
       </form>
       <p>
         Already have an account? <br />
