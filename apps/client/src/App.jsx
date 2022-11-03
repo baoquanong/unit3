@@ -1,31 +1,25 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreateJobs from "./Components/CreateJobs/CreateJobs";
-import FindJobs from "./Components/FindJobs/FindJobs";
-import JobDetails from "./Components/JobDetails/JobDetails";
 
 import Navbar from "./Components/Navbar/Navbar";
 import HomePage from "./Components/HomePage/HomePage";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
 import Preferences from "./Components/SignupPage/Preferences";
+import CreateJobs from "./Components/CreateJobs/CreateJobs";
+import FindJobs from "./Components/FindJobs/FindJobs";
+import JobDetails from "./Components/JobDetails/JobDetails";
 import Profile from "./Components/Profile/Profile";
+import EditProfile from "./Components/Profile/EditProfile";
 import UserJobs from "./Components/UserJobs/UserJobs";
 
 export const DataContext = createContext();
 
 const App = () => {
-    // setting up state
+    // setting up global state
     const [state, setState] = useState({
-        currSignupInfo: {}, // info of person currently in signup process
-        currUserInfo: { // user info of person currently logged in
-            email: "sally@mail.com",
-            username: "Sally Ng",
-            password: "secret",
-            interests: ["Handywork", "Caregiving"],
-            aboutMe: "Currently live with and take care of my Grandparents. Am able to do simple handywork and minor repairs",
-            img: "https://api.multiavatar.com/Sally Ng.png"
-        }, 
+        loggedIn: {}, // details of person who is logged in
+        currProfileEdit: {},
     });
 
     return (
@@ -42,6 +36,7 @@ const App = () => {
                             <Route path="/jobs/create" element={<CreateJobs />} />
                             <Route path="/jobs/:id" element={<JobDetails />} />
                             <Route path="/user" element={<Profile />} />
+                            <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/jobs" element={<UserJobs />} />
                         </Route>
                     </Routes>
