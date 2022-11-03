@@ -1,8 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom' 
 
-function JobCard({ onClick }) {
+function JobCard() {
+  let navigate = useNavigate();
+
+  const handleClick = () =>{
+    console.log("clicked");
+    navigate("/jobs/:id");
+  }
   return (
-    <div onClick={onClick}>
+    <div onClick={handleClick}>
         <h4>
         Job
         </h4>

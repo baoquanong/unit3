@@ -12,4 +12,8 @@ router.get("/seed", async (req, res) => {
   res.json(jobs);
 });
 
+router.post("/", (res, req) => {
+  
+})
+
 module.exports = router;
