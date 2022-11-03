@@ -1,10 +1,9 @@
 // DEPENDANCIES
-const { application } = require("express");
 const express = require("express");
 const router = express.Router();
 
-const User = require("../models/User");
-const seedUsers = require("../seed data/seedUsers")
+const User = require("../models/User"); // User schema model
+const seedUsers = require("../seed data/seedUsers") // seed data
 
 // ROUTES
 // seed route

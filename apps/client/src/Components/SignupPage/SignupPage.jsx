@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
@@ -12,40 +12,23 @@ function SignupPage() {
   const navigate = useNavigate();
 
   // setting up state
-  const [loginDetails, setLoginDetails] = useState({
+  const [userDetails, setUserDetails] = useState({
     email: "",
     username: "",
     password: "",
     pwConfirm: ""
   });
 
-  const [error, setError] = useState("");
-
   // function to handle onChange
   const handleChange = (event, field) => {
-    console.log(event.target.value);
-    setLoginDetails({...loginDetails, [`${field}`]: event.target.value});
+    // console.log(event.target.value);
+    setUserDetails({...userDetails, [`${field}`]: event.target.value});
 
   };
 
   // function to handle onNext
   const onNext = () => {
     event.preventDefault();
-
-    // checking for missing inputs
-    if (!loginDetails.email) {
-      setError("please fill in email");
-    } else if (!loginDetails.username) {
-      setError("please fill in username");
-    } else if (!loginDetails.password || !loginDetails.pwConfirm) {
-      setError("please fill in password");
-    } else if (loginDetails.password !== loginDetails.pwConfirm) {
-      setError("passwords do not match")
-    } else {
-      delete loginDetails.pwConfirm;
-      setState({...state, currSignupInfo: loginDetails}); // setting info to a state before moving on to get preferences
-      navigate("/signup/preferences");
-    }
   };
 
   return (
@@ -56,8 +39,9 @@ function SignupPage() {
           <label>
             Email:
             <input
-              type="text"
-              value={loginDetails.email}
+              type="email"
+              required="true"
+              value={userDetails.email}
               onChange={() => handleChange(event, "email")}
             />
           </label>
@@ -65,7 +49,8 @@ function SignupPage() {
             Username:
             <input
               type="text"
-              value={loginDetails.username}
+              required="true"
+              value={userDetails.username}
               onChange={() => handleChange(event, "username")}
             />
           </label>
@@ -73,7 +58,8 @@ function SignupPage() {
             Password:
             <input
               type="password"
-              value={loginDetails.password}
+              required="true"
+              value={userDetails.password}
               onChange={() => handleChange(event, "password")}
             />
           </label>
@@ -81,17 +67,18 @@ function SignupPage() {
             Confirm Password:
             <input
               type="password"
-              value={loginDetails.pwConfirm}
+              required="true"
+              value={userDetails.pwConfirm}
               onChange={() => handleChange(event, "pwConfirm")}
             />
           </label>
         </div>        
         {
-          !error ?
+          userDetails.password === userDetails.pwConfirm ?
           <></> :
-          <p id="error-msg">*{error}</p>
+          <p id="error-msg">Passwords do not match</p>
         }
-        <button>Next</button>
+        <button>Sign Up</button>
       </form>
       <p>
         Already have an account? <br />
