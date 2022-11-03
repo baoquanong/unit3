@@ -1,18 +1,51 @@
-import { useRef } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 
 function CreateJobs() {
+  // const [ message, setMessage] = useState("")
+  const navigate = useNavigate();
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  
+  const jobInfo = Object.fromEntries(new FormData(event.target));
+
+   try {
+   const res = await fetch(
+      '/api/jobs',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jobInfo)
+      }
+    );
+    const data = await res.json()
+    if (res.ok) {
+      console.log ("success");
+      navigate("/jobs");
+    } else {
+      console.log (data.msg)
+    }
+  } catch (error){
+    console.log(error);
+  }};
+
+
+
   return (
-    <div>
-      <br />
-      <br />
+  <div>
+    <form method="post" onSubmit={handleSubmit}>
       <label for="jobTitle">Job Title: </label>
-      <input type="text" placeholder="text" name="jobTitle"></input>
+      <input type="text" placeholder="text" name="jobTitle" required={true}></input>
       <br />
-      <label for="jobDescription">Job Description: </label>
-      <textarea rows="10" cols="30" name="jobDescription"></textarea>
+      <label for="jobDescription" required={true}>Job Description: </label>
+      <textarea rows="10" cols="30" name="jobDescription" required={true}></textarea>
       <br />
       <label for="jobType">Job Type: </label>
-      <select name="jobType">
+      <select name="jobType" required={true}>
         <option>Select Type</option>
         <option>Handywork</option>
         <option>Caregiving</option>
@@ -23,18 +56,23 @@ function CreateJobs() {
         <option>Others</option>
       </select>
       <br />
-      <label for="jobTitle">Job Price: </label>
-      <input type="text" placeholder="text" name="jobTitle"></input>
+      <label for="jobPrice">Job Price: </label>
+      <input type="number" placeholder="num" name="jobPrice" required={true}></input>
       <br />
-      <label for="jobTitle">Job Location: </label>
-      <input type="text" placeholder="text" name="jobTitle"></input>
+      <label for="jobLocation" required={true}>Job Location: </label>
+      <input type="text" placeholder="text" name="jobLocation" required={true}></input>
       <br />
-      <label for="jobTitle">Job Date: </label>
-      <input type="text" placeholder="text" name="jobTitle"></input>
+      <label for="jobStart">Job Start Date: </label>
+      <input type="date" placeholder="text" name="jobStart" required={true}></input>
+      <br />
+      <label for="jobEnd">Job End Date: </label>
+      <input type="date" placeholder="text" name="jobEnd" ></input>
       <br />
       <button>POST JOB</button>
-      {/* need to add the submit function to post job */}
-    </div>
+      {/* need to add the fetch to post job */}
+    </form>
+    {/* <p>{message}</p> */}
+  </div>
   );
 }
 

@@ -13,7 +13,7 @@ router.get("/seed", async (req, res) => {
 });
 
 // new job
-router.post("/new", async (req, res) => {
+router.post("/", (res, req) => {
   try {
     const job = await Job.create(req.body);
     if (job) {
