@@ -50,7 +50,7 @@
     font-weight: bold;
 }
 
-#user-interests, #about-me {
+#user-skills, #about-me {
     background: lightsteelblue;
     width: 250px;
     padding: 20px;
@@ -79,7 +79,7 @@
     letter-spacing: 1px;
 }
 
-#interests {
+#skills {
     max-width: 250px;
     margin: 0;
 
@@ -90,7 +90,7 @@
     gap: 15px;
 }
 
-.interest {
+.skill {
     background: whitesmoke;
     margin: 0;
     padding: 5px 10px;

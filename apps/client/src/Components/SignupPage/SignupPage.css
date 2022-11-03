@@ -49,10 +49,12 @@
 #error-msg {
     max-width: 200px;
     margin: 0;
+    padding: 10px 0 0;
 
     color: maroon;
     text-align: center;
     letter-spacing: 1px;
+    font-size: 14px;
     font-style: italic;
 }
 
