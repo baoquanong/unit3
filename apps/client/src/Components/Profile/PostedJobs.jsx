@@ -43,7 +43,11 @@ const PostedJobs = () => {
 
     const jobs = postedJobs.map((job, index) => {
         return (
-            <PostedJobDetails setPostedJobs={setPostedJobs} jobs={postedJobs} job={job} key={index} />
+            <PostedJobDetails 
+                setPostedJobs={setPostedJobs}
+                jobs={postedJobs}
+                job={job} key={index}
+            />
         );
     });
 

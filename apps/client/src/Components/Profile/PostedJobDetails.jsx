@@ -8,7 +8,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     // mapping out applicants
     const applicants = job.applicants.map((user, index) => {
         return (
-            <p>{user.username}</p>
+            <p key={index}>{user.username}</p>
         );
     });
 
