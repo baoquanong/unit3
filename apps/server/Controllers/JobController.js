@@ -52,10 +52,14 @@ router.delete("/:job", async (req, res) => {
   const { job } = req.params;
   try {
     const job = await Job.findOneAndDelete({ _id: job }).exec();
-
+    if (job.length === 0) {
+      res.status(400).json({ error: "No job found with this ID" });
+    } else {
+      res.status(200).json(job);
+    }
   }
   catch (error) {
-    res.status
+    res.status(500).json({ error: error });
   }
 })
 
