@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Reviews from "./Reviews";
+// import Reviews from "./Reviews";
 import { DataContext } from '../../App';
-import reviews from "./reviews";
+// import reviews from "./reviews";
 import "./Profile.css";
 
 function Profile() {
@@ -15,8 +15,8 @@ function Profile() {
   const navigate = useNavigate();
 
   // calculating ratings
-  const totalRating = reviews.reduce((total, num) => total + num.stars, 0);
-  const avgRating = totalRating/reviews.length;
+  const totalRating = state.reviews.reduce((total, num) => total + num.rating, 0);
+  const avgRating = Math.round(totalRating/state.reviews.length);
 
   return (
     <div id="profile">

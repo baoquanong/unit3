@@ -23,6 +23,7 @@ const App = () => {
     const [state, setState] = useState({
         loggedIn: {}, // details of person who is logged in
         jobs: [],
+        reviews: [],
     });
 
     return (
