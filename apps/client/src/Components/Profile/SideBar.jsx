@@ -25,6 +25,7 @@ const SideBar = () => {
                     <h3>JOBS</h3>
                     <p onClick={() => navigate("/user/postedjobs")}>Posted By Me</p>
                     <p>My Applications</p>
+                    <p>Favourites</p>
                 </div>
                 <div
                     className="tab-div"
