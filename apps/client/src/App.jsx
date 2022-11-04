@@ -7,9 +7,12 @@ import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
 import Preferences from "./Components/SignupPage/Preferences";
 import CreateJobs from "./Components/CreateJobs/CreateJobs";
-import FindJobs from "./Components/FindJobs/FindJobs";
+// import FindJobs from "./Components/FindJobs/FindJobs";
 import JobDetails from "./Components/JobDetails/JobDetails";
+import FindJobs from "./extra/FindJobs";
+import SideBar from "./Components/Profile/SideBar";
 import Profile from "./Components/Profile/Profile";
+import Reviews from "./Components/Profile/Reviews";
 import EditProfile from "./Components/Profile/EditProfile";
 import UserJobs from "./Components/UserJobs/UserJobs";
 
@@ -19,7 +22,7 @@ const App = () => {
     // setting up global state
     const [state, setState] = useState({
         loggedIn: {}, // details of person who is logged in
-        currProfileEdit: {},
+        jobs: [],
     });
 
     return (
@@ -35,9 +38,12 @@ const App = () => {
                             <Route path="/jobs" element={<FindJobs />} />
                             <Route path="/jobs/create" element={<CreateJobs />} />
                             <Route path="/jobs/:id" element={<JobDetails />} />
-                            <Route path="/user" element={<Profile />} />
-                            <Route path="/user/edit" element={<EditProfile />} />
-                            <Route path="/user/jobs" element={<UserJobs />} />
+                            <Route path="/user" element={<SideBar />}>
+                                <Route index element={<Profile />} />
+                                <Route path="/user/reviews" element={<Reviews />} />
+                                <Route path="/user/edit" element={<EditProfile />} />
+                                <Route path="/user/jobs" element={<UserJobs />} />
+                            </Route>
                         </Route>
                     </Routes>
                 </BrowserRouter>

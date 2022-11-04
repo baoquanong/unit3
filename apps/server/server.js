@@ -7,7 +7,7 @@ const cors = require("cors");
 const session = require("express-session");
 // const { appendFile } = require("fs");
 
-const JobController = require("./Controllers/JobController");
+const JobController = require("./extra/jobController");
 const ReviewController = require("./Controllers/ReviewController");
 const UserController = require("./Controllers/UserController");
 

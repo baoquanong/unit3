@@ -50,7 +50,6 @@ function Profile() {
         }
         <button onClick={() => navigate("/user/edit")}>Edit Profile</button>
       </div>
-      <Reviews />
     </div>
   );
 };
