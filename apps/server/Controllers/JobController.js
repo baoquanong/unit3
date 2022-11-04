@@ -32,7 +32,7 @@ router.get("/posted/:user", async (req, res) => {
   const { user } = req.params;
 
   try {
-    const jobs = await Job.find({ postedBy: user }).populate("acceptedBy").exec();
+    const jobs = await Job.find({ postedBy: user }).populate(["acceptedBy", "applicants"]).exec();
     if (jobs.length === 0) {
       res.status(400).json({ error: "No jobs posted by this user" });
     } else {
@@ -44,14 +44,10 @@ router.get("/posted/:user", async (req, res) => {
   }
 });
 
-// update a job
-router.put()
-
 // delete a job
-router.delete("/:job", async (req, res) => {
-  const { job } = req.params;
+router.delete("/delete/:job", async (req, res) => {
   try {
-    const job = await Job.findOneAndDelete({ _id: job }).exec();
+    const job = await Job.findByIdAndRemove(req.params.job).exec();
     if (job.length === 0) {
       res.status(400).json({ error: "No job found with this ID" });
     } else {

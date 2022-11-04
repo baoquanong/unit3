@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
 import { DataContext } from "../../App";
+import PostedJobDetails from "./PostedJobDetails";
 
 const PostedJobs = () => {
     // setting up context
@@ -9,6 +10,7 @@ const PostedJobs = () => {
 
     // state
     const [postedJobs, setPostedJobs] = useState([]);
+    // const [showDetails, setShowDetails] = useState("false");
 
     // function to fetch posted jobs
     const getPostedJobs = async () => {
@@ -41,18 +43,19 @@ const PostedJobs = () => {
 
     const jobs = postedJobs.map((job, index) => {
         return (
-            <div key={index} className="job" style={{background: "lightsteelblue"}}>
-                <p>{job.jobDescription}</p>
-                <p>Job Type: {job.jobType}</p>
-                <p>Accepted By: {job.acceptedBy.username}</p>
-            </div>
+            <PostedJobDetails setPostedJobs={setPostedJobs} jobs={postedJobs} job={job} key={index} />
         );
     });
 
     return (
         <div id="posted-jobs">
             <h1>MY POSTED JOBS</h1>
-            <div>
+            <div
+                style={{
+                    display: "flex",
+                    gap: "20px"
+                }}
+            >
                 {jobs}
             </div>
         </div>

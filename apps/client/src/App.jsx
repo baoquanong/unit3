@@ -23,7 +23,7 @@ const App = () => {
     // setting up global state
     const [state, setState] = useState({
         loggedIn: {}, // details of person who is logged in
-        jobs: [],
+        postedJobs: [],
         reviews: [],
     });
 

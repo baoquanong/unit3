@@ -44,7 +44,7 @@ const seedJobs = [
     jobEnd: "2023-01-20",
   },
   {
-    postedBy: "63653b3564406e7db583722d",
+    postedBy: "63653b3564406e7db583721d",
     acceptedBy: "63653b3564406e7db583721f",
     jobDescription: "Part-time sale assistant for pop up store",
     jobType: "Event",
@@ -57,10 +57,9 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db583721d",
     applicants: ["63653b3564406e7db583721e", "63653b3564406e7db583722c"],
-    acceptedBy: "63653b3564406e7db583722c",
     jobDescription: "Finding help to paint my room",
     jobType: "Handywork",
-    status: "close",
+    status: "open",
     price: 500,
     location: "574409",
     jobStart: "2022-12-05",
