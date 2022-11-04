@@ -7,6 +7,10 @@ const jobSchema = new mongoose.Schema(
       ref: "User",
       // required: false,
     },
+    applicants: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "User",
+    },
     acceptedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

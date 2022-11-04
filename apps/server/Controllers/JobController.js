@@ -27,4 +27,36 @@ router.post("/new", async (req, res) => {
   }
 });
 
+// get jobs posted by a user
+router.get("/posted/:user", async (req, res) => {
+  const { user } = req.params;
+
+  try {
+    const jobs = await Job.find({ postedBy: user }).populate("acceptedBy").exec();
+    if (jobs.length === 0) {
+      res.status(400).json({ error: "No jobs posted by this user" });
+    } else {
+      res.status(200).json(jobs);
+    }
+  }
+  catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// update a job
+router.put()
+
+// delete a job
+router.delete("/:job", async (req, res) => {
+  const { job } = req.params;
+  try {
+    const job = await Job.findOneAndDelete({ _id: job }).exec();
+
+  }
+  catch (error) {
+    res.status
+  }
+})
+
 module.exports = router;
