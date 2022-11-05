@@ -29,7 +29,6 @@ app.use(
     // cookie: { secure: true }
   })
 );
-app.use(express.static("../client/dist"));
 
 app.use(express.static("../client/dist")); // deploying front and back end - this gives express access to load react
 
