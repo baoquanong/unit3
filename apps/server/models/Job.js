@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const jobSchema = mongoose.Schema({
+const jobSchema = new mongoose.Schema({
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -11,11 +11,12 @@ const jobSchema = mongoose.Schema({
     ref: "User",
     // required: true,
   },
-  description: { type: String },
+  jobTitle: { type: String },
+  jobDescription: { type: String },
   jobType: { type: String, required: true },
-  status: { type: String, required: true },
-  price: { type: Number },
-  location: { type: String },
+  jobStatus: { type: String, required: true, default: "open" },
+  jobPrice: { type: Number },
+  jobLocation: { type: String },
   jobStart: { type: Date },
   jobEnd: { type: Date },
 });
