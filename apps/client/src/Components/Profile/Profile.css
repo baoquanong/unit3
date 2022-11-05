@@ -1,6 +1,6 @@
 /* ====== User Profile ====== */
 #profile {
-    padding: 50px 0;
+    /* padding: 50px 0; */
 
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
     /* background: lightslategrey; */
     /* border: 3px solid midnightblue; */
     /* border-right: 5px solid midnightblue; */
-    padding: 30px;
+    /* padding: 30px; */
     /* border-radius: 25px; */
 
     display: flex;
@@ -127,8 +127,8 @@
 #user-reviews {
     /* background: slategrey; */
     /* border: 3px solid midnightblue; */
-    width: 500px;
-    padding: 30px;
+    width: fit-content;
+    /* padding: 30px; */
     /* border-radius: 25px; */
 
     display: flex;
@@ -160,9 +160,14 @@
 
     color: white;
     text-align: justify;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .review > div {
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -178,6 +183,6 @@
 }
 
 .rating {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     font-weight: bold;
 }

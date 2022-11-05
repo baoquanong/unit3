@@ -1,26 +1,26 @@
-const seedUsers = [
+const seedReviews = [
     {
-        postedBy: "63611626fcafb2c48bef34a9",
-        postedFor: "63611626fcafb2c48bef34a4",
-        message: "Wendy did an exellent job! Would totally recommend her",
+        postedBy: "63653b3564406e7db583721e",
+        postedFor: "63653b3564406e7db583721d",
+        message: "Sally did an exellent job! Would totally recommend her",
         rating: 5
     },
     {
-        postedBy: "63611626fcafb2c48bef34a9",
-        postedFor: "63611626fcafb2c48bef34a6",
+        postedBy: "63653b3564406e7db583721f",
+        postedFor: "63653b3564406e7db583721d",
         message: "Okay. Not bad!",
         rating: 3
     },
     {
-        postedBy: "63611626fcafb2c48bef34aa",
-        postedFor: "63611626fcafb2c48bef34a7",
-        message: "Natalie was overly friendly, didn't sit well with us",
+        postedBy: "63653b3564406e7db5837227",
+        postedFor: "63653b3564406e7db583721d",
+        message: "Sally was overly friendly, didn't sit well with us",
         rating: 2
     },
     {
-        postedBy: "63611626fcafb2c48bef34b1",
-        postedFor: "63611626fcafb2c48bef34ab",
-        message: "Great help! Would find Ben again",
+        postedBy: "63653b3564406e7db583722a",
+        postedFor: "63653b3564406e7db5837229",
+        message: "Great help! Would find Nicholas again",
         rating: 4
     },
 ];
