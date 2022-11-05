@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
+const path = require("path");
 // const { appendFile } = require("fs");
 
 const JobController = require("./Controllers/JobController");
@@ -39,6 +40,11 @@ app.use("/api/users", UserController);
 // test route
 app.get("/", (req, res) => {
   res.json({ msg: "hello world" });
+});
+
+// CONNECT TO SERVER
+app.get("/*", (req, res) => {
+  res.sendFile(path.resolve("../client/dist/index.html"));
 });
 
 // CONNECT TO MONGO & LISTEN
