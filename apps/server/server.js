@@ -1,4 +1,4 @@
-// DEPENDANCISE
+// DEPENDANCIES
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -27,6 +27,8 @@ app.use(session({
     saveUninitialized: true,
     // cookie: { secure: true }
 }));
+
+app.use(express.static("../client/dist")); // deploying front and back end - this gives express access to load react
 
 app.use(express.json());
 app.use("/api/jobs", JobController);
