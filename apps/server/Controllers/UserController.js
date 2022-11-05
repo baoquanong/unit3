@@ -53,7 +53,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-// update existing user route
+// update existing user info route
 router.put("/:id", async (req, res) => {
     const { id } = req.params;
 

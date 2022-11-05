@@ -23,7 +23,7 @@ function SignupPage() {
 
   // function to handle onChange
   const handleChange = (event, field) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     setUserDetails({...userDetails, [`${field}`]: event.target.value});
   };
 

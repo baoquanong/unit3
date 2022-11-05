@@ -1,4 +1,4 @@
-// DEPENDANCISE
+// DEPENDANCIES
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -30,6 +30,8 @@ app.use(
   })
 );
 app.use(express.static("../client/dist"));
+
+app.use(express.static("../client/dist")); // deploying front and back end - this gives express access to load react
 
 app.use(express.json());
 app.use("/api/jobs", JobController);

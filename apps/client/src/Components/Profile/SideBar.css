@@ -1,0 +1,45 @@
+#side-bar {
+    /* width: 70vw; */
+    padding: 50px 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    align-items: center;
+}
+
+#profile-tabs {
+    background: lightblue;
+    height: fit-content;
+    padding: 50px 30px;
+    /* border-radius: 10px; */
+    border: 2px solid darkslategray;
+    box-shadow: 5px 5px darkslategray;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tab-div {
+    border: 2px solid darkslategrey;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.tab-div:hover {
+    background: whitesmoke;
+
+    /* text-decoration: underline; */
+    cursor: pointer;
+}
+
+.tab-div> h3 {
+    margin: 0;
+
+    letter-spacing: 2px;
+}
+
+.tab-div > p:hover {
+    text-decoration: underline;
+}
