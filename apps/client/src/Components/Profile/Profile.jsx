@@ -21,7 +21,7 @@ function Profile() {
   return (
     <div id="profile">
       <div id="user-info">
-        <img src={user?.img} />
+        <img src="https://api.multiavatar.com/Sally.png" />
         <h2>{user?.username.toUpperCase()}</h2>
         <p id="rating">Average Rating: {avgRating}/5</p>
         {
