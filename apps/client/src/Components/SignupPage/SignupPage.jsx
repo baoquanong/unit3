@@ -16,7 +16,8 @@ function SignupPage() {
     email: "",
     username: "",
     password: "",
-    pwConfirm: ""
+    pwConfirm: "",
+    contact: ""
   });
 
   const [error, setError] = useState("");
@@ -82,69 +83,82 @@ function SignupPage() {
 
   return (
     <div id="signup-page">
-      <form
-        id="signup-form"
-        method="post"
-        autoComplete="off"
-        onSubmit={handleNext}
-      >
-        <h1>SIGN UP</h1>
-        <div id="inputs">
-          <label>
-            Email:
-            <input
-              type="email"
-              required={true}
-              value={userDetails.email}
-              onChange={() => handleChange(event, "email")}
-            />
-          </label>
-          <label>
-            Username:
-            <input
-              type="text"
-              required={true}
-              value={userDetails.username}
-              onChange={() => handleChange(event, "username")}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              required={true}
-              value={userDetails.password}
-              onChange={() => handleChange(event, "password")}
-            />
-          </label>
-          <label>
-            Confirm Password:
-            <input
-              type="password"
-              required={true}
-              value={userDetails.pwConfirm}
-              onChange={() => handleChange(event, "pwConfirm")}
-            />
-          </label>
-        </div>        
-        {
-          userDetails.password === userDetails.pwConfirm ?
-          <></> :
-          <p id="error-msg">Passwords do not match</p>
-        }
-        {
-          !error ?
-          <></> :
-          <p id="error-msg">{error}</p>
-        }
-        <button>Next</button>
-      </form>
-      <p>
-        Already have an account? <br />
-        Click {" "}
-        <span onClick={() => navigate("/login")}>here</span>
-        {" "} to log in!
-      </p>
+      <img id="background" src="https://thumbs.dreamstime.com/b/business-people-work-office-run-black-line-seamless-pattern-big-group-monochrome-vector-illustration-eps-64114000.jpg" />
+      <div id="signup">
+        <form
+          id="signup-form"
+          method="post"
+          autoComplete="off"
+          onSubmit={handleNext}
+        >
+          <h1>ARE YOU READY?</h1>
+          <div id="signup-inputs">
+            <label>
+              EMAIL:
+              <input
+                type="email"
+                required={true}
+                value={userDetails.email}
+                onChange={() => handleChange(event, "email")}
+              />
+            </label>
+            <label>
+              USERNAME:
+              <input
+                type="text"
+                required={true}
+                value={userDetails.username}
+                onChange={() => handleChange(event, "username")}
+              />
+            </label>
+            <label>
+              PASSWORD:
+              <input
+                type="password"
+                required={true}
+                value={userDetails.password}
+                onChange={() => handleChange(event, "password")}
+              />
+            </label>
+            <label>
+              CONFIRM PASSWORD:
+              <input
+                type="password"
+                required={true}
+                value={userDetails.pwConfirm}
+                onChange={() => handleChange(event, "pwConfirm")}
+              />
+            </label>
+            <label>
+              CONTACT NUMBER:
+              <input
+                type="tel"
+                pattern="[0-9]{8}"
+                required={true}
+                value={userDetails.contact}
+                onChange={() => handleChange(event, "contact")}
+              />
+            </label>
+          </div>        
+          {
+            userDetails.password === userDetails.pwConfirm ?
+            <></> :
+            <p id="error-msg">Passwords do not match</p>
+          }
+          {
+            !error ?
+            <></> :
+            <p id="error-msg">{error}</p>
+          }
+          <button>CREATE ACCOUNT</button>
+        </form>
+        <p>
+          Already have an account?
+          Click {" "}
+          <span onClick={() => navigate("/login")}>here</span>
+          {" "} to log in!
+        </p>
+      </div>
     </div>
   );
 };

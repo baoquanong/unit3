@@ -1,10 +1,13 @@
+// DEPENDANCIES
 const express = require("express");
 const Job = require("../models/Job");
 const seedJobs = require("../seed data/seedJobs");
 
 const router = express.Router();
 
+
 // ROUTES
+// seed route
 router.get("/seed", async (req, res) => {
   await Job.deleteMany();
   const jobs = await Job.insertMany(seedJobs);
@@ -12,7 +15,7 @@ router.get("/seed", async (req, res) => {
   res.json(jobs);
 });
 
-// new job
+// create a new job listing
 router.post("/", async (req, res) => {
   try {
     const job = await Job.create(req.body);
@@ -20,6 +23,22 @@ router.post("/", async (req, res) => {
       res.status(201).json(job);
     } else {
       res.status(400).json({ error: "Unable to create new job" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// get all jobs
+router.get("/", async (req, res) => {
+  try {
+    const jobs = await Job.find()
+      .populate(["postedBy", "applicants", "acceptedBy"])
+      .exec();
+    if (jobs.length === 0) {
+      res.status(400).json({ error: "No jobs found" })
+    } else {
+      res.status(200).json(jobs);
     }
   } catch (error) {
     res.status(500).json({ error: error });
@@ -44,28 +63,14 @@ router.get("/applied/:user", async (req, res) => {
   }
 });
 
-// get all jobs
-router.get("/", async (req, res) => {
-  try {
-    const jobs = await Job.find()
-      .populate(["postedBy", "applicants", "acceptedBy"])
-      .exec();
-    res.status(200).json(jobs);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
 // get jobs posted by a user
 router.get("/posted/:user", async (req, res) => {
   const { user } = req.params;
 
   try {
-    const jobs = await Job.find({ postedBy: user })
-      .populate(["acceptedBy", "applicants"])
-      .exec();
+    const jobs = await Job.find({ postedBy: user }).populate(["acceptedBy", "applicants"]).exec();
     if (jobs.length === 0) {
-      res.status(400).json({ error: "No jobs posted by this user" });
+      res.status(400).json({ error: "No jobs found" });
     } else {
       res.status(200).json(jobs);
     }
@@ -106,4 +111,6 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
+
+// EXPORT
 module.exports = router;

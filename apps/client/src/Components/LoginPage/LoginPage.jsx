@@ -58,41 +58,45 @@ function LoginPage() {
 
   return (
     <div id="login-page">
-      <form id="login-form" autoComplete="off" onSubmit={handleSubmit}>
-        <h1>LOGIN</h1>
-        <div id="inputs">
-          <label>
-            Email:
-            <input
-              type="email"
-              required={true}
-              value={loginDetails.email}
-              onChange={() => handleChange(event, "email")}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              required={true}
-              value={loginDetails.password}
-              onChange={() => handleChange(event, "password")}
-            />
-          </label>
-        </div>
-        {
-          !error ?
-          <></> :
-          <p id="error-msg">{error}</p>
-        }
-        <button>Let's Go!</button>
-      </form>
-      <p>
-        Don't have an account yet? <br />
-        Click {" "}
-        <span onClick={() => navigate("/signup")}>here</span>
-        {" "} to sign up!
-      </p>
+      <img id="background" src="https://thumbs.dreamstime.com/b/business-people-work-office-run-black-line-seamless-pattern-big-group-monochrome-vector-illustration-eps-64114000.jpg" />
+      <div id="login">
+        <form id="login-form" autoComplete="off" onSubmit={handleSubmit}>
+          <h1>WELCOME BACK</h1>
+          <div id="login-inputs">
+            <label>
+              EMAIL:
+              <input
+                type="email"
+                required={true}
+                value={loginDetails.email}
+                onChange={() => handleChange(event, "email")}
+              />
+            </label>
+            <label>
+              PASSWORD:
+              <input
+                type="password"
+                required={true}
+                value={loginDetails.password}
+                onChange={() => handleChange(event, "password")}
+              />
+            </label>
+          </div>
+          {
+            !error ?
+            <></> :
+            <p id="error-msg">{error}</p>
+          }
+          <button>LOGIN</button>
+        </form>
+        <p>
+          Don't have an account yet?
+          Click {" "}
+          <span onClick={() => navigate("/signup")}>here</span>
+          {" "} to sign up!
+        </p>
+      </div>
+
     </div>
   );
 };
