@@ -26,6 +26,26 @@ router.post("/", async (req, res) => {
   }
 });
 
+// get all jobs
+router.get("/", async (req, res) => {
+  try {
+    const jobs = await Job.find()
+      .populate(["postedBy", "applicants", "acceptedBy"])
+      .exec();
+    res.status(200).json(jobs);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// router.put("/", (req, res) => {
+//   try {
+//       const
+//   } catch {
+
+//   }
+// })
+
 // get jobs posted by a user
 router.get("/posted/:user", async (req, res) => {
   const { user } = req.params;

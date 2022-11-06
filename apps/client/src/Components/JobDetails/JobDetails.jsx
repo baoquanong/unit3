@@ -1,25 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router";
+import { DataContext } from "../../App";
 
 function JobDetails() {
+  const { state, setState } = useContext(DataContext);
+  const job = state.currViewedJob;
+  const navigate = useNavigate();
+
   return (
     <div>
-      By Posted By :
+      By Posted By : {job.postedBy.username}
       <br />
-      Description :
+      Description : {job.jobDescription}
       <br />
-      Job Type :
+      Job Type : {job.jobType}
       <br />
-      Status:
+      Status: {job.jobStatus}
       <br />
-      Job Start :
+      Job Start : {job.jobStart.slice(0, 10)}
       <br />
-      Job End :
+      Job End : {job.jobEnd.slice(0, 10)}
       <br />
-      Location :
+      Location : {job.jobLocation}
       <br />
-      Price :
+      Price : {job.jobPrice}
       <br />
-      JobDetails blah blahv blah
+      <button
+        onClick={() => {
+          navigate("/jobs");
+        }}
+      >
+        {" "}
+        Back{" "}
+      </button>
+      <button> Apply </button>
     </div>
   );
 }

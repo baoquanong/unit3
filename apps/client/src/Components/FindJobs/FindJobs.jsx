@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import JobCard from "../JobCard/JobCard";
 
 function FindJobs() {
   const [filter, setFilter] = useState(false);
+  const [jobs, setJobs] = useState([]);
 
   const toggleFilter = () => {
     setFilter((prev) => !prev);
   };
 
-  const handleClick = () => {
-    console.log("clicked");
-    navigate("/jobs/:id");
+  const getAllJobs = async () => {
+    try {
+      const res = await fetch("api/jobs", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setJobs(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    getAllJobs();
+  });
+
+  const mappedJob = jobs.map((job, index) => {
+    return <JobCard key={index} job={job} />;
+  });
 
   return (
     <div>
       <h1>FindJobs</h1>
       <br />
       <button onClick={toggleFilter}>Filter</button>
-      <section style={{ visibility: filter ? "" : "hidden" }}>
+      <section style={{ display: filter ? "" : "none" }}>
         <label for="handywork">Handywork</label>
         <input
           id="handywork"
@@ -52,12 +71,7 @@ function FindJobs() {
         <button>Search</button>
         {/* need to add the submit function to search  */}
       </section>
-      <div style={{ display: "flex" }}>
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-      </div>
+      <div style={{ display: "flex" }}>{mappedJob}</div>
     </div>
   );
 }
