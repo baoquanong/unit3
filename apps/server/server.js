@@ -21,13 +21,15 @@ mongoose.connect(mongoURI);
 
 // MIDDLEWARE
 app.use(cors());
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     // cookie: { secure: true }
-}));
+  })
+);
 
 app.use(express.static("../client/dist")); // deploying front and back end - this gives express access to load react
 
