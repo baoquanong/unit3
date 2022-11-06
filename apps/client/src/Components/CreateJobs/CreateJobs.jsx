@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"
+
+import { DataContext } from "../../App";
 
 function CreateJobs() {
   // const [ message, setMessage] = useState("")
   const navigate = useNavigate();
 
+  // setting up context
+  const { state, setState } = useContext(DataContext);
 
 const handleSubmit = async (event) => {
   event.preventDefault();
   
   const jobInfo = Object.fromEntries(new FormData(event.target));
+  jobInfo.postedBy = state.loggedIn._id;
 
    try {
    const res = await fetch(
