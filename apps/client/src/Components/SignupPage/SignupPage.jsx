@@ -69,6 +69,7 @@ function SignupPage() {
       if (response.ok) {
         console.log("successfully logged in!");
         setState({...state, loggedIn: data.userInfo});
+        localStorage.setItem(loggedIn, data.userInfo);
         navigate("/signup/preferences");
       } else {
         console.log("data2 error:", data2.error);

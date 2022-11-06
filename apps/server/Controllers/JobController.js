@@ -26,6 +26,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+// get jobs applied for by a user
+router.get("/applied/:user", async (req, res) => {
+  console.log("req.params:", req.params.filter);
+  const { user } = req.params;
+
+  try {
+    const jobs = await Job.find({ applicants: user }).populate(["acceptedBy", "applicants", "postedBy"]).exec();
+    if (jobs.length === 0) {
+      res.status(400).json({ error: "No jobs found" });
+    } else {
+      res.status(200).json(jobs);
+    }
+  }
+  catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
 // get all jobs
 router.get("/", async (req, res) => {
   try {
@@ -37,14 +55,6 @@ router.get("/", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// router.put("/", (req, res) => {
-//   try {
-//       const
-//   } catch {
-
-//   }
-// })
 
 // get jobs posted by a user
 router.get("/posted/:user", async (req, res) => {
@@ -74,6 +84,24 @@ router.delete("/delete/:job", async (req, res) => {
       res.status(200).json(job);
     }
   } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+// update a job
+router.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const job = await Job.findOneAndUpdate(
+      {_id: id},
+      req.body,
+      { new: true }
+    ).exec();
+      
+    res.json(job);
+  }
+  catch (error) {
     res.status(500).json({ error: error });
   }
 });

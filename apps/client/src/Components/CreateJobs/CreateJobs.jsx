@@ -7,6 +7,7 @@ function CreateJobs() {
   // const [ message, setMessage] = useState("")
   const navigate = useNavigate();
 
+  // setting up context
   const { state, setState } = useContext(DataContext);
 
   const handleSubmit = async (event) => {

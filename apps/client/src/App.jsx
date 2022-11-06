@@ -9,13 +9,12 @@ import Preferences from "./Components/SignupPage/Preferences";
 import CreateJobs from "./Components/CreateJobs/CreateJobs";
 import FindJobs from "./Components/FindJobs/FindJobs";
 import JobDetails from "./Components/JobDetails/JobDetails";
-// import FindJobs from "./extra/FindJobs";
 import SideBar from "./Components/Profile/SideBar";
 import Profile from "./Components/Profile/Profile";
 import Reviews from "./Components/Profile/Reviews";
 import EditProfile from "./Components/Profile/EditProfile";
 import PostedJobs from "./Components/Profile/PostedJobs";
-import UserJobs from "./Components/UserJobs/UserJobs";
+import Applications from "./Components/Profile/Applications";
 
 export const DataContext = createContext();
 
@@ -25,6 +24,7 @@ const App = () => {
         loggedIn: {}, // details of person who is logged in
         postedJobs: [],
         reviews: [],
+        currViewedJob: {},
     });
 
     return (
@@ -45,6 +45,7 @@ const App = () => {
                                 <Route path="/user/reviews" element={<Reviews />} />
                                 <Route path="/user/edit" element={<EditProfile />} />
                                 <Route path="/user/postedjobs" element={<PostedJobs />} />
+                                <Route path="/user/appliedjobs" element={<Applications />} />
                             </Route>
                         </Route>
                     </Routes>

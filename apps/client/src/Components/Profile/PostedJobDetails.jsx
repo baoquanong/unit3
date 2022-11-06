@@ -5,10 +5,38 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     // setting up context
     // const { state, setState } = useContext(DataContext);
 
+    // function to select user for a job
+    const selectUser = async (id) => {
+        try {
+            const response = await fetch(`/api/jobs/update/${job._id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ acceptedBy: id })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully assigned job to user!");
+                console.log("updated job info:", data);
+            } else {
+                console.log("error:", data.error);
+            }
+        }
+        catch (error) {
+            console.log("error:", error)
+        }
+    };
+
     // mapping out applicants
     const applicants = job.applicants.map((user, index) => {
         return (
-            <p key={index}>{user.username}</p>
+            <div style={{display: "flex", gap: "10px"}}>
+                <p key={index}>{user.username}</p>
+                <button onClick={() => selectUser(user._id)}>Select</button>
+            </div>
         );
     });
 
@@ -54,7 +82,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
         >
             <h4 style={{margin: "0"}}>{job.jobDescription}</h4>
             <p>Job Type: {job.jobType}</p>
-            <div>Applicants: {applicants}</div>
+            <div style={{gap: "10px"}}>Applicants: {applicants}</div>
             <button onClick={() => deleteJob(job._id)}>Delete Job</button>
         </div>
     );
