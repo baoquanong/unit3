@@ -10,6 +10,13 @@
     justify-content: center;
 }
 
+#jobs-reviews {
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 /* ====== User Profile ====== */
 #profile {
     display: flex;
@@ -152,6 +159,10 @@
     justify-content: space-between;
 }
 
+#review-header {
+    background: var(--sunset);
+}
+
 .jr-header > h1, p {
     margin: 0;
 
@@ -175,7 +186,6 @@
     cursor: pointer;
 }
 
-/* ====== Jobs Overview ====== */
 #listing {
     background: var(--fog);
     width: 25vw;
@@ -190,7 +200,7 @@
     align-items: center;
 }
 
-.job-overview {
+.job-overview, .review-overview {
     background: var(--midnight);
     width: 23vw;
     padding: 10px 20px;
@@ -222,6 +232,18 @@
     font-size: 14px;
     letter-spacing: 1px;
 }
+
+.review-overview > #msg {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.review-overview > #posted-by {
+    font-size: 14px;
+    font-style: italic;
+}
+
 
 /* ====== Reviews ====== */
 #user-reviews {

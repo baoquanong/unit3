@@ -24,7 +24,7 @@ function Profile({ user }) {
           <p id="rating">Average Rating: {avgRating}/5</p>
         </div>
         {
-          !user.description ?
+          !user?.description ?
           <></> :
           <div id="about-me">
             <p className="header">ABOUT ME</p>

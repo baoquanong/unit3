@@ -9,7 +9,7 @@ const JobsOverview = ({ user }) => {
     const [jobs, setJobs] = useState([]);
 
     // function to fetch all posted jobs
-    const getInfo = async () => {
+    const getJobs = async () => {
         try {
             const response = await fetch(`/api/jobs/posted/${user._id}`, {
                 method: "GET",
@@ -35,7 +35,7 @@ const JobsOverview = ({ user }) => {
     };
 
     useEffect(() => {
-        getInfo();
+        getJobs();
     }, []);
 
     // mapping out posted jobs
