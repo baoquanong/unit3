@@ -43,8 +43,8 @@ function LoginPage() {
 
       if (response.ok) {
         console.log("successfully logged in!");
-        setState({...state, loggedIn: data.userInfo});
-        localStorage.setItem("loggedIn", JSON.stringify(data.userInfo));
+        // setState({...state, loggedIn: data.userInfo});
+        localStorage.setItem("currUser", JSON.stringify(data.userInfo));
         navigate("/user");
       } else {
         setError(data.error);

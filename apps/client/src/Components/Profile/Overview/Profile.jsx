@@ -1,15 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import Reviews from "./Reviews";
-import { DataContext } from '../../App';
-// import reviews from "./reviews";
+import { DataContext } from "../../../App";
 import "./Profile.css";
 
-function Profile() {
+function Profile({ user }) {
   // setting up context
   const { state, setState } = useContext(DataContext);
-  const user = state.loggedIn;
 
   // setting up navigate
   const navigate = useNavigate();
@@ -22,8 +19,10 @@ function Profile() {
     <div id="profile">
       <div id="user-info">
         <img src="https://api.multiavatar.com/Sally.png" />
-        <h2>{user?.username.toUpperCase()}</h2>
-        <p id="rating">Average Rating: {avgRating}/5</p>
+        <div id="personal-info">
+          <h2>{user?.username.toUpperCase()}</h2>
+          <p id="rating">Average Rating: {avgRating}/5</p>
+        </div>
         {
           !user.description ?
           <></> :
@@ -36,7 +35,7 @@ function Profile() {
           user.skills.length === 0 ?
           <></> :
           <div id="user-skills">
-            <p className="header">INTERESTS/CAPABILITIES</p>
+            <p className="header">SKILLS</p>
             <div id="skills">
               {
                 user?.skills.map((skill, index) => {

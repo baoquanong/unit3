@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import { DataContext } from "../../App";
+import { DataContext } from "../../../App";
 import "./EditProfile.css";
 
 const EditProfile = () => {

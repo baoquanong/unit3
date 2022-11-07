@@ -2,20 +2,22 @@ import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomeLayout from "./Components/HomePage/HomeLayout";
-import Navbar from "./Components/Navbar/Navbar";
 import HomePage from "./Components/HomePage/HomePage";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
 import Preferences from "./Components/SignupPage/Preferences";
+
+import Navbar from "./Components/Navbar/Navbar";
 import CreateJobs from "./Components/CreateJobs/CreateJobs";
 import FindJobs from "./Components/FindJobs/FindJobs";
 import JobDetails from "./Components/JobDetails/JobDetails";
-import SideBar from "./Components/Profile/SideBar";
-import Profile from "./Components/Profile/Profile";
-import Reviews from "./Components/Profile/Reviews";
-import EditProfile from "./Components/Profile/EditProfile";
-import PostedJobs from "./Components/Profile/PostedJobs";
-import Applications from "./Components/Profile/Applications";
+
+import Overview from "./Components/Profile/Overview/Overview";
+import Profile from "./Components/Profile/Overview/Profile"
+import EditProfile from "./Components/Profile/Overview/EditProfile"
+import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
+import Applications from "./Components/Profile/Jobs/Applications";
+import Reviews from "./Components/Profile/Reviews/Reviews";
 
 export const DataContext = createContext();
 
@@ -43,13 +45,11 @@ const App = () => {
                             <Route path="/jobs" element={<FindJobs />} />
                             <Route path="/jobs/create" element={<CreateJobs />} />
                             <Route path="/jobs/:id" element={<JobDetails />} />
-                            <Route path="/user" element={<SideBar />}>
-                                <Route index element={<Profile />} />
-                                <Route path="/user/reviews" element={<Reviews />} />
-                                <Route path="/user/edit" element={<EditProfile />} />
-                                <Route path="/user/postedjobs" element={<PostedJobs />} />
-                                <Route path="/user/appliedjobs" element={<Applications />} />
-                            </Route>
+                            <Route path="/user" element={<Overview />} />
+                            <Route path="/user/reviews" element={<Reviews />} />
+                            <Route path="/user/edit" element={<EditProfile />} />
+                            <Route path="/user/postedjobs" element={<PostedJobs />} />
+                            <Route path="/user/appliedjobs" element={<Applications />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>

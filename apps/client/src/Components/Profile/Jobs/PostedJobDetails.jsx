@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "../../App";
+import { DataContext } from "../../../App";
 
 const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     // setting up context

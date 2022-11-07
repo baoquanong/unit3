@@ -2,6 +2,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db583721f",
     acceptedBy: "63653b3564406e7db583721d",
+    jobTitle: "Looking for cleaner",
     jobDescription: "Looking for cleaner for 3 times a week",
     jobType: "Cleaning",
     status: "open",
@@ -13,6 +14,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db5837226",
     acceptedBy: "63653b3564406e7db5837228",
+    jobTitle: "Check in and deliver food to elderly",
     jobDescription: "Deliver lunch to my grandmother while I am at work",
     jobType: "Caregiving",
     status: "completed",
@@ -24,6 +26,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db5837228",
     acceptedBy: "63653b3564406e7db5837227",
+    jobTitle: "Looking for plumber",
     jobDescription: "Finding someone to fix my leaking tap",
     jobType: "Handywork",
     status: "close",
@@ -35,6 +38,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db5837224",
     acceptedBy: "63653b3564406e7db5837225",
+    jobTitle: "Looking for confinement nanny",
     jobDescription: "Looking for a nanny after my delivery",
     jobType: "Caregiving",
     status: "open",
@@ -46,6 +50,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db583721d",
     acceptedBy: "63653b3564406e7db583721f",
+    jobTitle: "PT Sales Assistant wanted",
     jobDescription: "Part-time sale assistant for pop up store",
     jobType: "Event",
     status: "close",
@@ -57,6 +62,7 @@ const seedJobs = [
   {
     postedBy: "63653b3564406e7db583721d",
     applicants: ["63653b3564406e7db583721e", "63653b3564406e7db583722c"],
+    jobTitle: "Looking for painter",
     jobDescription: "Finding help to paint my room",
     jobType: "Handywork",
     status: "open",
