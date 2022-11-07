@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 
 import { DataContext } from "../../../App";
+import "./Jobs.css";
+
 import PostedJobDetails from "./PostedJobDetails";
+import JobsHeader from "./JobsHeader";
 
 const PostedJobs = () => {
     // setting up context
@@ -9,27 +12,24 @@ const PostedJobs = () => {
 
     // state
     const posted = JSON.parse(localStorage.getItem("currUserPostedJobs"))
-    const [postedJobs, setPostedJobs] = useState(JSON.parse(localStorage));
+    const [postedJobs, setPostedJobs] = useState(posted);
 
     const jobs = postedJobs.map((job, index) => {
         return (
             <PostedJobDetails 
                 setPostedJobs={setPostedJobs}
                 jobs={postedJobs}
-                job={job} key={index}
+                job={job}
+                key={index}
             />
         );
     });
 
     return (
         <div id="posted-jobs">
-            <h1>MY POSTED JOBS</h1>
-            <div
-                style={{
-                    display: "flex",
-                    gap: "20px"
-                }}
-            >
+            <JobsHeader />
+            <h1>JOBS POSTED BY ME</h1>
+            <div id="posted-listings">
                 {jobs}
             </div>
         </div>

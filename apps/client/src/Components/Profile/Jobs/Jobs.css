@@ -1,0 +1,163 @@
+/* ====== Jobs Header ====== */
+#jobs-header {
+    display: flex;
+}
+
+#jobs-header > a {
+    padding: 0 30px;
+
+    text-decoration: none;
+    color: var(--midnight);
+    font-weight: 700;
+    letter-spacing: 1px;;
+}
+
+#jobs-header > a:hover {
+    color: var(--cherry);
+
+}
+
+#jobs-header > :nth-child(even) {
+    border-left: 2px solid var(--midnight);
+    border-right: 2px solid var(--midnight);
+}
+
+/* ====== Posted Jobs ====== */
+#posted-jobs {
+    background: var(--suede);
+    min-height: 85vh;
+    padding: 50px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#posted-jobs > h1 {
+    margin: 65px 0 0;
+
+    color: var(--midnight);
+    letter-spacing: 3px;
+    font-family: Covered By Your Grace;
+    font-size: 45px;
+    text-shadow: 2px 2px var(--mist);
+}
+
+#posted-jobs > #posted-listings {
+    max-width: 60vw;
+    margin: 30px 0 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* ====== Posted Jobs Details ====== */
+#pj-details {
+    background: var(--mist);
+    width: 190px;
+    min-height: 300px;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 3px dashed var(--tide);
+    box-shadow: 3px 3px 5px var(--tide);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+#pj-details > h4 {
+    margin: 0 0 10px;
+    color: var(--sunset);
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-size: 16px;
+}
+
+#pj-details > label {
+    margin: 0;
+    font-size: 15px;
+    color: var(--fog);
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label > p,
+.applicant > p,
+label > #applicants > p
+{
+    margin: 0;
+    color: var(--midnight);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+#applicants {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.applicant {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.applicant > p:hover {
+    color: var(--sunset);
+    font-style: normal;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.applicant > button {
+    background:var(--midnight);
+    border: none;
+
+    color: var(--fog);
+    font-family: Raleway;
+}
+
+.applicant > button:hover {
+    background:var(--fog);
+    color: var(--cherry);
+    cursor: pointer;
+}
+
+#pj-details > #job-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+#job-buttons > button {
+    background: var(--shell);
+    border: 2px solid var(--fog);
+    border-radius: 5px;
+    padding: 4px 10px;
+
+    color: var(--fog);
+    font-family: Raleway;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#job-buttons > button:hover {
+    background: var(--midnight);
+    border: 2px solid var(--midnight);
+
+    color: var(--cherry);
+    cursor: pointer;
+}

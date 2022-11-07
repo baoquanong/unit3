@@ -1,10 +1,4 @@
-import { useContext } from "react";
-import { DataContext } from "../../../App";
-
 const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
-    // setting up context
-    // const { state, setState } = useContext(DataContext);
-
     // function to select user for a job
     const selectUser = async (id) => {
         try {
@@ -33,8 +27,8 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     // mapping out applicants
     const applicants = job.applicants.map((user, index) => {
         return (
-            <div style={{display: "flex", gap: "10px"}}>
-                <p key={index}>{user.username}</p>
+            <div className="applicant" key={index}>
+                <p>{user.username}</p>
                 <button onClick={() => selectUser(user._id)}>Select</button>
             </div>
         );
@@ -68,22 +62,30 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     };
 
     return (
-        <div
-            id="pj-details"
-            style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                width: "200px",
-                background: "lightblue",
-                padding: "20px",
-                borderRadius: "10px"
-            }}
-        >
-            <h4 style={{margin: "0"}}>{job.jobDescription}</h4>
-            <p>Job Type: {job.jobType}</p>
-            <div style={{gap: "10px"}}>Applicants: {applicants}</div>
-            <button onClick={() => deleteJob(job._id)}>Delete Job</button>
+        <div id="pj-details">
+            <h4>{job.jobTitle.toUpperCase()}</h4>
+            <label>
+                DESCRIPTION:
+                <p id="jd">{job.jobDescription}</p>
+            </label>
+            <label>
+                JOB TYPE:
+                <p id="jt">{job.jobType}</p>
+            </label>
+            <label>
+                APPLICANTS:
+                <div id="applicants">
+                    {
+                        job.applicants.length === 0 ?
+                        <p>No Applicants</p> :
+                        applicants
+                    }
+                </div>
+            </label>
+            <div id="job-buttons">
+                <button>EDIT</button>
+                <button onClick={() => deleteJob(job._id)}>DELETE</button>
+            </div>
         </div>
     );
 };
