@@ -1,4 +1,21 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { DataContext } from "../../../App";
+
 const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
+    // setting up context
+    const { state, setState } = useContext(DataContext);
+
+    // setting up navigation
+    const navigate = useNavigate();
+
+    // function to view another user profile
+    const viewProfile = (user) => {
+        setState({...state, currViewedProfile: user});
+        navigate(`/profile/${user._id}`);
+    };
+
     // function to select user for a job
     const selectUser = async (id) => {
         try {
@@ -28,7 +45,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     const applicants = job.applicants.map((user, index) => {
         return (
             <div className="applicant" key={index}>
-                <p>{user.username}</p>
+                <p onClick={() => viewProfile(user)}>{user.username}</p>
                 <button onClick={() => selectUser(user._id)}>Select</button>
             </div>
         );

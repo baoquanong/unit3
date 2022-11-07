@@ -59,7 +59,7 @@ function Navbar() {
               >PROFILE</p>
               <div className="dropdown-content" id="dropdown-content">
                 <Link to="/user">OVERVIEW</Link>
-                <Link to="/user/jobs">JOBS</Link>
+                <Link to="/user/postedjobs">JOBS</Link>
                 <Link to="/user/reviews">REVIEWS</Link>
                 <p onClick={handleLogout}>LOGOUT</p>
               </div>

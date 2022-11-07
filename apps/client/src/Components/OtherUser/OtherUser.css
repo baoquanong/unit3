@@ -1,0 +1,92 @@
+#other-user {
+    background-color: var(--suede);
+    min-width: 100vw;
+    min-height: 85vh;
+    padding: 75px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#ou-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#ou-profile > img {
+    background: var(--fog);
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--tide);
+    box-shadow: 3px 3px var(--tide);
+    border-radius: 110px;
+    padding: 5px;
+}
+
+#ou-info {
+    margin: 20px 0 0;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+#ou-info > #personal-info,
+#ou-info > #about-me,
+#ou-info > #user-skills {
+    height: 120px;
+    width: 150px;
+    /* border: 2px solid var(--mist); */
+    /* box-shadow: 2px 2px 5px var(--mist); */
+
+    justify-content: center;
+}
+
+#other-reviews > .jr-header {
+    margin: 10px 0 0;
+    width: 31vw;
+}
+
+#other-reviews > #listing {
+    width: 31vw;
+}
+
+#other-reviews > #listing > p {
+    color: var(--midnight);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#other-reviews > #listing > .review {
+    background: var(--midnight);
+    width: 28vw;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#other-user > button {
+    background: var(--midnight);
+    margin: 10px 0 0;
+    padding: 10px 20px;
+    border: 2px solid var(--midnight);
+    border-radius: 5px;
+
+    color: var(--fog);
+    font-family: Raleway;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#other-user > button:hover {
+    background: var(--mist);
+    color: var(--midnight);
+    cursor: pointer;
+}

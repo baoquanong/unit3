@@ -14,6 +14,11 @@ const PostedJobs = () => {
     const posted = JSON.parse(localStorage.getItem("currUserPostedJobs"))
     const [postedJobs, setPostedJobs] = useState(posted);
 
+    // useEffect
+    useEffect(() => {
+        localStorage.setItem("currUserPostedJobs", JSON.stringify(postedJobs));
+    }, [postedJobs]);
+
     const jobs = postedJobs.map((job, index) => {
         return (
             <PostedJobDetails 
