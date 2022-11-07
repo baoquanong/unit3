@@ -44,7 +44,22 @@ app.get("/", (req, res) => {
   res.json({ msg: "hello world" });
 });
 
-// CONNECT TO SERVER
+// logout
+app.delete("/api/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        res.status(400).json({ error: "Unable to log out"});
+      } else {
+        res.json({ msg: "Log out successful" });
+      }
+    });
+  } else {
+    res.end();
+  }
+});
+
+// CONNECT TO FRONT END ROUTING
 app.get("/*", (req, res) => {
   res.sendFile(path.resolve("../client/dist/index.html"));
 });

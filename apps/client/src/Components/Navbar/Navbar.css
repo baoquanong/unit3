@@ -68,7 +68,7 @@ body {
     right: 0;
 }
 
-.dropdown-content > a {
+.dropdown-content > a, .dropdown-content > p {
     padding: 6px 20px;
     border-bottom: 2px solid var(--fog);
 
@@ -81,9 +81,10 @@ body {
     display: block;
 }
 
-.dropdown-content > a:hover {
+.dropdown-content > a:hover, .dropdown-content > p:hover {
     color: var(--cherry);
     font-weight: 500;
+    cursor: pointer;
 }
 
 .show  {
