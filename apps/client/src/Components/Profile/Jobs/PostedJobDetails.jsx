@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../../App";
 
-const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
+const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
     // setting up context
     const { state, setState } = useContext(DataContext);
 
@@ -13,32 +13,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
     // function to view another user profile
     const viewProfile = (user) => {
         setState({...state, currViewedProfile: user});
-        navigate(`/profile/${user._id}`);
-    };
-
-    // function to select user for a job
-    const selectUser = async (id) => {
-        try {
-            const response = await fetch(`/api/jobs/update/${job._id}`, {
-                method: "PUT",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ acceptedBy: id })
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log("successfully assigned job to user!");
-                console.log("updated job info:", data);
-            } else {
-                console.log("error:", data.error);
-            }
-        }
-        catch (error) {
-            console.log("error:", error)
-        }
+        setShow({userDetails: true, selection: false});
     };
 
     // mapping out applicants
@@ -46,7 +21,6 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs }) => {
         return (
             <div className="applicant" key={index}>
                 <p onClick={() => viewProfile(user)}>{user.username}</p>
-                <button onClick={() => selectUser(user._id)}>Select</button>
             </div>
         );
     });

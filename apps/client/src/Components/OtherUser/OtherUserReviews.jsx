@@ -44,9 +44,7 @@ const OtherUserReviews = ({ id }) => {
 
     return (
         <div id="other-reviews">
-            <div className="jr-header" id="review-header">
-                <h1>REVIEWS</h1>
-            </div>
+            <h2>REVIEWS</h2>
             <div id="listing">
                 {
                     reviews.length === 0 ?

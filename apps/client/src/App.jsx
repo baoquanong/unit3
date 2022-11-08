@@ -18,7 +18,6 @@ import EditProfile from "./Components/Profile/Overview/EditProfile"
 import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
 import Applications from "./Components/Profile/Jobs/Applications";
 import Reviews from "./Components/Profile/Reviews/Reviews";
-import OtherUser from "./Components/OtherUser/OtherUser";
 
 export const DataContext = createContext();
 
@@ -51,7 +50,6 @@ const App = () => {
                             <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
-                            <Route path="/profile/:user" element={<OtherUser />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>

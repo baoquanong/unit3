@@ -5,14 +5,16 @@ import "./Jobs.css";
 
 import PostedJobDetails from "./PostedJobDetails";
 import JobsHeader from "./JobsHeader";
+import OtherUser from "../../OtherUser/OtherUser";
 
 const PostedJobs = () => {
-    // setting up context
-    const { state, setState } = useContext(DataContext);
-
     // state
     const posted = JSON.parse(localStorage.getItem("currUserPostedJobs"))
     const [postedJobs, setPostedJobs] = useState(posted);
+    const [show, setShow] = useState({
+        userDetails: false,
+        selection: false
+    });
 
     // useEffect
     useEffect(() => {
@@ -22,6 +24,7 @@ const PostedJobs = () => {
     const jobs = postedJobs.map((job, index) => {
         return (
             <PostedJobDetails 
+                setShow={setShow}
                 setPostedJobs={setPostedJobs}
                 jobs={postedJobs}
                 job={job}
@@ -34,8 +37,15 @@ const PostedJobs = () => {
         <div id="posted-jobs">
             <JobsHeader />
             <h1>JOBS POSTED BY ME</h1>
-            <div id="posted-listings">
-                {jobs}
+            <div id="posted-content">
+                <div id="posted-listings">
+                    {jobs}
+                </div>
+                {
+                    !show.userDetails ?
+                    <></> :
+                    <OtherUser show={show} setShow={setShow} />
+                }
             </div>
         </div>
     );

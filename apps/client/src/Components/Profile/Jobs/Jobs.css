@@ -43,7 +43,12 @@
     text-shadow: 2px 2px var(--mist);
 }
 
-#posted-jobs > #posted-listings {
+#posted-content {
+    display: flex;
+    gap: 75px;
+}
+
+#posted-content > #posted-listings {
     max-width: 60vw;
     margin: 30px 0 0;
 
@@ -56,7 +61,7 @@
 #pj-details {
     background: var(--mist);
     width: 190px;
-    min-height: 300px;
+    height: 300px;
     padding: 20px 30px;
     border-radius: 15px;
     border: 3px dashed var(--tide);
@@ -105,34 +110,23 @@ label > #applicants > p
 
 #applicants {
     display: flex;
-    flex-direction: column;
     gap: 8px;
 }
 
 .applicant {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    background: var(--midnight);
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.applicant > p {
+    color: var(--fog);
 }
 
 .applicant > p:hover {
-    color: var(--sunset);
+    color: var(--shell);
     font-style: normal;
     font-weight: 700;
-    cursor: pointer;
-}
-
-.applicant > button {
-    background:var(--midnight);
-    border: none;
-
-    color: var(--fog);
-    font-family: Raleway;
-}
-
-.applicant > button:hover {
-    background:var(--fog);
-    color: var(--cherry);
     cursor: pointer;
 }
 
