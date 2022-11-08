@@ -93,24 +93,26 @@ router.delete("/delete/:job", async (req, res) => {
   }
 });
 
-// update a job
-router.put("/update/:id", async (req, res) => {
-  const { id } = req.params;
+// update a job - apply
+router.put("/apply/:id", async (req, res) => {
+  console.log("req.body:", req.body);
 
   try {
-    const job = await Job.findOneAndUpdate(
-      {_id: id},
-      req.body,
-      { new: true }
-    ).exec();
-      
-    res.json(job);
-  }
-  catch (error) {
-    res.status(500).json({ error: error });
+    const job = await Job.findById(req.params.id).exec();
+    if (job.applicants.includes(req.body._id)) {
+      res.status(400).json({ error: "Already applied for this job"});
+    } else {
+      const applyJob = await Job.findByIdAndUpdate(
+        req.params.id,
+        { $push: { applicants: req.body._id } },
+        { new: true }
+      ).exec();
+      res.status(200).json(applyJob);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
-
 
 // EXPORT
 module.exports = router;

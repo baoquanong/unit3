@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 
 import { DataContext } from "../../App";
@@ -9,8 +9,36 @@ function JobDetails() {
   const { state, setState } = useContext(DataContext);
   const job = state.currViewedJob;
 
+  // set up state
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
+  const [user, setUser] = useState(currUser);
+
   // setting up navigation
   const navigate = useNavigate();
+
+  const applyJob = async (id) => {
+    try {
+      const response = await fetch(`/api/jobs/apply/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("successfully updated job!");
+        console.log(data);
+        // navigate("/jobs");
+      } else {
+        alert("error:", data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div id="job-details">
@@ -26,7 +54,7 @@ function JobDetails() {
         </div>
         <div id="details-buttons">
           <button onClick={() => navigate("/jobs")}>BACK</button>
-          <button> APPLY </button>
+          <button onClick={() => applyJob(job._id)}>APPLY</button>
         </div>
       </div>
     </div>

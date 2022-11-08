@@ -10,6 +10,7 @@ const jobSchema = new mongoose.Schema(
     applicants: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: "User",
+      default: []
     },
     acceptedBy: {
       type: mongoose.Schema.Types.ObjectId,

@@ -37,7 +37,7 @@
     margin: 65px 0 0;
 
     color: var(--midnight);
-    letter-spacing: 3px;
+    letter-spacing: 6px;
     font-family: Covered By Your Grace;
     font-size: 45px;
     text-shadow: 2px 2px var(--mist);
@@ -158,4 +158,25 @@ label > #applicants > p
 
     color: var(--cherry);
     cursor: pointer;
+}
+
+/* ====== Job Applications ====== */
+#applications {
+    background: var(--suede);
+    min-height: 85vh;
+    padding: 50px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#applications > h1 {
+    margin: 65px 0 0;
+
+    color: var(--midnight);
+    letter-spacing: 6px;
+    font-family: Covered By Your Grace;
+    font-size: 45px;
+    text-shadow: 2px 2px var(--mist);
 }
