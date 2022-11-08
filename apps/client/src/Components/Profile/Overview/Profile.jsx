@@ -5,15 +5,8 @@ import { DataContext } from "../../../App";
 import "./Profile.css";
 
 function Profile({ user }) {
-  // setting up context
-  const { state, setState } = useContext(DataContext);
-
   // setting up navigate
   const navigate = useNavigate();
-
-  // calculating ratings
-  const totalRating = state.reviews.reduce((total, num) => total + num.rating, 0);
-  const avgRating = Math.round(totalRating/state.reviews.length);
 
   return (
     <div id="profile">
@@ -21,7 +14,7 @@ function Profile({ user }) {
         <img src="https://api.multiavatar.com/Sally.png" />
         <div id="personal-info">
           <h2>{user?.username.toUpperCase()}</h2>
-          <p id="rating">Average Rating: {avgRating}/5</p>
+          <p id="rating">Average Rating: 4/5</p>
         </div>
         {
           !user?.description ?

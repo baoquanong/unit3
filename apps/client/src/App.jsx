@@ -24,8 +24,6 @@ export const DataContext = createContext();
 const App = () => {
     // setting up global state
     const [state, setState] = useState({
-        postedJobs: [],
-        reviews: [],
         currViewedJob: {},
         currViewedProfile: {},
     });

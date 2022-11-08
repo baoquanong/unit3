@@ -21,25 +21,27 @@ const PostedJobs = () => {
         localStorage.setItem("currUserPostedJobs", JSON.stringify(postedJobs));
     }, [postedJobs]);
 
-    const jobs = postedJobs.map((job, index) => {
-        return (
-            <PostedJobDetails 
-                setShow={setShow}
-                setPostedJobs={setPostedJobs}
-                jobs={postedJobs}
-                job={job}
-                key={index}
-            />
-        );
-    });
-
     return (
         <div id="posted-jobs">
             <JobsHeader />
             <h1>JOBS POSTED BY ME</h1>
             <div id="posted-content">
                 <div id="posted-listings">
-                    {jobs}
+                    {
+                        !postedJobs ?
+                        <p>No jobs posted yet!</p> :
+                        postedJobs.map((job, index) => {
+                            return (
+                                <PostedJobDetails 
+                                    setShow={setShow}
+                                    setPostedJobs={setPostedJobs}
+                                    jobs={postedJobs}
+                                    job={job}
+                                    key={index}
+                                />
+                            );
+                        })
+                    }
                 </div>
                 {
                     !show.userDetails ?

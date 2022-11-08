@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import JobCard from "../JobCard/JobCard";
+import "./FindJobs.css";
 
 function FindJobs() {
   const [filter, setFilter] = useState(false);
@@ -29,14 +31,14 @@ function FindJobs() {
     getAllJobs();
   });
 
-  const mappedJob = jobs.map((job, index) => {
+  const mappedJobs = jobs.map((job, index) => {
     return <JobCard key={index} job={job} />;
   });
 
   return (
-    <div>
-      <h1>FindJobs</h1>
-      <br />
+    <div id="find-jobs">
+      <img src="https://cdn.shopify.com/s/files/1/0070/7032/files/side-hustle-ideas_8c2b7d4b-80c4-47d6-9eb6-9c4de9b6f44b.jpg?v=1602859207" />
+      <h1>FIND JOBS</h1>
       <button onClick={toggleFilter}>Filter</button>
       <section style={{ display: filter ? "" : "none" }}>
         <label for="handywork">Handywork</label>
@@ -71,7 +73,9 @@ function FindJobs() {
         <button>Search</button>
         {/* need to add the submit function to search  */}
       </section>
-      <div style={{ display: "flex" }}>{mappedJob}</div>
+      <div id="mapped-jobs">
+        {mappedJobs}
+      </div>
     </div>
   );
 }

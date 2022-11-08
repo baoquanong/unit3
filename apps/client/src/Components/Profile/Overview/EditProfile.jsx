@@ -5,15 +5,12 @@ import { DataContext } from "../../../App";
 import "./EditProfile.css";
 
 const EditProfile = () => {
-    // setting up context
-    const { state, setState } = useContext(DataContext);
-    const originalInfo = structuredClone(state.loggedIn);
-
     // setting up navigation
     const navigate = useNavigate();
 
     // setting up state
-    const [edits, setEdits] = useState(originalInfo);
+    const original = JSON.parse(localStorage.getItem("currUser"));
+    const [edits, setEdits] = useState(original);
 
     // function to handleChange
     const handleChange = (event, field) => {
@@ -58,7 +55,7 @@ const EditProfile = () => {
 
           if (response.ok) {
             console.log("info successfully updated");
-            setState({...state, loggedIn: edits});
+            localStorage.setItem("currUser", JSON.stringify(edits));
             navigate("/user");
           }
         }
