@@ -19,6 +19,8 @@ import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
 import Applications from "./Components/Profile/Jobs/Applications";
 import Reviews from "./Components/Profile/Reviews/Reviews";
 
+import SubmitReview from "./Components/SubmitReview/SubmitReview";
+
 export const DataContext = createContext();
 
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
     const [state, setState] = useState({
         currViewedJob: {},
         currViewedProfile: {},
+        currReviewing: {},
     });
 
     return (
@@ -48,6 +51,7 @@ const App = () => {
                             <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
+                            <Route path="/submit-review" element={<SubmitReview />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>

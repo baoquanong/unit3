@@ -52,6 +52,12 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
         }
     };
 
+    // function to leave review
+    const leaveReview = () => {
+        setState({...state, currReviewing: job});
+        navigate("/submit-review");
+    }
+
     return (
         <div id="pj-details">
             <h4>{job.jobTitle.toUpperCase()}</h4>
@@ -63,19 +69,33 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
                 JOB TYPE:
                 <p id="jt">{job.jobType}</p>
             </label>
-            <label>
-                APPLICANTS:
-                <div id="applicants">
-                    {
-                        job.applicants.length === 0 ?
-                        <p>No Applicants</p> :
-                        applicants
-                    }
-                </div>
-            </label>
+            {
+                job.acceptedBy ?
+                <label>
+                    SELECTED APPLICANT:
+                    <p>{job.acceptedBy.username}</p>
+                </label>
+                :
+                <label>
+                    APPLICANTS:
+                    <div id="applicants">
+                        {
+                            job.applicants.length === 0 ?
+                            <p>No Applicants</p> :
+                            applicants
+                        }
+                    </div>
+                </label>
+            }
             <div id="job-buttons">
-                <button>EDIT</button>
-                <button onClick={() => deleteJob(job._id)}>DELETE</button>
+                {
+                    job.acceptedBy ?
+                    <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button> :
+                    <>
+                        <button>EDIT</button>
+                        <button onClick={() => deleteJob(job._id)}>DELETE</button>
+                    </>
+                }
             </div>
         </div>
     );

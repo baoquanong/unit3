@@ -61,10 +61,10 @@
 #pj-details {
     background: var(--mist);
     width: 190px;
-    height: 300px;
+    min-height: 300px;
     padding: 20px 30px;
     border-radius: 15px;
-    border: 3px dashed var(--tide);
+    border: 3px solid var(--tide);
     box-shadow: 3px 3px 5px var(--tide);
 
     display: flex;
@@ -75,8 +75,12 @@
 }
 
 #pj-details > h4 {
+    background: var(--midnight);
     margin: 0 0 10px;
-    color: var(--sunset);
+    padding: 10px 5px;
+    border-radius: 10px;
+
+    color: var(--shell);
     text-align: center;
     letter-spacing: 1.5px;
     font-size: 16px;
