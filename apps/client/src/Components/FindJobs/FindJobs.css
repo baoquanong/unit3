@@ -2,7 +2,7 @@
 #find-jobs {
     background: var(--suede);
     min-height: 85vh;
-    /* padding: 50px 0; */
+    padding: 0 0 100px;
 
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
 
 section {
     display: flex;
-    
+
 }
 
 #mapped-jobs {
@@ -59,7 +59,7 @@ section {
 }
 
 .job-card:hover {
-    box-shadow: 3px 3px 5px var(--mist);
+    box-shadow: 3px 3px var(--tide);
     cursor: pointer; 
 }
 

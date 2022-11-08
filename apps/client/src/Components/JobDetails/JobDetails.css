@@ -1,0 +1,123 @@
+#job-details {
+    background: var(--suede);
+    min-height: 85vh;
+    padding: 50px 0 0;
+
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+#curr-job {
+    background: var(--mist);
+    box-shadow: 5px 5px var(--tide);
+    width: fit-content;
+    height: fit-content;
+    padding: 50px;
+    border: 3px solid var(--tide);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#curr-job > h1 {
+    background: var(--midnight);
+    box-shadow: 5px 5px var(--sunset);
+    max-width: 500px;
+    margin: 0;
+    padding: 20px;
+    border-radius: 10px;
+
+    text-align: center;
+    color: var(--fog);
+    letter-spacing: 2px;
+}
+
+#curr-job > #description {
+    background: var(--fog);
+    margin: 30px 0 0;
+    /* border: 3px solid var(--midnight); */
+    border-radius: 20px;
+    padding: 20px;
+
+    color: var(--midnight);
+    gap: 5px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#curr-job > #description > span {
+    background: var(--tide);
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin: 0 0 10px;
+
+    color: var(--shell);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#job-info {
+    background-color: var(--fog);
+    margin: 15px 0 0;
+    max-width: 500px;
+    /* border: 3px solid var(--midnight); */
+    border-radius: 20px;
+    padding: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 15px;
+}
+
+#job-info > p {
+    margin: 0;
+    background: var(--tide);
+    padding: 5px 10px;
+    border-radius: 10px;
+    
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+#job-info > p > span {
+    margin: 0;
+    color: var(--shell);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#details-buttons {
+    margin: 40px 0 0;
+
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+#details-buttons > button {
+    background: var(--sunset);
+    padding: 5px 20px;
+    border: none;
+    border-radius: 3px;
+
+    color: var(--fog);
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+#details-buttons > button:hover {
+    background: var(--shell);
+    box-shadow: 2px 2px var(--sunset);
+
+    color: var(--cherry);
+    cursor: pointer;
+}
