@@ -32,14 +32,15 @@ router.get("/applied/:user", async (req, res) => {
   const { user } = req.params;
 
   try {
-    const jobs = await Job.find({ applicants: user }).populate(["acceptedBy", "applicants", "postedBy"]).exec();
+    const jobs = await Job.find({ applicants: user })
+      .populate(["acceptedBy", "applicants", "postedBy"])
+      .exec();
     if (jobs.length === 0) {
       res.status(400).json({ error: "No jobs found" });
     } else {
       res.status(200).json(jobs);
     }
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({ error: error });
   }
 });
@@ -53,6 +54,25 @@ router.get("/", async (req, res) => {
     res.status(200).json(jobs);
   } catch (error) {
     res.status(500).json(error);
+  }
+});
+
+//apply for jobs
+router.put("/:id", async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id).exec();
+    if (job.applicants.includes(req.body.id)) {
+      res.status(400).json({ error: "Already applied for this job" });
+    } else {
+      const applyJob = await Job.findByIdAndUpdate(
+        req.params.id,
+        { $push: { applicants: req.body._id } },
+        { new: true }
+      ).exec();
+      res.status(200).json(applyJob);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -93,15 +113,12 @@ router.put("/update/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    const job = await Job.findOneAndUpdate(
-      {_id: id},
-      req.body,
-      { new: true }
-    ).exec();
-      
+    const job = await Job.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    }).exec();
+
     res.json(job);
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({ error: error });
   }
 });

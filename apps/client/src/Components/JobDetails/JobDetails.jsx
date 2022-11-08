@@ -7,6 +7,27 @@ function JobDetails() {
   const job = state.currViewedJob;
   const navigate = useNavigate();
 
+  const applyJob = async (id) => {
+    //const user = JSON.parse(localStorage.getItem("currUser"))
+    try {
+      const res = await fetch(`/api/jobs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(state.loggedIn),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        navigate("/jobs");
+      } else {
+        console.log(data.msg);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       By Posted By : {job.postedBy.username}
@@ -33,7 +54,14 @@ function JobDetails() {
         {" "}
         Back{" "}
       </button>
-      <button> Apply </button>
+      <button
+        onClick={() => {
+          applyJob(job._id);
+        }}
+      >
+        {" "}
+        Apply{" "}
+      </button>
     </div>
   );
 }
