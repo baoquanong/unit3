@@ -3,50 +3,90 @@ body {
 }
 
 #navbar {
-    background: lightsteelblue;
+    background: var(--tide);
     height: 100px;
-    padding: 20px 60px;
-
-    font-family: 'Lato', sans-serif;
+    padding: 20px 100px;
 
     display: flex;
     align-items: center;
+    gap: 0;
     justify-content: space-between;
 }
 
 #navbar > h1 {
     margin: 0;
 
-    color: midnightblue;
-    font-size: 60px;
-    letter-spacing: 5px;
-
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    color: var(--fog);
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 4vw;
+    letter-spacing: 10px;
+    text-shadow: 3px 3px var(--mist);
+    cursor: pointer;
 }
 
 #navbar > h1 > span {
-    color: white;
-    writing-mode: vertical-lr;
-    font-size: 23px;
-    letter-spacing: 0px;
+    writing-mode: vertical-rl;
+    font-size: 1.5vw;
+    letter-spacing: 0;
+    text-shadow: 1.5px 1.5px var(--mist);
 }
 
 #tabs {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
-#tabs > a {
-    color: midnightblue;
+.tab {
+    margin: 20px 20px 5px;
+
+    color: var(--shell);
     text-decoration: none;
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: center;
 }
 
-#tabs > a:hover {
-    text-decoration: underline;
-    color: white;
+.tab:hover {
+    color: var(--cherry);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    background-color: var(--mist);
+    min-width: 100px;
+    z-index: 1;
+
+    display: none;
+    position: absolute;
+    right: 0;
+}
+
+.dropdown-content > a, .dropdown-content > p {
+    padding: 6px 20px;
+    border-bottom: 2px solid var(--fog);
+
+    color: var(--fog);
+    text-decoration: none;
+    text-align: right;
+    letter-spacing: 2px;
+    font-weight: 400;
+
+    display: block;
+}
+
+.dropdown-content > a:hover, .dropdown-content > p:hover {
+    color: var(--cherry);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.show  {
+    display: block;
 }

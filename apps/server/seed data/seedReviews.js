@@ -19,8 +19,8 @@ const seedReviews = [
     },
     {
         postedBy: "63653b3564406e7db583722a",
-        postedFor: "63653b3564406e7db5837229",
-        message: "Great help! Would find Nicholas again",
+        postedFor: "63653b3564406e7db583721e",
+        message: "Great help! Would find Mary again",
         rating: 4
     },
 ];

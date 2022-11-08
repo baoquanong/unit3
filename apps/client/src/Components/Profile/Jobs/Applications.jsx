@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 
-import { DataContext } from "../../App";
+import { DataContext } from "../../../App";
+import "./Jobs.css";
+
+import JobsHeader from "./JobsHeader";
 
 const Applications = () => {
     // setting up context
@@ -48,6 +51,7 @@ const Applications = () => {
 
     return (
         <div id="applications">
+            <JobsHeader />
             <h1>MY APPLICATIONS</h1>
             <div id="applied-jobs">
                 {jobs}

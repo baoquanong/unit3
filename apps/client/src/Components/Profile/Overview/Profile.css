@@ -1,0 +1,310 @@
+/* ====== Overview ====== */
+#overview {
+    background-color: var(--suede);
+    min-width: 100vw;
+    min-height: 85vh;
+    padding: 75px 0 0;
+
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
+#jobs-reviews {
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ====== User Profile ====== */
+#profile {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#user-info > img {
+    background: var(--fog);
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--tide);
+    box-shadow: 3px 3px var(--tide);
+    border-radius: 110px;
+    padding: 5px;
+}
+
+#personal-info {
+    background: var(--tide);
+    width: 200px;
+    padding: 15px 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#personal-info > h2 {
+    margin: 0;
+
+    color: var(--shell);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+#rating {
+    margin: 0;
+
+    color: var(--fog);
+    text-align: center;
+    font-size: 15px;
+}
+
+#user-skills, #about-me {
+    background: var(--tide);
+    width: 200px;
+    padding: 15px 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.header {
+    margin: 0;
+
+    color: var(--shell);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+#about-me > :nth-child(even) {
+    margin: 0;
+
+    color: var(--fog);
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#skills {
+    max-width: 250px;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill {
+    background: var(--mist);
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    color: var(--fog);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#user-info > button {
+    background: var(--fog);
+    margin: 15px 0 0;
+    padding: 5px 10px;
+    border: 2px solid var(--tide);
+    box-shadow: 2px 2px var(--tide);
+    border-radius: 5px;
+
+    color: var(--sunset);
+    font-family: Raleway;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#user-info > button:hover {
+    background: var(--shell);
+
+    color: var(--fog);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ====== Jobs & Reviews Overview ====== */
+.jr-header {
+    background: var(--shell);
+    width: 25vw;
+    padding: 15px 20px 10px;
+    border-radius: 20px 20px 0 0;
+    border: 3px solid var(--tide);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#review-header {
+    background: var(--sunset);
+}
+
+.jr-header > h1, p {
+    margin: 0;
+
+    color: var(--fog);
+}
+
+.jr-header > h1 {
+    letter-spacing: 3px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.jr-header > p {
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.jr-header > p:hover {
+    color: var(--sunset);
+    cursor: pointer;
+}
+
+#listing {
+    background: var(--fog);
+    width: 25vw;
+    padding: 20px;
+    border-radius: 0 0 20px 20px;
+    border: 3px solid var(--tide);
+    border-top: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.job-overview, .review-overview {
+    background: var(--midnight);
+    width: 23vw;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.job-overview > #top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job-overview > #top > #title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.job-overview > #top > #applicants {
+    color: var(--shell);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.job-overview > #date {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.review-overview > #msg {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.review-overview > #posted-by {
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+/* ====== Reviews ====== */
+#user-reviews {
+    /* background: slategrey; */
+    /* border: 3px solid midnightblue; */
+    width: fit-content;
+    /* padding: 30px; */
+    /* border-radius: 25px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#user-reviews > h3 {
+    color: midnightblue;
+    letter-spacing: 1px;
+}
+
+#reviews {
+    height: 560px;
+    overflow-y: scroll;
+    padding: 0 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review {
+    background: slategray;
+    padding: 15px 20px;
+    border-radius: 20px;
+    /* margin: 0; */
+
+    color: white;
+    text-align: justify;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review > div {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.review > div > h4, p {
+    margin: 0;
+}
+
+.hired {
+    /* margin-bottom: 5px; */
+    font-style: italic;
+}
+
+.rating {
+    /* margin-bottom: 10px; */
+    font-weight: bold;
+}
