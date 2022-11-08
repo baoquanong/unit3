@@ -180,3 +180,93 @@ label > #applicants > p
     font-size: 45px;
     text-shadow: 2px 2px var(--mist);
 }
+
+#applied-jobs {
+    max-width: 60vw;
+    margin: 30px 0 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* ====== Application Details ====== */
+.applied {
+    background: var(--mist);
+    width: 190px;
+    min-height: 300px;
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 3px solid var(--tide);
+    box-shadow: 3px 3px 5px var(--tide);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.applied > h4 {
+    background: var(--midnight);
+    margin: 0 0 10px;
+    padding: 10px 5px;
+    border-radius: 10px;
+
+    color: var(--shell);
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-size: 16px;
+}
+
+.applied > p {
+    /* margin: 0; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: var(--midnight);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+.applied > p > span {
+    margin: 4px 0;
+    color: var(--fog);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.status {
+    margin: 15px 0 0;
+    padding: 10px 10px;
+
+    font-style: normal;
+
+}
+
+#pending,
+#selected,
+#not-selected {
+    margin: 15px 0 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#pending,
+#not-selected {
+    background: gray;
+    color: var(--suede);
+}
+
+#selected {
+    background: var(--tide);
+    color: var(--fog);
+}

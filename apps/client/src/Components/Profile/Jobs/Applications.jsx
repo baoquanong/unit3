@@ -4,14 +4,17 @@ import { DataContext } from "../../../App";
 import "./Jobs.css";
 
 import JobsHeader from "./JobsHeader";
+import ApplicationDetails from "./ApplicationDetails";
 
 const Applications = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
-    const user = state.loggedIn;
 
     // setting up state
     const [appliedJobs, setAppliedJobs] = useState([]);
+
+    // setting up variables
+    const user = JSON.parse(localStorage.getItem("currUser"));
 
     // function to fetch jobs
     const getJobs = async () => {
@@ -45,7 +48,7 @@ const Applications = () => {
     // mapping out the jobs
     const jobs = appliedJobs.map((job, index) => {
         return (
-            <h3 key={index}>{job.jobDescription}</h3>
+            <ApplicationDetails job={job} key={index} />
         );
     });
 
