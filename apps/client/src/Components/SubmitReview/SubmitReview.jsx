@@ -6,7 +6,7 @@ import "./SubmitReview.css";
 
 const SubmitReview = () => {
     // setting up variables
-    const ratings = ["1", "2", "3", "4", "5"];
+    const ratings = [1, 2, 3, 4, 5];
 
     // setting up context
     const { state, setState } = useContext(DataContext);
@@ -23,12 +23,43 @@ const SubmitReview = () => {
         postedFor: reviewing.acceptedBy._id,
         job: reviewing._id,
         message: "",
-        rating: 0
+        rating: 0,
     });
 
     // function to detect change
     const handleChange = (event) => {
         setReview({...review, message: event.target.value});
+    };
+
+    // function to handle submit
+    const submitReview = async (event) => {
+        event.preventDefault();
+
+        const data = Object.fromEntries(new FormData(event.target));
+        review.rating = data.rating
+        console.log("review:", review);
+
+        try {
+            const response = await fetch("/api/review/new", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(review),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully added review");
+                console.log("review:", data);
+            } else {
+                console.log("error:", error);
+            }
+        }
+        catch (error) {
+            console.log("error:", error);
+        }
     };
 
     return (
@@ -44,7 +75,7 @@ const SubmitReview = () => {
                 Please only leave a review if the job has been completed.
             </p>
 
-            <form id="review-form">
+            <form id="review-form" onSubmit={submitReview}>
                 <div id="review-info">
                     <p>
                         <span>Currently Reviewing: </span>
