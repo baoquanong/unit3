@@ -1,33 +1,118 @@
-#home-page {
+#home-layout {
     width: 100vw;
     min-height: 100vh;
-    padding: 50px 0;
+    /* padding: 50px 0; */
 
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    /* flex-direction: column; */
+    /* gap: 15px; */
     align-items: center;
 }
 
-#home-page > button {
-    background: midnightblue;
-    width: 100px;
-    height: 35px;
-    margin: 0;
-    border: none;
-    border-radius: 5px;
+#left {
+    background: var(--tide);
+    width: 50vw;
+    min-height: 100vh;
+    height: fit-content;
 
-    color: ghostwhite;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: 1px;
+    font-family: Raleway;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-#home-page > button:hover {
-    background: ghostwhite;
-    border: 2px solid midnightblue;
-    box-shadow: 1px 1px midnightblue;
+#left > #welcome {
+    color: var(--shell);
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-weight: 600;    
+}
 
-    color: midnightblue;
-    font-weight: bold;
+#left > h1 {
+    margin: 0 0 30px;
+
+    color: var(--fog);
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 6vw;
+    letter-spacing: 10px;
+}
+
+#left > h1 > span {
+    writing-mode: vertical-rl;
+    font-size: 2vw;
+    letter-spacing: 0;
+}
+
+#connect {
+    color: var(--shell);
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+#home-page {
+    width: 50vw;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#home-page > #background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    min-height: 100vh;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+#buttons {
+    background: var(--fog);
+    width: 25vw;
+    height: 25vw;
+    border: 3px solid var(--tide);
+    border-radius: 25px;
+    box-shadow: 5px 5px var(--tide);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#buttons > button {
+    background: var(--mist);
+    padding: 10px 20px;
+    min-width: 10vw;
+    border: none;
+    border-radius: 10px;
+
+    color: var(--tide);
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+#buttons > button:hover {
+    background: var(--midnight);
+    color: var(--fog);
+    font-weight: 700;
     cursor: pointer;
+}
+
+#buttons > p {
+    margin: 20px 0;
+
+    color: var(--sunset);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 3px;
 }

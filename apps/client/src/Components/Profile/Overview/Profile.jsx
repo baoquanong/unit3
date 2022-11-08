@@ -1,31 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-// import Reviews from "./Reviews";
-import { DataContext } from '../../App';
-// import reviews from "./reviews";
+import { DataContext } from "../../../App";
 import "./Profile.css";
 
-function Profile() {
-  // setting up context
-  const { state, setState } = useContext(DataContext);
-  const user = state.loggedIn;
-
+function Profile({ user }) {
   // setting up navigate
   const navigate = useNavigate();
-
-  // calculating ratings
-  const totalRating = state.reviews.reduce((total, num) => total + num.rating, 0);
-  const avgRating = Math.round(totalRating/state.reviews.length);
 
   return (
     <div id="profile">
       <div id="user-info">
         <img src="https://api.multiavatar.com/Sally.png" />
-        <h2>{user?.username.toUpperCase()}</h2>
-        <p id="rating">Average Rating: {avgRating}/5</p>
+        <div id="personal-info">
+          <h2>{user?.username.toUpperCase()}</h2>
+          <p id="rating">Average Rating: 4/5</p>
+        </div>
         {
-          !user.description ?
+          !user?.description ?
           <></> :
           <div id="about-me">
             <p className="header">ABOUT ME</p>
@@ -36,7 +28,7 @@ function Profile() {
           user.skills.length === 0 ?
           <></> :
           <div id="user-skills">
-            <p className="header">INTERESTS/CAPABILITIES</p>
+            <p className="header">SKILLS</p>
             <div id="skills">
               {
                 user?.skills.map((skill, index) => {

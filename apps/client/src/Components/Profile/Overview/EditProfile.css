@@ -1,0 +1,150 @@
+#edit-profile {
+    background: var(--suede);
+    min-height: 80vh;
+    padding: 50px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#edit-profile > h1 {
+    margin: 0;
+
+    color: var(--midnight);
+    letter-spacing: 6px;
+    font-family: Covered By Your Grace;
+    font-size: 45px;
+    text-shadow: 2px 2px var(--mist);
+}
+
+#edit-profile-form {
+    background: var(--mist);
+    width: fit-content;
+    padding: 40px 50px;
+    border-radius: 20px;
+    border: 3px solid darkslategray;
+    /* box-shadow: 2px 2px darkslategray; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#edit-profile-form > #inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#edit-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#edit-info > img {
+    width: 150px;
+    height: 150px;
+    padding: 0 0 15px;
+}
+
+#edit-info > label {
+    width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    color: var(--sunset);
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#edit-info > label > input {
+    background: var(--mist);
+    border: none;
+    border-bottom: 2px solid var(--midnight);
+    
+    color: var(--fog);
+    font-family: Raleway;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#inputs > #skills {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#skills > legend {
+    margin: 20px 0 0;
+    width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+
+    color: var(--sunset);
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#edit-skills {
+    width: 200px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#edit-skills > label {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+
+    color: var(--fog);
+    letter-spacing: 1px;
+}
+
+#skills > textarea {
+    height: 100px;
+    padding: 5px;
+    border: 2px solid var(--midnight);
+
+    color: var(--midnight);
+    font-family: Raleway;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#edit-profile-form > #update-btn {
+    background: midnightblue;
+    margin: 20px 0 0;
+    padding: 10px 15px;
+    border: 2px solid midnightblue;
+    border-radius: 10px;
+
+    color: whitesmoke;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+#edit-profile-form > #update-btn:hover {
+    background: whitesmoke;
+    box-shadow: 1px 1px midnightblue;
+
+    color: midnightblue;
+    cursor: pointer;
+}

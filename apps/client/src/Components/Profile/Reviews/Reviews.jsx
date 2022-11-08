@@ -1,7 +1,5 @@
 import { useContext, useEffect } from "react";
-
-import { DataContext } from "../../App";
-// import reviews from "./reviews";
+import { DataContext } from "../../../App";
 
 const Reviews = () => {
     // setting up context

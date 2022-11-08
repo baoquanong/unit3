@@ -16,17 +16,13 @@ function JobCard({ job }) {
     });
     navigate("/jobs/:id");
   };
+
   return (
-    <div onClick={handleClick}>
-      <h4>{job.jobTitle}</h4>
-      <p>{job.jobDescription}</p>
-      <p>{job.jobType}</p>
-      <p>{job.jobStatus}</p>
-      <p>{job.jobPrice}</p>
-      <p>{job.jobLocation}</p>
-      <p>{job.jobStart.slice(0, 10)}</p>
-      <p>{job.jobEnd.slice(0, 10)}</p>
-      <p>{job.postedBy.username}</p>
+    <div onClick={handleClick} className="job-card">
+      <h4>{job.jobTitle.toUpperCase()}</h4>
+      <p id="jd">{job.jobDescription}</p>
+      <p id="date">{job.jobStart.slice(0, 10)} <br />to<br /> {job.jobEnd.slice(0, 10)}</p>
+      <p id="poster">Posted By: {job.postedBy.username}</p>
     </div>
   );
 }
