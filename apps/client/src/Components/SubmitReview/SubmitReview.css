@@ -25,13 +25,14 @@
     width: 100vw;
     height: 500px;
     object-fit: cover;
+    object-position: 50% 25%;
 }
 
 #review-page > h1 {
-    margin: 50px 0 0;
+    margin: 40px 0 0;
 
     color: var(--tide);
-    letter-spacing: 3px;
+    letter-spacing: 6px;
     font-family: Covered By Your Grace;
     font-size: 45px;
     text-shadow: 2px 2px var(--mist);

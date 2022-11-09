@@ -71,7 +71,7 @@ const SubmitReview = () => {
 
     return (
         <div id="review-page">
-            <img src="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/design_reviews_going_beyond_the_surface_2x1.jpg" />
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/3c489553324483.5930258da9303.jpg" />
             <h1>LEAVE A REVIEW</h1>
             <p>
                 We're glad you found someone suitable for the job! <br />

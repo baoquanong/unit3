@@ -29,7 +29,7 @@ function FindJobs() {
 
   useEffect(() => {
     getAllJobs();
-  });
+  }, []);
 
   const mappedJobs = jobs.map((job, index) => {
     return <JobCard key={index} job={job} />;

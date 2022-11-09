@@ -2,19 +2,20 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
+import "./CreateJobs.css";
 
 function CreateJobs() {
-  // const [ message, setMessage] = useState("")
+  // setting up navigation
   const navigate = useNavigate();
 
-  // setting up context
-  const { state, setState } = useContext(DataContext);
+  // setting up variables
+  const user = JSON.parse(localStorage.getItem("currUser"));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const jobInfo = Object.fromEntries(new FormData(event.target));
-    jobInfo.postedBy = state.loggedIn._id;
+    jobInfo.postedBy = user._id;
 
     try {
       const res = await fetch("/api/jobs", {
@@ -24,7 +25,9 @@ function CreateJobs() {
         },
         body: JSON.stringify(jobInfo),
       });
+
       const data = await res.json();
+      
       if (res.ok) {
         console.log("success");
         navigate("/jobs");
@@ -37,71 +40,72 @@ function CreateJobs() {
   };
 
   return (
-    <div>
-      <form method="post" onSubmit={handleSubmit}>
-        <label for="jobTitle">Job Title: </label>
-        <input
-          type="text"
-          placeholder="text"
-          name="jobTitle"
-          required={true}
-        ></input>
-        <br />
-        <label for="jobDescription" required={true}>
-          Job Description:{" "}
-        </label>
-        <textarea
-          rows="10"
-          cols="30"
-          name="jobDescription"
-          required={true}
-        ></textarea>
-        <br />
-        <label for="jobType">Job Type: </label>
-        <select name="jobType" required={true}>
-          <option>Select Type</option>
-          <option>Handywork</option>
-          <option>Caregiving</option>
-          <option>Events</option>
-          <option>Cleaning</option>
-          <option>Pets</option>
-          <option>Education</option>
-          <option>Others</option>
-        </select>
-        <br />
-        <label for="jobPrice">Job Price: </label>
-        <input
-          type="number"
-          placeholder="num"
-          name="jobPrice"
-          required={true}
-        ></input>
-        <br />
-        <label for="jobLocation" required={true}>
-          Job Location:{" "}
-        </label>
-        <input
-          type="text"
-          placeholder="text"
-          name="jobLocation"
-          required={true}
-        ></input>
-        <br />
-        <label for="jobStart">Job Start Date: </label>
-        <input
-          type="date"
-          placeholder="text"
-          name="jobStart"
-          required={true}
-        ></input>
-        <br />
-        <label for="jobEnd">Job End Date: </label>
-        <input type="date" placeholder="text" name="jobEnd"></input>
-        <br />
+    <div id="create-job">
+      <img src="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/design_reviews_going_beyond_the_surface_2x1.jpg" />
+      <h1>CREATE A JOB</h1>
+      <form id="create-job-form" method="post" onSubmit={handleSubmit} autoComplete="off">
+        <div id="job-name">
+          <label>
+            JOB TITLE:
+            <input
+            type="text"
+            name="jobTitle"
+            required={true}
+            />
+          </label>
+          <label required={true}>
+            DESCRIPTION:
+            <textarea
+            rows="10"
+            cols="30"
+            name="jobDescription"
+            required={true}
+            />
+          </label>
+        </div>
+        <div id="job-logs">
+          <label>
+            JOB TYPE:
+              <select name="jobType" required={true}>
+                <option>Select Type</option>
+                <option>Handywork</option>
+                <option>Caregiving</option>
+                <option>Events</option>
+                <option>Cleaning</option>
+                <option>Pets</option>
+                <option>Education</option>
+                <option>Others</option>
+              </select>
+          </label>
+          <label>
+            COMPENSATION:
+            <input
+              type="number"
+              name="jobPrice"
+              required={true}
+            />
+          </label>
+          <label>
+            LOCATION:
+            <input
+              type="text"
+              name="jobLocation"
+              required={true}
+            />
+          </label>
+        </div>
+        <div id="job-dates">
+          <label>
+            START DATE:
+            <input type="date" name="jobStart" required={true} />
+          </label>
+          <label>
+            END DATE:
+            <input type="date" name="jobEnd" required={true} />
+          </label>
+        </div>
         <button>POST JOB</button>
-        {/* need to add the fetch to post job */}
       </form>
-      {/* <p>{message}</p> */}
     </div>
   );
 }
