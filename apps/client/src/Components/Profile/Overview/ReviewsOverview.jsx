@@ -53,10 +53,11 @@ const ReviewsOverview = ({ user }) => {
         <div id="reviews-overview">
             <div className="jr-header" id="review-header">
                 <h1>REVIEWS</h1>
-                <p onClick={() => navigate("/user/reviews")}>VIEW ALL {">"}</p>
             </div>
-            <div id="listing">
-                {overview}
+            <div className="listing" id="reviews">
+                <div id="review-listing">
+                    {overview}
+                </div>
             </div>
         </div>
     );

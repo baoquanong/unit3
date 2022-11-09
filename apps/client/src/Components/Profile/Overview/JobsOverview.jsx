@@ -58,7 +58,7 @@ const JobsOverview = ({ user }) => {
                 <h1>JOBS POSTED</h1>
                 <p onClick={() => navigate("/user/postedjobs")}>VIEW ALL {">"}</p>
             </div>
-            <div id="listing">
+            <div className="listing">
                 {
                     jobs.length === 0 ?
                     <p>No jobs posted yet!</p> :

@@ -13,12 +13,9 @@ import FindJobs from "./Components/FindJobs/FindJobs";
 import JobDetails from "./Components/JobDetails/JobDetails";
 
 import Overview from "./Components/Profile/Overview/Overview";
-import Profile from "./Components/Profile/Overview/Profile"
 import EditProfile from "./Components/Profile/Overview/EditProfile"
 import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
 import Applications from "./Components/Profile/Jobs/Applications";
-import Reviews from "./Components/Profile/Reviews/Reviews";
-
 import SubmitReview from "./Components/SubmitReview/SubmitReview";
 
 export const DataContext = createContext();
@@ -47,7 +44,6 @@ const App = () => {
                             <Route path="/jobs/create" element={<CreateJobs />} />
                             <Route path="/jobs/:id" element={<JobDetails />} />
                             <Route path="/user" element={<Overview />} />
-                            <Route path="/user/reviews" element={<Reviews />} />
                             <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
