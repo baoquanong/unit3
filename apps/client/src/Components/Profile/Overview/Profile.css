@@ -3,7 +3,7 @@
     background-color: var(--suede);
     min-width: 100vw;
     min-height: 85vh;
-    padding: 75px 0 0;
+    padding: 75px 0;
 
     display: flex;
     gap: 100px;
@@ -21,6 +21,7 @@
 #profile {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
@@ -188,6 +189,17 @@
     cursor: pointer;
 }
 
+.jr-header > #static {
+    max-width: 250px;
+    text-align: right;
+
+}
+
+.jr-header > #static:hover {
+    color: var(--fog);
+    cursor: auto;
+}
+
 .listing {
     background: var(--fog);
     width: 30vw;
@@ -235,6 +247,7 @@
 }
 
 .job-overview > #top > #title {
+    max-width: 300px;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 1px;

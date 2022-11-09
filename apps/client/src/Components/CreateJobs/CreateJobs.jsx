@@ -89,7 +89,7 @@ function CreateJobs() {
             LOCATION:
             <input
               type="text"
-              name="jobLocation"
+              name="location"
               required={true}
             />
           </label>

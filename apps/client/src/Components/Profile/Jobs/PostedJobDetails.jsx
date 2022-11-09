@@ -52,6 +52,12 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
         }
     };
 
+    // function to edit job
+    const editJob = () => {
+        setState({...state, currEditJob: job});
+        navigate("/user/edit/job")
+    };
+
     // function to leave review
     const leaveReview = () => {
         setState({...state, currReviewing: job});
@@ -92,7 +98,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
                     job.acceptedBy ?
                     <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button> :
                     <>
-                        <button>EDIT</button>
+                        <button onClick={editJob}>EDIT</button>
                         <button onClick={() => deleteJob(job._id)}>DELETE</button>
                     </>
                 }

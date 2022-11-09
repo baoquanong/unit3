@@ -114,5 +114,24 @@ router.put("/apply/:id", async (req, res) => {
   }
 });
 
+// update a job - edit
+router.put("/edit/:job", async (req, res) => {
+  try {
+    const editJob = await Job.findByIdAndUpdate(
+      req.params.job,
+      req.body,
+      { new: true }
+    );
+    if (editJob.length === 0) {
+      res.status(400).json({ error: "Unable to find job to update" });
+    } else {
+      res.status(200).json(editJob);
+    }
+  }
+  catch (error) {
+    res.status(500).json();
+  }
+});
+
 // EXPORT
 module.exports = router;

@@ -14,7 +14,9 @@ import JobDetails from "./Components/JobDetails/JobDetails";
 
 import Overview from "./Components/Profile/Overview/Overview";
 import EditProfile from "./Components/Profile/Overview/EditProfile"
+
 import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
+import EditJob from "./Components/Profile/Jobs/EditJob";
 import Applications from "./Components/Profile/Jobs/Applications";
 import SubmitReview from "./Components/SubmitReview/SubmitReview";
 
@@ -26,6 +28,7 @@ const App = () => {
         currViewedJob: {},
         currViewedProfile: {},
         currReviewing: {},
+        currEditJob: {},
     });
 
     return (
@@ -48,6 +51,7 @@ const App = () => {
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
                             <Route path="/submit-review" element={<SubmitReview />} />
+                            <Route path="/user/edit/job" element={<EditJob />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>
