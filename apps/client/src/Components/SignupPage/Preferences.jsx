@@ -5,8 +5,11 @@ import { DataContext } from "../../App";
 
 const Preferences = () => {
     // setting up context
-    const { state, setState } = useContext(DataContext);
-    const currUserInfo = state.loggedIn;
+    // const { state, setState } = useContext(DataContext);
+    // const currUserInfo = state.loggedIn;
+
+    // setting up localStorage
+    const user = JSON.parse(localStorage.getItem("currUser"));
 
     // setting up navigation
     const navigate = useNavigate();
@@ -23,11 +26,11 @@ const Preferences = () => {
         const userPrefs = {
             skills: userSkills,
             description: userData.description,
-            img: `https://api.multiavatar.com/${currUserInfo.username}.png`
+            img: `https://api.multiavatar.com/${user.username}.png`
         };
 
         try {
-            const response = await fetch(`/api/users/${currUserInfo._id}`, {
+            const response = await fetch(`/api/users/${user._id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,7 +42,8 @@ const Preferences = () => {
 
             if (response.ok) {
                 console.log("successfully updated user details!");
-                setState({...state, loggedIn: data.userInfo});
+                // setState({...state, loggedIn: data.userInfo});
+                localStorage.setItem("currUser", JSON.stringify(data.userInfo));
                 navigate("/user");
             } else {
                 console.log("data error:", data.error);
@@ -57,13 +61,13 @@ const Preferences = () => {
                 autoComplete="off"
                 onSubmit={handleSubmit}
             >
-                <h1>WELCOME, {currUserInfo.username.toUpperCase()}</h1>
+                <h1>WELCOME, {user.username.toUpperCase()}</h1>
                 <p>
                     Tell us more about yourself and what you're looking for! <br />
                     Your preferences can always be updated later in your profile
                 </p>
                 <section id="interests">
-                    <legend>I'm interested in helping in these areas:</legend>
+                    <legend>These are my skills:</legend>
                     <div id="check-inputs">
                         <label>
                             <input type="checkbox" name="Handywork" />

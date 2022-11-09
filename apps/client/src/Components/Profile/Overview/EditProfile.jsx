@@ -11,6 +11,7 @@ const EditProfile = () => {
     // setting up state
     const original = JSON.parse(localStorage.getItem("currUser"));
     const [edits, setEdits] = useState(original);
+    const [error, setError] = useState("");
 
     // function to handleChange
     const handleChange = (event, field) => {
@@ -69,8 +70,12 @@ const EditProfile = () => {
 
           if (response.ok) {
             console.log("info successfully updated");
+            console.log("new data:", data)
             localStorage.setItem("currUser", JSON.stringify(edits));
             navigate("/user");
+          } else {
+            console.log("results:", data);
+            setError(data.error);
           }
         }
         catch (error) {
@@ -127,6 +132,11 @@ const EditProfile = () => {
                         />
                     </section>
                 </div>
+                {
+                    error === "" ?
+                    <></> :
+                    <p id="error-msg">{error}</p>
+                }
                 <button id="update-btn">Update Profile</button>
             </form>
         </div>

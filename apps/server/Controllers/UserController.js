@@ -56,18 +56,37 @@ router.post("/signup", async (req, res) => {
 // update existing user info route
 router.put("/:id", async (req, res) => {
     const { id } = req.params;
+    console.log("email:", req.body.email);
 
-    try {
-        const user = await User.findOneAndUpdate(
-            {_id: id},
-            req.body,
-            { new: true }
-        ).exec();
-        
-        res.json({ userInfo: user });
-    }
-    catch (error) {
-        res.status(500).json({ error: error });
+    if (req.body.email) {
+        const checkUser = await User.find({ email: req.body.email }).exec();
+        if (checkUser.length != 0 && checkUser[0]._id != req.params.id) {
+            res.status(400).json({ error: "This email is already linked with another account" });
+        } else {
+            try {
+                const user = await User.findOneAndUpdate(
+                    { "id": id },
+                    req.body,
+                    { new: true }
+                );
+                res.json(user)
+            }
+            catch (error) {
+                res.status(500).json({ "error": error });
+            }
+        }
+    } else {
+        try {
+            const user = await User.findOneAndUpdate(
+                { "id": id },
+                req.body,
+                { new: true }
+            );
+            res.json(user)
+        }
+        catch (error) {
+            res.status(500).json({ "error": error });
+        }
     }
 });
 
