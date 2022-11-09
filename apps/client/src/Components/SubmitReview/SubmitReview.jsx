@@ -26,6 +26,8 @@ const SubmitReview = () => {
         rating: 0,
     });
 
+    const [error, setError] = useState("");
+
     // function to detect change
     const handleChange = (event) => {
         setReview({...review, message: event.target.value});
@@ -36,11 +38,14 @@ const SubmitReview = () => {
         event.preventDefault();
 
         const data = Object.fromEntries(new FormData(event.target));
-        review.rating = data.rating
+        review.rating = parseInt(data.rating);
         console.log("review:", review);
 
+        const form = document.querySelector("form");
+        form.reset();
+
         try {
-            const response = await fetch("/api/review/new", {
+            const response = await fetch("/api/reviews/new", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -53,8 +58,10 @@ const SubmitReview = () => {
             if (response.ok) {
                 console.log("successfully added review");
                 console.log("review:", data);
+                alert("successfully added review!");
             } else {
-                console.log("error:", error);
+                console.log("error:", data.error);
+                setError(data.error);
             }
         }
         catch (error) {
@@ -92,7 +99,7 @@ const SubmitReview = () => {
                         {
                             ratings.map((rating, index) => {
                                 return (
-                                    <label key={index} className="score" for={rating}>
+                                    <label key={index} className="score" htmlFor={rating}>
                                         <input type="radio" name="rating" value={rating} />
                                         {rating}
                                     </label>
@@ -109,6 +116,11 @@ const SubmitReview = () => {
                             onChange={handleChange}
                         ></textarea>
                 </section>
+                {
+                    error === "" ?
+                    <></> :
+                    <p id="error-msg">{error}</p>
+                }
                 <button>SUBMIT REVIEW</button>
             </form>
             <button onClick={() => navigate("/user/postedjobs")}>BACK TO JOBS</button>

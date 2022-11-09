@@ -17,14 +17,26 @@ const EditProfile = () => {
         setEdits({...edits, [`${field}`]: event.target.value});
     };
 
+    // function to handle checkBox change
+    const handleCheckbox = (event) => {
+        if (edits.skills.includes(event.target.name)) {
+            const newSkills = edits.skills.filter((skill) => skill !== event.target.name);
+            setEdits({...edits, skills: newSkills});
+        } else {
+            setEdits({...edits, skills: [...edits.skills, event.target.name]});
+        }
+    };
+
     // mapping skills array
     const skills = ["Handywork", "Cleaning", "Caregiving", "Pets", "Events", "Education"];
     const skillsInput = skills.map((skill, index) => {
         return (
             <label key={index} className="skills-checkbox">
                 <input
+                    checked={edits.skills.includes(skill) ? true : false}
                     type="checkbox"
                     name={skill}
+                    onChange={handleCheckbox}
                 />
                 {skill}
             </label>
@@ -37,7 +49,9 @@ const EditProfile = () => {
 
         // formatting inputs
         const userData = Object.fromEntries(new FormData(event.target));
+        console.log("user data:", userData);
         const userKeys = Object.keys(userData).sort().reverse().splice(4);
+        console.log(userKeys);
         edits.skills = userKeys;
         
         const url = "/api/users/" + edits._id;
