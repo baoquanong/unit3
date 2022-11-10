@@ -25,7 +25,10 @@ export const DataContext = createContext();
 const App = () => {
     // setting up global state
     const [state, setState] = useState({
-        allJobs: [], // state containing all jobs
+        allJobs: [], // array containing all jobs
+        myPostedJobs: [], // array containing jobs posted by current user
+        myAppliedJobs: [], // array containing jobs applied for by current user
+        myReviews: [], // array containing reviews for current user
         currViewedJob: {}, // contains details of job currently being viewed
         currViewedProfile: {}, // contains details of other user profile currently being viewed
         jobToAccept: {}, // contains details of job user is about to accept applicant for

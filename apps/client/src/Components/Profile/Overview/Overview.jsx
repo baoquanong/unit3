@@ -20,7 +20,7 @@ const Overview = () => {
                <>
                     <Profile user={currUser} />
                     <div id="jobs-reviews">
-                        <JobsOverview user={currUser} />
+                        <JobsOverview />
                         <ReviewsOverview user={currUser} />
                     </div>
                </>

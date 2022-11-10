@@ -15,25 +15,27 @@
     letter-spacing: 3px;
 }
 
-#create > h1 {
-    margin: 75px 0 0;
-
-    color: grey;
-    font-size: 35px;
-    letter-spacing: 3px;
-}
-
 #create {
     background: url(../../images/CreateJob.png);
     background-repeat: no-repeat;
     background-position: center;
-    width: 1000px;
-    height: 473px;
+    background-size: cover;
+    width: 1200px;
+    height: 567px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 40px;
+}
+
+#create > h1 {
+    margin: 0;
+
+    color: var(--smoke);
+    font-size: 35px;
+    letter-spacing: 4px;
 }
 
 #create-form {
@@ -41,18 +43,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 35px;
 }
 
 #job-name, #job-logs, #job-dates {
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
-#job-name {
+/* #job-name {
     flex-direction: column;
-    gap: 10px;
-}
+    gap: 20px;
+} */
 
 #job-name > label,
 #job-logs > label,
@@ -62,23 +64,39 @@
 
     color: white;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 2px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
 #job-name > label > input,
 #job-logs > label > input,
 #job-dates > label > input {
+    background: white;
+    padding: 5px;
     border: none;
+
+    color: var(--smoke);
     font-family: Raleway;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 #job-name > label > textarea {
     height: 75px;
+    padding: 5px;
     border: none;
+
+    color: var(--smoke);
+    font-family: Raleway;
 }
 
 select, option {
+    background: white;
+    padding: 5px;
     border: none;
     font-family: Raleway;
 }

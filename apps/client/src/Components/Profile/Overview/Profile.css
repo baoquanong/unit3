@@ -32,6 +32,7 @@
     padding: 20px;
     /* border: 3px solid var(--slate); */
     border-radius: 165px 165px 20px 20px;
+    box-shadow: 5px 5px 5px var(--smoke);
 
     display: flex;
     justify-content: center;
@@ -161,6 +162,11 @@
 }
 
 /* ====== Jobs & Reviews Overview ====== */
+#reviews-overview, #jobs-overview {
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px var(--smoke);
+}
+
 .jr-header {
     background: var(--taupe);
     width: 30vw;

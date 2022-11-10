@@ -119,7 +119,8 @@ section#filter {
 }
 
 .job-card:hover {
-    box-shadow: 4px 4px var(--smoke);
+    /* box-shadow: 4px 4px var(--smoke); */
+    box-shadow: 3px 3px 5px var(--tangerine);
     cursor: pointer;
 }
 
