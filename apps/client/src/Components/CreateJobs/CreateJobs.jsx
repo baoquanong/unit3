@@ -10,6 +10,8 @@ function CreateJobs() {
 
   // setting up variables
   const currUser = JSON.parse(localStorage.getItem("currUser"));
+  let date = new Date();
+  console.log("1");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,7 +29,7 @@ function CreateJobs() {
       });
 
       const data = await res.json();
-      
+
       if (res.ok) {
         console.log("success");
         navigate("/jobs");
@@ -43,65 +45,63 @@ function CreateJobs() {
     <div id="create-job">
       <h1>CREATE A JOB</h1>
       <div id="create">
-        <form id="create-form" method="post" onSubmit={handleSubmit} autoComplete="off">
+        <form
+          id="create-form"
+          method="post"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           <div id="job-name">
             <label>
               JOB TITLE:
-              <input
-              type="text"
-              name="jobTitle"
-              required={true}
-              />
+              <input type="text" name="title" required={true} />
             </label>
             <label required={true}>
               DESCRIPTION:
               <textarea
-              rows="10"
-              cols="30"
-              name="jobDescription"
-              required={true}
+                rows="10"
+                cols="30"
+                name="description"
+                required={true}
               />
             </label>
           </div>
           <div id="job-logs">
             <label>
               JOB TYPE:
-                <select name="jobType" required={true}>
-                  <option>Select Type</option>
-                  <option>Handywork</option>
-                  <option>Caregiving</option>
-                  <option>Events</option>
-                  <option>Cleaning</option>
-                  <option>Pets</option>
-                  <option>Education</option>
-                  <option>Others</option>
-                </select>
+              <select name="type" required={true}>
+                <option>Select Type</option>
+                <option>Handywork</option>
+                <option>Caregiving</option>
+                <option>Events</option>
+                <option>Cleaning</option>
+                <option>Pets</option>
+                <option>Education</option>
+                <option>Others</option>
+              </select>
             </label>
             <label>
               COMPENSATION:
-              <input
-                type="number"
-                name="jobPrice"
-                required={true}
-              />
+              <input type="number" name="price" required={true} />
             </label>
             <label>
               LOCATION:
-              <input
-                type="text"
-                name="location"
-                required={true}
-              />
+              <input type="text" name="location" required={true} />
             </label>
           </div>
           <div id="job-dates">
             <label>
               START DATE:
-              <input type="date" name="jobStart" required={true} />
+              <input
+                type="date"
+                name="start"
+                required={true}
+                min={"2023-12-01"}
+              />
             </label>
             <label>
               END DATE:
-              <input type="date" name="jobEnd" required={true} />
+              <input type="date" name="end" required={true} />
             </label>
           </div>
           <button>POST JOB</button>
