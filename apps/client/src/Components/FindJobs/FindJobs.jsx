@@ -8,6 +8,7 @@ function FindJobs() {
   const [filter, setFilter] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [error, setError] = useState("");
 
   const toggleFilter = () => {
     setFilter((prev) => !prev);
@@ -37,7 +38,11 @@ function FindJobs() {
       'input[name="filterJobs"]:checked'
     ).value;
     const array = jobs.filter((job) => job.jobType === selectFilter);
-    console.log(array);
+    if (array.length == 0) {
+      setError("Not Jobs Found");
+    } else {
+      setError("");
+    }
     setFilteredJobs(array);
   };
 
@@ -48,6 +53,15 @@ function FindJobs() {
   const mappedFilteredJobs = filteredJobs.map((job, index) => {
     return <JobCard key={index} job={job} />;
   });
+
+  const handleClear = () => {
+    const selection = document.getElementsByName("filterJobs");
+    for (let i = 0; i < selection.length; i++) {
+      selection[i].checked = false;
+    }
+    setFilteredJobs([]);
+    setError("");
+  };
 
   return (
     <div id="find-jobs">
@@ -111,9 +125,13 @@ function FindJobs() {
           value="others"
           onClick={handleFilter}
         />
+        <button onClick={handleClear}>Show All Jobs</button>
       </section>
+      {error === "" ? <></> : <p id="error-msg">{error}</p>}
       <div id="mapped-jobs">
-        {filteredJobs.length === 0 ? mappedJobs : mappedFilteredJobs}
+        {filteredJobs.length === 0 && error === ""
+          ? mappedJobs
+          : mappedFilteredJobs}
       </div>
     </div>
   );

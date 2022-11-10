@@ -6,6 +6,7 @@ import { DataContext } from "../../App";
 function CreateJobs() {
   // const [ message, setMessage] = useState("")
   const navigate = useNavigate();
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
 
   // setting up context
   const { state, setState } = useContext(DataContext);
@@ -14,7 +15,7 @@ function CreateJobs() {
     event.preventDefault();
 
     const jobInfo = Object.fromEntries(new FormData(event.target));
-    jobInfo.postedBy = state.loggedIn._id;
+    jobInfo.postedBy = currUser._id;
 
     try {
       const res = await fetch("/api/jobs", {
