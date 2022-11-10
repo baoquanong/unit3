@@ -7,6 +7,8 @@ import "./FindJobs.css";
 function FindJobs() {
   const [filter, setFilter] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [error, setError] = useState("");
 
   const toggleFilter = () => {
     setFilter((prev) => !prev);
@@ -31,9 +33,35 @@ function FindJobs() {
     getAllJobs();
   }, []);
 
+  const handleFilter = () => {
+    const selectFilter = document.querySelector(
+      'input[name="filterJobs"]:checked'
+    ).value;
+    const array = jobs.filter((job) => job.jobType === selectFilter);
+    if (array.length == 0) {
+      setError("Not Jobs Found");
+    } else {
+      setError("");
+    }
+    setFilteredJobs(array);
+  };
+
   const mappedJobs = jobs.map((job, index) => {
     return <JobCard key={index} job={job} />;
   });
+
+  const mappedFilteredJobs = filteredJobs.map((job, index) => {
+    return <JobCard key={index} job={job} />;
+  });
+
+  const handleClear = () => {
+    const selection = document.getElementsByName("filterJobs");
+    for (let i = 0; i < selection.length; i++) {
+      selection[i].checked = false;
+    }
+    setFilteredJobs([]);
+    setError("");
+  };
 
   return (
     <div id="find-jobs">
@@ -46,35 +74,64 @@ function FindJobs() {
           id="handywork"
           name="filterJobs"
           type="radio"
-          value="handywork"
+          value="Handywork"
+          onClick={handleFilter}
         />
         <label for="caregiving">Caregiving</label>
         <input
           id="caregiving"
           name="filterJobs"
           type="radio"
-          value="caregiving"
+          value="Caregiving"
+          onClick={handleFilter}
         />
         <label for="events">Events</label>
-        <input id="events" name="filterJobs" type="radio" value="events" />
+        <input
+          id="events"
+          name="filterJobs"
+          type="radio"
+          value="Events"
+          onClick={handleFilter}
+        />
         <label for="cleaning">Cleaning</label>
-        <input id="cleaning" name="filterJobs" type="radio" value="cleaning" />
+        <input
+          id="cleaning"
+          name="filterJobs"
+          type="radio"
+          value="Cleaning"
+          onClick={handleFilter}
+        />
         <label for="pets">Pets</label>
-        <input id="pets" name="filterJobs" type="radio" value="pets" />
+        <input
+          id="pets"
+          name="filterJobs"
+          type="radio"
+          value="Pets"
+          onClick={handleFilter}
+        />
         <label for="education">Education</label>
         <input
           id="education"
           name="filterJobs"
           type="radio"
-          value="education"
+          value="Education"
+          onClick={handleFilter}
         />
         <label for="others">Others</label>
-        <input id="others" name="filterJobs" type="radio" value="others" />
-        <button>Search</button>
-        {/* need to add the submit function to search  */}
+        <input
+          id="others"
+          name="filterJobs"
+          type="radio"
+          value="others"
+          onClick={handleFilter}
+        />
+        <button onClick={handleClear}>Show All Jobs</button>
       </section>
+      {error === "" ? <></> : <p id="error-msg">{error}</p>}
       <div id="mapped-jobs">
-        {mappedJobs}
+        {filteredJobs.length === 0 && error === ""
+          ? mappedJobs
+          : mappedFilteredJobs}
       </div>
     </div>
   );

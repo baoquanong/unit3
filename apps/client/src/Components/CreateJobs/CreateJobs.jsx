@@ -9,13 +9,13 @@ function CreateJobs() {
   const navigate = useNavigate();
 
   // setting up variables
-  const user = JSON.parse(localStorage.getItem("currUser"));
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const jobInfo = Object.fromEntries(new FormData(event.target));
-    jobInfo.postedBy = user._id;
+    jobInfo.postedBy = currUser._id;
 
     try {
       const res = await fetch("/api/jobs", {

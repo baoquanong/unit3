@@ -51,14 +51,15 @@ router.get("/applied/:user", async (req, res) => {
   const { user } = req.params;
 
   try {
-    const jobs = await Job.find({ applicants: user }).populate(["acceptedBy", "applicants", "postedBy"]).exec();
+    const jobs = await Job.find({ applicants: user })
+      .populate(["acceptedBy", "applicants", "postedBy"])
+      .exec();
     if (jobs.length === 0) {
       res.status(400).json({ error: "No jobs found" });
     } else {
       res.status(200).json(jobs);
     }
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({ error: error });
   }
 });
