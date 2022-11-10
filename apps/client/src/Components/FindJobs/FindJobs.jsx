@@ -37,8 +37,12 @@ function FindJobs() {
 
       if (res.ok) {
         console.log("successfully fetched all jobs");
-        const postedJobs = data.filter((job) => job.postedBy._id === currUser._id);
-        setState({...state, allJobs: data, myPostedJobs: postedJobs});
+        if (currUser === null) {
+          setState({...state, allJobs: data});
+        } else {
+          const postedJobs = data.filter((job) => job.postedBy._id === currUser._id);
+          setState({...state, allJobs: data, myPostedJobs: postedJobs});
+        }
       } else {
         console.log("error:", data.error);
       }

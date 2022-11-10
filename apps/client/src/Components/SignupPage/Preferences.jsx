@@ -56,53 +56,57 @@ const Preferences = () => {
 
     return (
         <div id="preferences-page">
-            <div id="preferences">
-                <form
-                    id="preferences-form"
-                    autoComplete="off"
-                    onSubmit={handleSubmit}
-                >
-                    <h1>WELCOME, {user?.username.toUpperCase()}</h1>
-                    <p id="blurb">
-                        Tell us more about yourself and help others get to know you!<br />
-                        Your preferences can always be updated later in your profile
-                    </p>
-                    <section id="interests">
-                        <legend>MY SKILLS:</legend>
-                        <div id="check-inputs">
-                            <label>
-                                <input type="checkbox" name="Handywork" />
-                                Handywork
-                            </label>
-                            <label>
-                                <input type="checkbox" name="Cleaning" />
-                                Cleaning
-                            </label>
-                            <label>
-                                <input type="checkbox" name="Caregiving" />
-                                Caregiving
-                            </label>
-                            <label>
-                                <input type="checkbox" name="Pets" />
-                                Pets
-                            </label>
-                            <label>
-                                <input type="checkbox" name="Events" />
-                                Events
-                            </label>
-                            <label>
-                                <input type="checkbox" name="Education" />
-                                Education
-                            </label>
-                        </div>
-                    </section>
-                    <label id="description">
-                        ABOUT ME:
-                        <textarea type="text" name="description" />
-                    </label>
-                    <button id="create-btn">LET'S GO</button>
-                </form>
-            </div>
+            {
+                user === null ?
+                <h1>PLEASE CREATE AN ACCOUNT TO SET YOUR PREFERENCES</h1> :
+                <div id="preferences">
+                    <form
+                        id="preferences-form"
+                        autoComplete="off"
+                        onSubmit={handleSubmit}
+                    >
+                        <h1>WELCOME, {user?.username.toUpperCase()}</h1>
+                        <p id="blurb">
+                            Tell us more about yourself and help others get to know you!<br />
+                            Your preferences can always be updated later in your profile
+                        </p>
+                        <section id="interests">
+                            <legend>MY SKILLS:</legend>
+                            <div id="check-inputs">
+                                <label>
+                                    <input type="checkbox" name="Handywork" />
+                                    Handywork
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="Cleaning" />
+                                    Cleaning
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="Caregiving" />
+                                    Caregiving
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="Pets" />
+                                    Pets
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="Events" />
+                                    Events
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="Education" />
+                                    Education
+                                </label>
+                            </div>
+                        </section>
+                        <label id="description">
+                            ABOUT ME:
+                            <textarea type="text" name="description" />
+                        </label>
+                        <button id="create-btn">LET'S GO</button>
+                    </form>
+                </div>
+            }
         </div>
     );
 };

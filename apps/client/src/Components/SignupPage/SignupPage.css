@@ -111,6 +111,11 @@
 }
 
 /* ====== Preferences ====== */
+#preferences-page > h1 {
+    color: var(--tangerine);
+    letter-spacing: 3px;
+}
+
 #preferences-form > #blurb {
     margin: 20px 0 30px;
     max-width: 450px;

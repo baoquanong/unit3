@@ -4,17 +4,26 @@ import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 
 function JobCard({ job }) {
-  let navigate = useNavigate();
+  // setting up navigation
+  const navigate = useNavigate();
 
+  // setting up state
   const { state, setState } = useContext(DataContext);
 
+  // assigning local storage variable
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
+
   const handleClick = () => {
-    console.log("clicked");
-    setState({
-      ...state,
-      currViewedJob: job,
-    });
-    navigate("/jobs/:id");
+    if (currUser === null) {
+      alert("Please log in to view job details!");
+    } else {
+      console.log("clicked");
+      setState({
+        ...state,
+        currViewedJob: job,
+      });
+      navigate(`/jobs/${job._id}`);
+    }
   };
 
   return (

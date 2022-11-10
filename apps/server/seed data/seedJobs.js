@@ -85,6 +85,7 @@ const seedJobs = [
   },
   {
     postedBy: "63653b3564406e7db583721d",
+    acceptedBy: "63653b3564406e7db583722b",
     title: "Looking for Car Wash Service",
     description: "Need help with weekly car wash at my terrace house",
     type: "Cleaning",

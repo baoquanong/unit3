@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { DataContext } from "../../../App";
 import "./Jobs.css";
@@ -9,9 +9,7 @@ import ApplicationDetails from "./ApplicationDetails";
 const Applications = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
-
-    // setting up state
-    const [appliedJobs, setAppliedJobs] = useState([]);
+    const myApplied = state.myAppliedJobs;
 
     // setting up variables
     const user = JSON.parse(localStorage.getItem("currUser"));
@@ -31,7 +29,7 @@ const Applications = () => {
             if (response.ok) {
                 console.log("successfully fetched");
                 console.log("applied jobs:", data);
-                setAppliedJobs(data);
+                setState({...state, myAppliedJobs: data})
             } else {
                 console.log(data.error);
             }
@@ -46,7 +44,7 @@ const Applications = () => {
     }, []);
 
     // mapping out the jobs
-    const jobs = appliedJobs.map((job, index) => {
+    const jobs = myApplied?.map((job, index) => {
         return (
             <ApplicationDetails job={job} key={index} />
         );
