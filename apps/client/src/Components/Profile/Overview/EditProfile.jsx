@@ -73,7 +73,7 @@ const EditProfile = () => {
             navigate("/user");
           } else {
             console.log("results:", data);
-            // setError(data.error);
+            setError(data.error);
           }
         }
         catch (error) {

@@ -144,6 +144,13 @@
     letter-spacing: 1px;
 }
 
+#edit-profile-form > #error-msg {
+    color: var(--cherry);
+    margin: 40px 0 0;
+    font-weight: 500;
+    font-style: italic;
+}
+
 #edit-profile-form > #update-btn {
     background: var(--tangerine);
     margin: 50px 0 0;
