@@ -47,11 +47,15 @@ function FindJobs() {
   };
 
   const mappedJobs = jobs.map((job, index) => {
-    return <JobCard key={index} job={job} />;
+    if (!job.acceptedBy) {
+      return <JobCard key={index} job={job} />;
+    }
   });
 
   const mappedFilteredJobs = filteredJobs.map((job, index) => {
-    return <JobCard key={index} job={job} />;
+    if (!job.acceptedBy) {
+      return <JobCard key={index} job={job} />;
+    }
   });
 
   const handleClear = () => {

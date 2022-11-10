@@ -19,9 +19,9 @@ function JobCard({ job }) {
 
   return (
     <div onClick={handleClick} className="job-card">
-      <h4>{job.jobTitle.toUpperCase()}</h4>
-      <p id="jd">{job.jobDescription}</p>
-      <p id="date">{job.jobStart.slice(0, 10)} <br />to<br /> {job.jobEnd.slice(0, 10)}</p>
+      <h4>{job.title.toUpperCase()}</h4>
+      <p id="jd">{job.description}</p>
+      <p id="date">{job.start.slice(0, 10)} <br />to<br /> {job.end.slice(0, 10)}</p>
       <p id="poster">Posted By: {job.postedBy.username}</p>
     </div>
   );
