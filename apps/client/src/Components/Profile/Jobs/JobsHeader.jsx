@@ -5,7 +5,6 @@ const JobsHeader = () => {
         <div id="jobs-header">
             <Link to="/user/postedjobs">POSTED BY ME</Link>
             <Link to="/user/appliedjobs">MY APPLICATIONS</Link>
-            <Link to="/user/calendar">CALENDAR VIEW</Link>
         </div>
     );
 };

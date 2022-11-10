@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import "./HomePage.css";
+import welcome from "../../images/Welcome.png";
 
 export default function HomePage() {
   // setting up navigation
@@ -9,12 +10,19 @@ export default function HomePage() {
 
   return (
     <div id="home-page">
-      <img id="background" src="https://thumbs.dreamstime.com/b/business-people-work-office-run-black-line-seamless-pattern-big-group-monochrome-vector-illustration-eps-64114000.jpg" />
-      <div id="buttons">
-        <button onClick={() => navigate("/login")}>LOGIN</button>
-        <button onClick={() => navigate("/signup")}>SIGN UP</button>
-        <p>OR</p>
-        <button onClick={() => navigate("/jobs")}>VIEW SOME JOBS</button>
+      <img src={welcome} />
+      <div id="home-content">
+        <p id="welcome">welcome to your</p>
+        <h1 id="logo">
+          <span>SIDE</span>
+          HUSTLE
+        </h1>
+        <p id="blurb">where people and jobs connect</p>
+        <div id="buttons">
+          <button onClick={() => navigate("/login")}>LOGIN</button>
+          <button onClick={() => navigate("/signup")}>SIGN UP</button>
+          <button onClick={() => navigate("/jobs")}>VIEW SOME JOBS</button>
+        </div>
       </div>
     </div>
   );

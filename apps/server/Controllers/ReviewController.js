@@ -28,6 +28,25 @@ router.get("/:user", async (req, res) => {
     catch (error) {
         res.status(500).json({ error: error });
     }
-})
+});
+
+// post a new review
+router.post("/new", async (req, res) => {
+    if (!req.body.rating) {
+        res.status(400).json({ error: "Please input rating" });
+    } else {
+        try {
+            const newReview = await Review.create(req.body);
+            if (!newReview) {
+                res.status(400).json({ error: "Unable to add new review" });
+            } else {
+                res.status(201).json({ newReview });
+            }
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
+    }
+});
 
 module.exports = router;

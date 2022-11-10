@@ -1,0 +1,100 @@
+#create-job {
+    background: url(../../images/PeopleBG.png);
+    height: 85vh;
+    overflow-y: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 25px;
+}
+
+#create-job > h1 {
+    margin: 75px 0 0;
+
+    color: grey;
+    font-size: 35px;
+    letter-spacing: 3px;
+}
+
+#create {
+    background: url(../../images/CreateJob.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1000px;
+    height: 473px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#create-form {
+    /* padding: 0 0 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#job-name, #job-logs, #job-dates {
+    display: flex;
+    gap: 20px;
+}
+
+#job-name {
+    flex-direction: column;
+    gap: 10px;
+}
+
+#job-name > label,
+#job-logs > label,
+#job-dates > label {
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+#job-name > label > input,
+#job-logs > label > input,
+#job-dates > label > input {
+    border: none;
+    font-family: Raleway;
+}
+
+#job-name > label > textarea {
+    height: 75px;
+    border: none;
+}
+
+select, option {
+    border: none;
+    font-family: Raleway;
+}
+
+#create-form > button {
+    background: var(--tangerine);
+    padding: 5px 15px;
+    margin: 20px 0;
+    border: none;
+    border: 2px solid var(--tangerine);
+    border-radius: 5px;
+
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#create-form > button:hover {
+    background: white;
+    color: var(--tangerine);
+    cursor: pointer;
+}

@@ -7,14 +7,17 @@
     --midnight: #24303c;
     --mist: #91a3a7;
     --fog: #ededed;
-    --sunset: #905336;
     --shell: #c9a58b;
     --cherry: #ff4b54;
     --suede: #F8EFE8;
+    --tangerine: #ff9a18;
+    --taupe: #efceab;
+    --sunset: #ffb101;
+    --sunshine: #efc673;
+    --slate: #494949;
 }
 
 body {
-    background: whitesmoke;
     margin: 0;
 
     font-family: 'Raleway', sans-serif;

@@ -20,9 +20,9 @@ const jobSchema = new mongoose.Schema(
     jobTitle: { type: String },
     jobDescription: { type: String },
     jobType: { type: String, required: true },
-    jobStatus: { type: String, required: true, default: "open" },
-    jobPrice: { type: Number },
-    jobLocation: { type: String },
+    status: { type: String, required: true, default: "open" },
+    price: { type: Number },
+    location: { type: String },
     jobStart: { type: Date },
     jobEnd: { type: Date },
   }

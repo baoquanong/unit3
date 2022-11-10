@@ -6,7 +6,7 @@ import "./SubmitReview.css";
 
 const SubmitReview = () => {
     // setting up variables
-    const ratings = ["1", "2", "3", "4", "5"];
+    const ratings = [1, 2, 3, 4, 5];
 
     // setting up context
     const { state, setState } = useContext(DataContext);
@@ -23,17 +23,55 @@ const SubmitReview = () => {
         postedFor: reviewing.acceptedBy._id,
         job: reviewing._id,
         message: "",
-        rating: 0
+        rating: 0,
     });
+
+    const [error, setError] = useState("");
 
     // function to detect change
     const handleChange = (event) => {
         setReview({...review, message: event.target.value});
     };
 
+    // function to handle submit
+    const submitReview = async (event) => {
+        event.preventDefault();
+
+        const data = Object.fromEntries(new FormData(event.target));
+        review.rating = parseInt(data.rating);
+        console.log("review:", review);
+
+        const form = document.querySelector("form");
+        form.reset();
+
+        try {
+            const response = await fetch("/api/reviews/new", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(review),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully added review");
+                console.log("review:", data);
+                alert("successfully added review!");
+            } else {
+                console.log("error:", data.error);
+                setError(data.error);
+            }
+        }
+        catch (error) {
+            console.log("error:", error);
+        }
+    };
+
     return (
         <div id="review-page">
-            <img src="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/design_reviews_going_beyond_the_surface_2x1.jpg" />
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/3c489553324483.5930258da9303.jpg" />
             <h1>LEAVE A REVIEW</h1>
             <p>
                 We're glad you found someone suitable for the job! <br />
@@ -44,7 +82,7 @@ const SubmitReview = () => {
                 Please only leave a review if the job has been completed.
             </p>
 
-            <form id="review-form">
+            <form id="review-form" onSubmit={submitReview}>
                 <div id="review-info">
                     <p>
                         <span>Currently Reviewing: </span>
@@ -61,7 +99,7 @@ const SubmitReview = () => {
                         {
                             ratings.map((rating, index) => {
                                 return (
-                                    <label key={index} className="score" for={rating}>
+                                    <label key={index} className="score" htmlFor={rating}>
                                         <input type="radio" name="rating" value={rating} />
                                         {rating}
                                     </label>
@@ -78,6 +116,11 @@ const SubmitReview = () => {
                             onChange={handleChange}
                         ></textarea>
                 </section>
+                {
+                    error === "" ?
+                    <></> :
+                    <p id="error-msg">{error}</p>
+                }
                 <button>SUBMIT REVIEW</button>
             </form>
             <button onClick={() => navigate("/user/postedjobs")}>BACK TO JOBS</button>

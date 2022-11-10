@@ -1,123 +1,108 @@
 #job-details {
-    background: var(--suede);
+    background: url(../../images/PeopleBG.png);
     min-height: 85vh;
-    padding: 50px 0 0;
+    width: 100vw;
 
     display: flex;
-    /* align-items: center; */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
 #curr-job {
-    background: var(--mist);
-    box-shadow: 5px 5px var(--tide);
-    width: fit-content;
-    height: fit-content;
-    padding: 50px;
-    border: 3px solid var(--tide);
-    border-radius: 20px;
+    background: url(../../images/JobDescription.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 800px;
+    height: 656px;
+    /* margin: 50px 0 0; */
 
     display: flex;
     flex-direction: column;
-    gap: 0px;
+    justify-content: center;
+    align-items: center;
 }
 
-#curr-job > h1 {
-    background: var(--midnight);
-    box-shadow: 5px 5px var(--sunset);
-    max-width: 500px;
-    margin: 0;
-    padding: 20px;
-    border-radius: 10px;
+#curr-job > h2 {
+    margin: 35px 0 0;
 
+    color: var(--slate);
     text-align: center;
-    color: var(--fog);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    font-size: 25px;
+    max-width: 400px;
+}
+
+#curr-job > #posted-by {
+    margin: 5px 0 0;
+    color: var(--slate);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 500;
 }
 
 #curr-job > #description {
-    background: var(--fog);
     margin: 30px 0 0;
-    /* border: 3px solid var(--midnight); */
-    border-radius: 20px;
-    padding: 20px;
+    max-width: 400px;
 
-    color: var(--midnight);
-    gap: 5px;
+    color: var(--slate);
     font-weight: 500;
     letter-spacing: 1px;
-}
-
-#curr-job > #description > span {
-    background: var(--tide);
-    padding: 5px 20px;
-    border-radius: 10px;
-    margin: 0 0 10px;
-
-    color: var(--shell);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    text-align: center;
 }
 
 #job-info {
-    background-color: var(--fog);
-    margin: 15px 0 0;
-    max-width: 500px;
-    /* border: 3px solid var(--midnight); */
-    border-radius: 20px;
-    padding: 20px;
-
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 10px 15px;
+    gap: 10px;
 }
 
-#job-info > p {
-    margin: 0;
-    background: var(--tide);
-    padding: 5px 10px;
-    border-radius: 10px;
-    
-    letter-spacing: 1px;
-    font-weight: 500;
-}
-
-#job-info > p > span {
-    margin: 0;
-    color: var(--shell);
-    font-size: 18px;
+#job-info > h3 {
+    margin: 30px 0 5px;
+    color: var(--slate);
     font-weight: 700;
     letter-spacing: 2px;
 }
 
-#details-buttons {
-    margin: 40px 0 0;
-
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
-}
-
-#details-buttons > button {
+#job-info > .detail {
     background: var(--sunset);
-    padding: 5px 20px;
-    border: none;
-    border-radius: 3px;
+    padding: 10px 20px;
+    border-radius: 10px;
 
-    color: var(--fog);
-    font-size: 15px;
+    color: var(--slate);
+    font-weight: 500;
     letter-spacing: 1px;
-    font-weight: 700;
 }
 
-#details-buttons > button:hover {
-    background: var(--shell);
-    box-shadow: 2px 2px var(--sunset);
+#job-info > .detail > span {
+    color: white;
+}
 
-    color: var(--cherry);
+#curr-job > #apply-btn,
+#job-details > #back-btn {
+    background: var(--tangerine);
+    padding: 5px 15px;
+    margin: 50px 0 0;
+    border: none;
+    border: 2px solid var(--tangerine);
+    border-radius: 5px;
+
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#job-details > #back-btn {
+    margin: 0;
+}
+
+#curr-job > #apply-btn:hover,
+#job-details > #back-btn:hover {
+    background: white;
+    color: var(--tangerine);
     cursor: pointer;
 }
