@@ -48,14 +48,27 @@ function JobDetails() {
         <p id="description">{job.jobDescription}</p>
         <div id="job-info">
           <h3>JOB DETAILS:</h3>
-          <p className="detail"><span>JOB TYPE:</span> {job.jobType}</p>
-          <p className="detail"><span>DATE:</span> {job.jobStart.slice(0, 10)} to {job.jobEnd.slice(0, 10)}</p> 
-          <p className="detail"><span>LOCATION:</span> {job.location ? job.location : "TBC"}</p>
-          <p className="detail"><span>COMPENSATION: </span>${job.price ? job.price : "TBC"}</p>
+          <p className="detail">
+            <span>JOB TYPE:</span> {job.jobType}
+          </p>
+          <p className="detail">
+            <span>DATE:</span> {job.jobStart.slice(0, 10)} to{" "}
+            {job.jobEnd.slice(0, 10)}
+          </p>
+          <p className="detail">
+            <span>LOCATION:</span> {job.jobLocation ? job.jobLocation : "TBC"}
+          </p>
+          <p className="detail">
+            <span>COMPENSATION: </span>${job.jobPrice ? job.jobPrice : "TBC"}
+          </p>
         </div>
-        <button id="apply-btn" onClick={() => applyJob(job._id)}>APPLY</button>
+        <button id="apply-btn" onClick={() => applyJob(job._id)}>
+          APPLY
+        </button>
       </div>
-      <button id="back-btn" onClick={() => navigate("/jobs")}>BACK</button>
+      <button id="back-btn" onClick={() => navigate("/jobs")}>
+        BACK
+      </button>
     </div>
   );
 }
