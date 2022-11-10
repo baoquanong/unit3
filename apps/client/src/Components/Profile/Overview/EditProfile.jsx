@@ -34,7 +34,7 @@ const EditProfile = () => {
         return (
             <label key={index} className="skills-checkbox">
                 <input
-                    checked={edits.skills.includes(skill) ? true : false}
+                    checked={edits?.skills.includes(skill) ? true : false}
                     type="checkbox"
                     name={skill}
                     onChange={handleCheckbox}
@@ -83,60 +83,66 @@ const EditProfile = () => {
 
     return (
         <div id="edit-profile">
-            <h1>EDIT PROFILE</h1>
-            <form id="edit-profile-form" onSubmit={handleUpdate} autoComplete="off">
-                <div id="inputs">
-                    <section id="edit-info">
-                        <img src="https://api.multiavatar.com/Sally.png" />
-                        <label>
-                            EMAIL:
-                            <input
-                                type="text"
-                                name="email"
-                                value={edits?.email}
-                                onChange={() => handleChange(event, "email")}
-                            />
-                        </label>
-                        <label>
-                            USERNAME:
-                            <input
-                                type="text"
-                                name="username"
-                                value={edits?.username}
-                                onChange={() => handleChange(event, "username")}
-                            />
-                        </label>
-                        <label>
-                            PASSWORD:
-                            <input
-                                type="password"
-                                name="password"
-                                value={edits?.password}
-                                onChange={() => handleChange(event, "password")}
-                            />
-                        </label>
-                    </section>
-                    <section id="skills">
-                        <legend>SKILLS:</legend>
-                        <div id="edit-skills">
-                            {skillsInput}
+            {
+                original === null ?
+                <h1>Please log in to edit your profile</h1> :
+                <>
+                    <h1>EDIT PROFILE</h1>
+                    <form id="edit-profile-form" onSubmit={handleUpdate} autoComplete="off">
+                        <div id="inputs">
+                            <section id="edit-info">
+                                <img src="https://api.multiavatar.com/Sally.png" />
+                                <label>
+                                    EMAIL:
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        value={edits?.email}
+                                        onChange={() => handleChange(event, "email")}
+                                    />
+                                </label>
+                                <label>
+                                    USERNAME:
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        value={edits?.username}
+                                        onChange={() => handleChange(event, "username")}
+                                    />
+                                </label>
+                                <label>
+                                    PASSWORD:
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        value={edits?.password}
+                                        onChange={() => handleChange(event, "password")}
+                                    />
+                                </label>
+                            </section>
+                            <section id="skills">
+                                <legend>SKILLS:</legend>
+                                <div id="edit-skills">
+                                    {skillsInput}
+                                </div>
+                                <legend id="description">ABOUT ME:</legend>
+                                <textarea
+                                    type="text"
+                                    name="description"
+                                    value={edits?.description}
+                                    onChange={() => handleChange(event, "description")}
+                                />
+                            </section>
                         </div>
-                        <legend id="description">ABOUT ME:</legend>
-                        <textarea
-                            type="text"
-                            name="description"
-                            value={edits?.description}
-                            onChange={() => handleChange(event, "description")}
-                        />
-                    </section>
-                </div>
-                {
-                    error === "" ?
-                    <></> :
-                    <p id="error-msg">{error}</p>
-                }
-                <button id="update-btn">Update Profile</button>
-            </form>
+                        {
+                            error === "" ?
+                            <></> :
+                            <p id="error-msg">{error}</p>
+                        }
+                        <button id="update-btn">Update Profile</button>
+                    </form>
+                </>
+            }
         </div>
     );
 };

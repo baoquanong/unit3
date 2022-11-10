@@ -19,7 +19,7 @@
 
 #jobs-header > :nth-child(even) {
     border-left: 2px solid var(--midnight);
-    border-right: 2px solid var(--midnight);
+    /* border-right: 2px solid var(--midnight); */
 }
 
 /* ====== Posted Jobs ====== */
