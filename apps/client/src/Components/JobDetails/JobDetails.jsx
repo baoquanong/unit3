@@ -43,20 +43,19 @@ function JobDetails() {
   return (
     <div id="job-details">
       <div id="curr-job">
-        <h1>{job.jobTitle.toUpperCase()}</h1>
-        <p id="description"><span>JOB DESCRIPTION:</span> {job.jobDescription}</p>
+        <h2>{job.jobTitle.toUpperCase()}</h2>
+        <p id="posted-by">Posted By: {job.postedBy.username}</p>
+        <p id="description">{job.jobDescription}</p>
         <div id="job-info">
-          <p><span>POSTED BY:</span> {job.postedBy.username}</p>
-          <p><span>JOB TYPE:</span> {job.jobType}</p>
-          <p><span>DATE:</span> {job.jobStart.slice(0, 10)} to {job.jobEnd.slice(0, 10)}</p> 
-          <p><span>LOCATION:</span> {job.location ? job.location : "TBC"}</p>
-          <p><span>PRICE:</span> {job.price ? job.price : "TBC"}</p>
+          <h3>JOB DETAILS:</h3>
+          <p className="detail"><span>JOB TYPE:</span> {job.jobType}</p>
+          <p className="detail"><span>DATE:</span> {job.jobStart.slice(0, 10)} to {job.jobEnd.slice(0, 10)}</p> 
+          <p className="detail"><span>LOCATION:</span> {job.location ? job.location : "TBC"}</p>
+          <p className="detail"><span>COMPENSATION: </span>${job.price ? job.price : "TBC"}</p>
         </div>
-        <div id="details-buttons">
-          <button onClick={() => navigate("/jobs")}>BACK</button>
-          <button onClick={() => applyJob(job._id)}>APPLY</button>
-        </div>
+        <button id="apply-btn" onClick={() => applyJob(job._id)}>APPLY</button>
       </div>
+      <button id="back-btn" onClick={() => navigate("/jobs")}>BACK</button>
     </div>
   );
 }

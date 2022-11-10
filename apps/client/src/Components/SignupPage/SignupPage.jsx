@@ -83,7 +83,6 @@ function SignupPage() {
 
   return (
     <div id="signup-page">
-      <img id="background" src="https://thumbs.dreamstime.com/b/business-people-work-office-run-black-line-seamless-pattern-big-group-monochrome-vector-illustration-eps-64114000.jpg" />
       <div id="signup">
         <form
           id="signup-form"
@@ -152,7 +151,7 @@ function SignupPage() {
           }
           <button>CREATE ACCOUNT</button>
         </form>
-        <p>
+        <p id="account-msg">
           Already have an account?
           Click {" "}
           <span onClick={() => navigate("/login")}>here</span>

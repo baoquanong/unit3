@@ -1,128 +1,119 @@
 #login-page {
-    width: 50vw;
+    background: url(../../images/ShapeBG.png);
+    width: 100vw;
     min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-#login-page > #background {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 50vw;
-    min-height: 100vh;
-    opacity: 0.4;
-    z-index: -1;
-}
-
-#login {
-    background: var(--fog);
-    padding: 50px 75px;
-    border: 3px solid var(--tide);
-    box-shadow: 3px 3px var(--tide);
-    border-radius: 20px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
+    gap: 0px;
+}
+
+#login-page > img {
+    object-fit: cover;
+    padding: 0;
+    width: 650px;
+}
+
+
+#login {
+    background: var(--sunshine);
+    width: 600px;
+    padding: 50px 24px 30px;
+    border-radius: 0 0 20px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
 }
 
 #login-form > h1 {
-    margin: 0 0 30px;
+    margin: 0 0 20px;
 
-    color: var(--cherry);
-    font-size: 29px;
-    letter-spacing: 5px;
-    font-weight: 700;
+    color: var(--fog);
 }
 
-#login-inputs, label {
+
+#login-inputs {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 
 #login-inputs > label {
-    gap: 2px;
+    color: grey;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
 
-    color: var(--sunset);
-    letter-spacing: 4px;
-    font-size: 15px;
-    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 5px
 }
 
 #login-inputs > label > input {
-    background: none;
     width: 250px;
-    height: 25px;
-    padding: 0 5px;
     border: none;
-    border-bottom: 2px solid var(--midnight);
+    padding: 5px;
 
-    color: var(--midnight);
+    color: grey;
+    font-weight: 500;
     font-family: Raleway;
-    font-size: 15px;
     letter-spacing: 1px;
 }
 
 #login-form > #error-msg {
     max-width: 300px;
-    margin: 0;
 
     color: var(--cherry);
-    text-align: center;
-    letter-spacing: 2px;
-    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #login-form > button {
-    background: var(--mist);
-    padding: 10px 20px;
-    margin: 30px 0 0;
+    background: var(--tangerine);
+    margin: 20px 0 0;
+    padding: 5px 20px;
+    /* border: 2px solid var(--tangerine); */
     border: none;
     border-radius: 5px;
 
-    color: var(--tide);
+    color: var(--fog);
     font-family: Raleway;
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: 3px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 #login-form > button:hover {
-    background: var(--midnight);
+    background: var(--taupe);
+    /* border: 2px solid grey; */
 
-    color: var(--fog);
-    font-weight: bold;
+    color: grey;
     cursor: pointer;
 }
 
-#login > p {
-    margin: 30px 0 0;
+#account-msg {
+    margin: 50px 0 0;
 
-    color: var(--cherry);
-    letter-spacing: 1px;
+    color: grey;
     font-weight: 500;
-    text-align: center;
+    letter-spacing: 1px;
 }
 
-#login > p > span {
+#account-msg > span {
     text-decoration: underline;
 }
 
-#login > p > span:hover {
-    /* color: midnightblue; */
-    font-weight: bold;
+#account-msg > span:hover {
+    color: white;
     cursor: pointer;
 }

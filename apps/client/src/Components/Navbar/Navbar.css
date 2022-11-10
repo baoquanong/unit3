@@ -2,10 +2,15 @@ body {
     margin: 0;
 }
 
+#layout {
+    width: 100vw;
+}
+
 #navbar {
-    background: var(--tide);
+    background: var(--sunset);
+    width: 95vw;
     height: 100px;
-    padding: 20px 100px;
+    padding: 20px 2.5vw;
 
     display: flex;
     align-items: center;
@@ -14,35 +19,29 @@ body {
 }
 
 #navbar > h1 {
-    margin: 0;
-
     color: var(--fog);
-    font-family: 'Covered By Your Grace', cursive;
-    font-size: 4vw;
-    letter-spacing: 10px;
-    text-shadow: 3px 3px var(--mist);
-    cursor: pointer;
+    font-size: 75px;
+    letter-spacing: 2px;
 }
 
 #navbar > h1 > span {
-    writing-mode: vertical-rl;
-    font-size: 1.5vw;
-    letter-spacing: 0;
-    text-shadow: 1.5px 1.5px var(--mist);
+    writing-mode: vertical-lr;
+    font-size: 25px;
+    letter-spacing: 0px;
 }
 
-#tabs {
+#job-tabs, #profile-tabs {
     display: flex;
-    gap: 25px;
+    gap: 10px;
 }
 
 .tab {
     margin: 20px 20px 5px;
 
-    color: var(--shell);
+    color: white;
     text-decoration: none;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
 }
@@ -51,42 +50,4 @@ body {
     color: var(--cherry);
     font-weight: 700;
     cursor: pointer;
-}
-
-#dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    background-color: var(--mist);
-    min-width: 100px;
-    z-index: 1;
-
-    display: none;
-    position: absolute;
-    right: 0;
-}
-
-.dropdown-content > a, .dropdown-content > p {
-    padding: 6px 20px;
-    border-bottom: 2px solid var(--fog);
-
-    color: var(--fog);
-    text-decoration: none;
-    text-align: right;
-    letter-spacing: 2px;
-    font-weight: 400;
-
-    display: block;
-}
-
-.dropdown-content > a:hover, .dropdown-content > p:hover {
-    color: var(--cherry);
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.show  {
-    display: block;
 }

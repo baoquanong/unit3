@@ -54,11 +54,9 @@ const EditProfile = () => {
         const userKeys = Object.keys(userData).sort().reverse().splice(4);
         console.log(userKeys);
         edits.skills = userKeys;
-        
-        const url = "/api/users/" + edits._id;
 
         try {
-          const response = await fetch(url, {
+          const response = await fetch(`/api/users/update/${edits._id}`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -71,15 +69,15 @@ const EditProfile = () => {
           if (response.ok) {
             console.log("info successfully updated");
             console.log("new data:", data)
-            localStorage.setItem("currUser", JSON.stringify(edits));
+            localStorage.setItem("currUser", JSON.stringify(data));
             navigate("/user");
           } else {
             console.log("results:", data);
-            setError(data.error);
+            // setError(data.error);
           }
         }
         catch (error) {
-            console.log("error");
+            console.log("error:", error);
         }
     };
 

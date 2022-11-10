@@ -53,40 +53,50 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-// update existing user info route
-router.put("/:id", async (req, res) => {
-    const { id } = req.params;
-    console.log("email:", req.body.email);
+// update preferences after initial creation
+router.put("/preferences/:id", async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        ).exec();
 
-    if (req.body.email) {
-        const checkUser = await User.find({ email: req.body.email }).exec();
-        if (checkUser.length != 0 && checkUser[0]._id != req.params.id) {
-            res.status(400).json({ error: "This email is already linked with another account" });
+        if (user.length === 0) {
+            res.status(400).json({ error: "Unable to update user" });
         } else {
-            try {
-                const user = await User.findOneAndUpdate(
-                    { "id": id },
-                    req.body,
-                    { new: true }
-                );
-                res.json(user)
-            }
-            catch (error) {
-                res.status(500).json({ "error": error });
-            }
+            res.status(200).json(user);
         }
-    } else {
-        try {
-            const user = await User.findOneAndUpdate(
-                { "id": id },
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
+
+// update profile info
+router.put("/update/:id", async (req, res) => {
+    console.log("req.body:", req.body);
+
+    try {
+        const userCheck = await User.find({ email: req.body.email }).exec();
+        if (userCheck.length !== 0 && userCheck[0]._id != req.params.id) {
+            res.status(400).json({ error: "This email is already linked to another account" });
+        } else {
+            const user = await User.findByIdAndUpdate(
+                req.params.id,
                 req.body,
-                { new: true }
-            );
-            res.json(user)
+                { new: true },
+            ).exec();
+
+            if (user.length !== 0) {
+                res.json(user);
+            } else {
+                res.status(400).json({ error: "Unable to update this user" });
+            }
         }
-        catch (error) {
-            res.status(500).json({ "error": error });
-        }
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
     }
 });
 

@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import HomeLayout from "./Components/HomePage/HomeLayout";
+import HomeLayout from "./Archive/HomeLayout";
 import HomePage from "./Components/HomePage/HomePage";
 import LoginPage from "./Components/LoginPage/LoginPage";
 import SignupPage from "./Components/SignupPage/SignupPage";
@@ -36,12 +36,10 @@ const App = () => {
             <DataContext.Provider value={{state, setState}}>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<HomeLayout />}>
-                            <Route index element={<HomePage />} />
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/signup" element={<SignupPage />} />
-                            <Route path="/signup/preferences" element={<Preferences />} />
-                        </Route>
+                        <Route index element={<HomePage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignupPage />} />
+                        <Route path="/signup/preferences" element={<Preferences />} />
                         <Route path="/" element={<Navbar />}>
                             <Route path="/jobs" element={<FindJobs />} />
                             <Route path="/jobs/create" element={<CreateJobs />} />

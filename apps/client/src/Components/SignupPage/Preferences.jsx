@@ -30,7 +30,7 @@ const Preferences = () => {
         };
 
         try {
-            const response = await fetch(`/api/users/${user._id}`, {
+            const response = await fetch(`/api/users/preferences/${user._id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const Preferences = () => {
             if (response.ok) {
                 console.log("successfully updated user details!");
                 // setState({...state, loggedIn: data.userInfo});
-                localStorage.setItem("currUser", JSON.stringify(data.userInfo));
+                localStorage.setItem("currUser", JSON.stringify(data));
                 navigate("/user");
             } else {
                 console.log("data error:", data.error);

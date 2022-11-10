@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { DataContext } from '../../App';
+import login from "../../images/LogIn.png";
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -58,10 +59,10 @@ function LoginPage() {
 
   return (
     <div id="login-page">
-      <img id="background" src="https://thumbs.dreamstime.com/b/business-people-work-office-run-black-line-seamless-pattern-big-group-monochrome-vector-illustration-eps-64114000.jpg" />
+      <img src={login} />
       <div id="login">
         <form id="login-form" autoComplete="off" onSubmit={handleSubmit}>
-          <h1>WELCOME BACK</h1>
+          <h1>WELCOME</h1>
           <div id="login-inputs">
             <label>
               EMAIL:
@@ -89,14 +90,13 @@ function LoginPage() {
           }
           <button>LOGIN</button>
         </form>
-        <p>
+        <p id="account-msg">
           Don't have an account yet?
           Click {" "}
           <span onClick={() => navigate("/signup")}>here</span>
           {" "} to sign up!
         </p>
       </div>
-
     </div>
   );
 };
