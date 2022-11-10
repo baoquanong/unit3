@@ -134,5 +134,24 @@ router.put("/edit/:job", async (req, res) => {
   }
 });
 
+// update a job - accept
+router.put("/accept/:job", async (req, res) => {
+  try {
+    const acceptJob = await Job.findByIdAndUpdate(
+      req.params.job,
+      req.body,
+      { new :true }
+    );
+    if (acceptJob.length === 0) {
+      res.status(400).json({ error: "Unable to accept user" });
+    } else {
+      res.status(200).json({acceptJob})
+    }
+  }
+  catch (error) {
+    res.status(500).json({ error: error });
+  }
+})
+
 // EXPORT
 module.exports = router;

@@ -12,7 +12,7 @@ const PostedJobDetails = ({ job, jobs, setPostedJobs, setShow }) => {
 
     // function to view another user profile
     const viewProfile = (user) => {
-        setState({...state, currViewedProfile: user});
+        setState({...state, jobToAccept: job, currViewedProfile: user});
         setShow({userDetails: true, selection: false});
     };
 
