@@ -61,7 +61,7 @@ const JobsOverview = ({ user }) => {
             <div className="listing">
                 {
                     jobs.length === 0 ?
-                    <p>No jobs posted yet!</p> :
+                    <p className="no-msg">NO JOBS POSTED YET!</p> :
                     overview
                 }
             </div>

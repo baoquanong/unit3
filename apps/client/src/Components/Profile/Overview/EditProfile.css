@@ -1,43 +1,57 @@
-#edit-profile {
-    background: var(--suede);
-    min-height: 80vh;
-    padding: 50px 0 0;
+#edit-profile-page {
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
+    /* padding-top: 50px; */
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 30px;
 }
 
-#edit-profile > h1 {
-    margin: 0;
+#edit-profile-page {
+    color: var(--tangerine);
+    letter-spacing: 3px;
+}
 
-    color: var(--midnight);
-    letter-spacing: 6px;
-    font-family: Covered By Your Grace;
-    font-size: 45px;
-    text-shadow: 2px 2px var(--mist);
+#edit-profile {
+    background: url(../../../images/Signup.png);
+    background-repeat: no-repeat;
+    background-size:cover; 
+    background-position: center;
+    width: 900px;
+    height: 743px;
+    margin: 90px 0;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #edit-profile-form {
-    background: var(--mist);
-    width: fit-content;
-    padding: 40px 50px;
-    border-radius: 20px;
-    border: 3px solid darkslategray;
-    /* box-shadow: 2px 2px darkslategray; */
+    padding: 40px 60px 0 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+}
+
+#edit-profile-form > h1 {
+    margin: 0 0 40px;
+
+    color: white;
+    letter-spacing: 2px;
+    font-size: 35px;
 }
 
 #edit-profile-form > #inputs {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 }
 
 #edit-info {
@@ -60,18 +74,18 @@
     flex-direction: column;
     gap: 3px;
 
-    color: var(--sunset);
+    color: white;
     letter-spacing: 2px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 #edit-info > label > input {
-    background: var(--mist);
+    background: white;
     border: none;
-    border-bottom: 2px solid var(--midnight);
+    padding: 5px;
     
-    color: var(--fog);
+    color: var(--slate);
     font-family: Raleway;
     font-size: 14px;
     font-weight: 500;
@@ -85,7 +99,7 @@
 }
 
 #skills > legend {
-    margin: 20px 0 0;
+    /* margin: 20px 0 0; */
     width: 200px;
 
     display: flex;
@@ -93,13 +107,14 @@
     align-items: flex-start;
     gap: 3px;
 
-    color: var(--sunset);
+    color: white;
     letter-spacing: 2px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 #edit-skills {
+    margin: 3px 0 30px;
     width: 200px;
 
     display: flex;
@@ -112,39 +127,42 @@
     flex-direction: row;
     gap: 2px;
 
-    color: var(--fog);
+    color: var(--slate);
     letter-spacing: 1px;
 }
 
 #skills > textarea {
+    width: 200px;
     height: 100px;
     padding: 5px;
-    border: 2px solid var(--midnight);
+    border: none;
 
-    color: var(--midnight);
+    color: var(--slate);
     font-family: Raleway;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
 }
 
 #edit-profile-form > #update-btn {
-    background: midnightblue;
-    margin: 20px 0 0;
-    padding: 10px 15px;
-    border: 2px solid midnightblue;
-    border-radius: 10px;
+    background: var(--tangerine);
+    margin: 50px 0 0;
+    padding: 10px 20px;
+    /* border: 2px solid var(--tangerine); */
+    border: none;
+    border-radius: 5px;
 
-    color: whitesmoke;
-    font-family: 'Lato', sans-serif;
-    font-size: 15px;
-    letter-spacing: 1px;
+    color: var(--fog);
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 #edit-profile-form > #update-btn:hover {
-    background: whitesmoke;
-    box-shadow: 1px 1px midnightblue;
+    background: var(--taupe);
+    /* border: 2px solid grey; */
 
-    color: midnightblue;
+    color: grey;
     cursor: pointer;
 }

@@ -1,6 +1,6 @@
 #job-details {
     background: url(../../images/PeopleBG.png);
-    min-height: 85vh;
+    min-height: 86vh;
     width: 100vw;
 
     display: flex;
@@ -105,4 +105,34 @@
     background: white;
     color: var(--tangerine);
     cursor: pointer;
+}
+
+button.disabled {
+    background: var(--grey);
+    padding: 5px 15px;
+    margin: 50px 0 0;
+    border: none;
+    border: 2px solid var(--tangerine);
+    border-radius: 5px;
+
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#curr-job > #disabled-btn {
+    background: grey;
+    padding: 5px 15px;
+    margin: 50px 0 0;
+    border: none;
+    /* border: 2px solid var(--tangerine); */
+    border-radius: 5px;
+
+    color: var(--slate);
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }

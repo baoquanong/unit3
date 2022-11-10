@@ -26,7 +26,7 @@ const Preferences = () => {
         const userPrefs = {
             skills: userSkills,
             description: userData.description,
-            img: `https://api.multiavatar.com/${user.username}.png`
+            img: `https://api.multiavatar.com/${user?.username}.png`
         };
 
         try {
@@ -44,7 +44,7 @@ const Preferences = () => {
                 console.log("successfully updated user details!");
                 // setState({...state, loggedIn: data.userInfo});
                 localStorage.setItem("currUser", JSON.stringify(data));
-                navigate("/user");
+                navigate("/jobs");
             } else {
                 console.log("data error:", data.error);
             }
@@ -55,52 +55,54 @@ const Preferences = () => {
     };
 
     return (
-        <div id="preferences">
-            <form
-                id="preferences-form"
-                autoComplete="off"
-                onSubmit={handleSubmit}
-            >
-                <h1>WELCOME, {user.username.toUpperCase()}</h1>
-                <p>
-                    Tell us more about yourself and what you're looking for! <br />
-                    Your preferences can always be updated later in your profile
-                </p>
-                <section id="interests">
-                    <legend>These are my skills:</legend>
-                    <div id="check-inputs">
-                        <label>
-                            <input type="checkbox" name="Handywork" />
-                            Handywork
-                        </label>
-                        <label>
-                            <input type="checkbox" name="Cleaning" />
-                            Cleaning
-                        </label>
-                        <label>
-                            <input type="checkbox" name="Caregiving" />
-                            Caregiving
-                        </label>
-                        <label>
-                            <input type="checkbox" name="Pets" />
-                            Pets
-                        </label>
-                        <label>
-                            <input type="checkbox" name="Events" />
-                            Events
-                        </label>
-                        <label>
-                            <input type="checkbox" name="Education" />
-                            Education
-                        </label>
-                    </div>
-                </section>
-                <label id="description">
-                    A little bit about myself/my skills:
-                    <textarea type="text" name="description" />
-                </label>
-                <button>Create My Account</button>
-            </form>
+        <div id="preferences-page">
+            <div id="preferences">
+                <form
+                    id="preferences-form"
+                    autoComplete="off"
+                    onSubmit={handleSubmit}
+                >
+                    <h1>WELCOME, {user?.username.toUpperCase()}</h1>
+                    <p id="blurb">
+                        Tell us more about yourself and help others get to know you!<br />
+                        Your preferences can always be updated later in your profile
+                    </p>
+                    <section id="interests">
+                        <legend>MY SKILLS:</legend>
+                        <div id="check-inputs">
+                            <label>
+                                <input type="checkbox" name="Handywork" />
+                                Handywork
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Cleaning" />
+                                Cleaning
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Caregiving" />
+                                Caregiving
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Pets" />
+                                Pets
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Events" />
+                                Events
+                            </label>
+                            <label>
+                                <input type="checkbox" name="Education" />
+                                Education
+                            </label>
+                        </div>
+                    </section>
+                    <label id="description">
+                        ABOUT ME:
+                        <textarea type="text" name="description" />
+                    </label>
+                    <button id="create-btn">LET'S GO</button>
+                </form>
+            </div>
         </div>
     );
 };

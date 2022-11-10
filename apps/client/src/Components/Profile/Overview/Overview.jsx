@@ -8,16 +8,23 @@ import ReviewsOverview from "./ReviewsOverview";
 const Overview = () => {
     // setting up state
     const { state, setState } = useContext(DataContext);
-
+    
+    // getting variables
     const currUser = JSON.parse(localStorage.getItem("currUser"));
 
     return (
         <div id="overview">
-            <Profile user={currUser} />
-            <div id="jobs-reviews">
-                <JobsOverview user={currUser} />
-                <ReviewsOverview user={currUser} />
-            </div>
+            {
+               currUser === null ?
+               <h1>PLEASE LOG IN TO VIEW YOUR PROFILE</h1> :
+               <>
+                    <Profile user={currUser} />
+                    <div id="jobs-reviews">
+                        <JobsOverview user={currUser} />
+                        <ReviewsOverview user={currUser} />
+                    </div>
+               </>
+            }
         </div>
     );
 };

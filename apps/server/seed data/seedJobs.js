@@ -1,7 +1,7 @@
 const seedJobs = [
   {
     postedBy: "63653b3564406e7db583721f",
-    acceptedBy: "63653b3564406e7db583721d",
+    // acceptedBy: "63653b3564406e7db583721d",
     title: "Looking for cleaner",
     description: "Looking for cleaner for 3 times a week",
     type: "Cleaning",
@@ -13,7 +13,7 @@ const seedJobs = [
   },
   {
     postedBy: "63653b3564406e7db5837226",
-    acceptedBy: "63653b3564406e7db5837228",
+    // acceptedBy: "63653b3564406e7db5837228",
     title: "Check in and deliver food to elderly",
     description: "Deliver lunch to my grandmother while I am at work",
     type: "Caregiving",
@@ -25,7 +25,7 @@ const seedJobs = [
   },
   {
     postedBy: "63653b3564406e7db5837228",
-    acceptedBy: "63653b3564406e7db5837227",
+    // acceptedBy: "63653b3564406e7db5837227",
     title: "Looking for plumber",
     description: "Finding someone to fix my leaking tap",
     type: "Handywork",
@@ -37,7 +37,7 @@ const seedJobs = [
   },
   {
     postedBy: "63653b3564406e7db5837224",
-    acceptedBy: "63653b3564406e7db5837225",
+    // acceptedBy: "63653b3564406e7db5837225",
     title: "Looking for confinement nanny",
     description: "Looking for a nanny after my delivery",
     type: "Caregiving",
@@ -49,7 +49,7 @@ const seedJobs = [
   },
   {
     postedBy: "63653b3564406e7db583721d",
-    acceptedBy: "63653b3564406e7db583721f",
+    // acceptedBy: "63653b3564406e7db583721f",
     title: "PT Sales Assistant wanted",
     description: "Part-time sale assistant for pop up store",
     type: "Event",

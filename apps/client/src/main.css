@@ -5,16 +5,17 @@
 :root {
     --tide: #3A5157;
     --midnight: #24303c;
-    --mist: #91a3a7;
+    --mist: #b8cace;
     --fog: #ededed;
-    --shell: #c9a58b;
     --cherry: #ff4b54;
     --suede: #F8EFE8;
     --tangerine: #ff9a18;
-    --taupe: #efceab;
+    --taupe: #efc2ab;
+    --peach: #ffe5b4;
     --sunset: #ffb101;
     --sunshine: #efc673;
-    --slate: #494949;
+    --slate: #24303c;
+    --smoke: #444d55;
 }
 
 body {

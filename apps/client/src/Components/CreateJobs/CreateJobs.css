@@ -1,16 +1,21 @@
 #create-job {
     background: url(../../images/PeopleBG.png);
-    height: 85vh;
+    height: 86vh;
     overflow-y: hidden;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     gap: 25px;
 }
 
 #create-job > h1 {
+    color: var(--tangerine);
+    letter-spacing: 3px;
+}
+
+#create > h1 {
     margin: 75px 0 0;
 
     color: grey;
