@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
+import ReviewsOverview from "../Profile/Overview/ReviewsOverview";
 import "./OtherUser.css";
 import OtherUserReviews from "./OtherUserReviews";
 
@@ -9,6 +10,10 @@ const OtherUser = ({ show, setShow }) => {
     // setting up context
     const { state, setState } = useContext(DataContext);
     const user = state.currViewedProfile;
+    const job = state.jobToAccept;
+
+    // setting up variables
+    const jobs = JSON.parse(localStorage.getItem("currUserPostedJobs"));
 
     // setting up navigation
     const navigate = useNavigate();
@@ -17,6 +22,33 @@ const OtherUser = ({ show, setShow }) => {
     const toggleShow = () => {
         setShow({...show, userDetails: false});
     };
+
+    // function to select an applicant
+    const selectApplicant = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch(`/api/jobs/accept/${job._id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ acceptedBy: user._id }),
+            });
+            
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully accepted applicant!");
+                const revIndex = jobs.indexOf((j) => j._id === job._id);
+                jobs[revIndex] = data;
+                localStorage.setItem("currUserPostedJobs", JSON.stringify(jobs));
+            }
+        }
+        catch (error) {
+            console.log("error:", error);
+        }
+    }
 
     return (
         <div id="other-user">
@@ -61,25 +93,9 @@ const OtherUser = ({ show, setShow }) => {
                     }
                 </div>
             </div>
-            <OtherUserReviews id={user._id} />
+            <button onClick={selectApplicant}>SELECT {user?.username.toUpperCase()}</button>
         </div>
     );
 };
 
 export default OtherUser;
-
-// <div id="other-user">
-// <div id="ou-profile">
-//     <div id="ou-info">
-//         <div id="personal-info">
-//             
-//             <div id="pi-content">
-
-//             </div>
-//         </div>
-
-//     </div>
-//     <OtherUserReviews id={user._id} />
-// </div>
-// <button onClick={() => navigate("/user/postedjobs")}>BACK TO JOBS</button>
-// </div>

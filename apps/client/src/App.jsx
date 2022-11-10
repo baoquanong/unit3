@@ -27,6 +27,7 @@ const App = () => {
     const [state, setState] = useState({
         currViewedJob: {},
         currViewedProfile: {},
+        jobToAccept: {},
         currReviewing: {},
         currEditJob: {},
     });
