@@ -169,11 +169,11 @@ router.put("/accept/:job", async (req, res) => {
         req.params.job,
         req.body,
         { new :true }
-      );
+      ).populate(["acceptedBy", "postedBy", "applicants"]).exec();
       if (acceptJob.length === 0) {
         res.status(400).json({ error: "Unable to accept user" });
       } else {
-        res.status(200).json({acceptJob})
+        res.status(200).json(acceptJob);
       }
     }
     catch (error) {

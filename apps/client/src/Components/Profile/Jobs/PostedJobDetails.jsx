@@ -91,7 +91,11 @@ const PostedJobDetails = ({ job }) => {
                 <div id="job-buttons">
                     {
                         job.acceptedBy ?
-                        <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button> :
+                        <>
+                            <button onClick={seeDetails}>VIEW MORE DETAILS</button>
+                            <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button>
+                        </>
+                        :
                         <>
                             <button onClick={seeDetails}>VIEW MORE DETAILS</button>
                             <button onClick={editJob}>EDIT</button>

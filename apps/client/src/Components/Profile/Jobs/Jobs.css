@@ -111,6 +111,13 @@
     justify-content: center;
 }
 
+#pj-details > #job-content {
+    width: 250px;
+    min-height: 250px;
+    height: fit-content;
+    padding: 20px;
+}
+
 #pj-details > #job-content > #jd {
     color: var(--smoke);
     font-weight: 500;
@@ -146,6 +153,7 @@
 #applicants {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 

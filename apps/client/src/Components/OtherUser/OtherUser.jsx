@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
 import "./OtherUser.css";
-import OtherUserReviews from "./OtherUserReviews";
 
 const OtherUser = ({ setShow, user, reviews }) => {
+    // setting up context
+    const { state, setState } = useContext(DataContext);
+    const myPosted = state.myPostedJobs;
+    const currJob = state.currViewedJob;
+
     // setting up navigation
     const navigate = useNavigate();
 
@@ -33,7 +37,7 @@ const OtherUser = ({ setShow, user, reviews }) => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`/api/jobs/accept/${job._id}`, {
+            const response = await fetch(`/api/jobs/accept/${currJob._id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,9 +49,10 @@ const OtherUser = ({ setShow, user, reviews }) => {
 
             if (response.ok) {
                 console.log("successfully accepted applicant!");
-                const revIndex = jobs.indexOf((j) => j._id === job._id);
-                jobs[revIndex] = data;
-                localStorage.setItem("currUserPostedJobs", JSON.stringify(jobs));
+                const newPosted = myPosted?.filter((j) => j._id !== data._id);
+                newPosted.unshift(data);
+                setState({...state, myPostedJobs: newPosted, currViewedJob: data});
+                setShow(false);
             }
         }
         catch (error) {

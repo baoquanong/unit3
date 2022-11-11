@@ -32,7 +32,8 @@ router.post("/login", async (req, res) => {
         if (user.length === 0) {
             res.status(400).json({ error: "No user found"})
         } else {
-            if (user.password === req.body.password) {
+            const loginPass = bcrypt.compareSync(req.body.password, user.password);
+            if (loginPass) {
                 req.session.userID = user._id;
                 res.json({ userInfo: user });
             } else {

@@ -76,16 +76,26 @@ const ApplicantSelection = () => {
                         </p>
                     </div>
                     <div id="applicant-info">
-                        <h3>APPLICANTS:</h3>
-                        <div id="applicants">
-                            {
-                                job?.applicants?.map((applicant) => {
-                                    return (
-                                        <p onClick={() => showDetails(applicant)} className="applicant">{applicant?.username?.toUpperCase()}</p>
-                                    )
-                                })
-                            }
-                        </div>
+                        {
+                            !job?.acceptedBy  ?
+                            <>
+                                <h3>APPLICANTS:</h3>
+                                <div id="applicants">
+                                    {
+                                        job?.applicants?.map((applicant) => {
+                                            return (
+                                                <p onClick={() => showDetails(applicant)} className="applicant">{applicant?.username?.toUpperCase()}</p>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </>
+                            :
+                            <>
+                                <h3>CHOSEN APPLICANT:</h3>
+                                <p id="chosen-applicant">{job?.acceptedBy?.username} ({job?.acceptedBy?.phoneNumber})</p>
+                            </>
+                        }
                     </div>
                 </div>
                 {

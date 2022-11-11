@@ -37,11 +37,12 @@ function FindJobs() {
 
       if (res.ok) {
         console.log("successfully fetched all jobs");
+        console.log("jobs:", jobs);
         if (currUser === null) {
           setState({...state, allJobs: data});
         } else {
-          const postedJobs = data.filter((job) => job.postedBy._id === currUser._id); // filtering jobs posted by current user
-          const appliedJobs = data.filter((job) => job.applicants.some((user) => user._id === currUser._id)); // filter jobs applied for by current user
+          const postedJobs = data?.filter((job) => job?.postedBy?._id === currUser._id); // filtering jobs posted by current user
+          const appliedJobs = data?.filter((job) => job?.applicants?.some((user) => user._id === currUser._id)); // filter jobs applied for by current user
           setState({...state, allJobs: data.reverse(), myPostedJobs: postedJobs, myAppliedJobs: appliedJobs});
         }
       } else {
