@@ -14,6 +14,9 @@ const EditJob = () => {
     const currUser = JSON.parse(localStorage.getItem("currUser"));
     const today = new Date();
 
+    // setting up state
+    const [error, setError] = useState("");
+
     // setting up navigation
     const navigate = useNavigate();
 
@@ -30,34 +33,41 @@ const EditJob = () => {
     const editJob = async (event) => {
         event.preventDefault();
 
+        // checking dates
+        const startDate = job?.start?.replace("-", "");
+        const endDate = job?.end?.replace("-", "");
 
-        try {
-            const response = await fetch(`/api/jobs/edit/${job._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(job),
-            });
-            
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log("successfully updated job!");
-                console.log("updated job:", data);
-
-                const newPosted = myPosted.filter((j) => j._id !== job._id);
-                newPosted.unshift(job);
-
-                setState({...state, myPostedJobs: newPosted});
-
-                navigate("/user/postedjobs");
-            } else {
-                console.log("error:", data.error)
+        if (endDate < startDate) {
+            setError("END DATE cannot be before START DATE");
+        } else {
+            try {
+                const response = await fetch(`/api/jobs/edit/${job._id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(job),
+                });
+                
+                const data = await response.json();
+    
+                if (response.ok) {
+                    console.log("successfully updated job!");
+                    console.log("updated job:", data);
+    
+                    const newPosted = myPosted.filter((j) => j._id !== job._id);
+                    newPosted.unshift(job);
+    
+                    setState({...state, myPostedJobs: newPosted});
+    
+                    navigate("/user/postedjobs");
+                } else {
+                    console.log("error:", data.error)
+                }
             }
-        }
-        catch (error) {
-            console.log("error:", error)
+            catch (error) {
+                console.log("error:", error)
+            }
         }
     };
 
@@ -155,6 +165,11 @@ const EditJob = () => {
                                     />
                                 </label>
                             </div>
+                            {
+                                error === "" ?
+                                <></> :
+                                <p id="error-msg">{error}</p>
+                            }
                             <button>UPDATE JOB</button>
                         </form>
                     </div>

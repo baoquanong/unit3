@@ -12,31 +12,43 @@ function CreateJobs() {
   const currUser = JSON.parse(localStorage.getItem("currUser"));
   const today = new Date();
 
+  // setting up state
+  const [error, setError] = useState("");
+
+  // function to create a new job
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const jobInfo = Object.fromEntries(new FormData(event.target));
     jobInfo.postedBy = currUser._id;
 
-    try {
-      const res = await fetch("/api/jobs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(jobInfo),
-      });
+    // checking dates
+    const startDate = jobInfo?.start?.replace("-", "");
+    const endDate = jobInfo?.end?.replace("-", "");
 
-      const data = await res.json();
-
-      if (res.ok) {
-        console.log("success");
-        navigate("/jobs");
-      } else {
-        console.log(data.msg);
+    if (endDate < startDate) {
+      setError("END DATE cannot be before START DATE")
+    } else {
+      try {
+        const res = await fetch("/api/jobs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jobInfo),
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          console.log("success");
+          navigate("/jobs");
+        } else {
+          console.log(data.msg);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -112,6 +124,11 @@ function CreateJobs() {
                   />
                 </label>
               </div>
+              {
+                error === "" ?
+                <></> :
+                <p id="error-msg">{error}</p>
+              }
               <button>POST JOB</button>
             </form>
           </div>

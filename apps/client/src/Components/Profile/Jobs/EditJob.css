@@ -97,11 +97,19 @@ select, option {
     font-family: Raleway;
 }
 
+#edit-job-form > #error-msg {
+    margin: 0;
+    padding: 0;
+    color: var(--cherry);
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
 #edit-job-form > button,
 #edit-job-page > button {
     background: var(--tangerine);
     padding: 5px 15px;
-    margin: 20px 0;
+    margin: 0 0 10px;
     border: none;
     border: 2px solid var(--tangerine);
     border-radius: 5px;
