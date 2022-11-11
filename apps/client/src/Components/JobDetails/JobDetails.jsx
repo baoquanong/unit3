@@ -8,6 +8,7 @@ function JobDetails() {
   // setting up context
   const { state, setState } = useContext(DataContext);
   const job = state.currViewedJob;
+  const myApplied = state.myAppliedJobs;
 
   // set up state
   const currUser = JSON.parse(localStorage.getItem("currUser"));
@@ -63,17 +64,21 @@ function JobDetails() {
             <span>COMPENSATION: </span>${job?.price ? job?.price : "TBC"}
           </p>
         </div>
-        <button
-          id={
-            job?.postedBy?.username === currUser?.username ?
-            "disabled-btn" :
-            "apply-btn"
-          }
-          onClick={() => applyJob(job?._id)}
-          disabled={job?.postedBy?.username === currUser.username ? true : false}
-        >
-          APPLY
-        </button>
+        {
+          myApplied?.some((j) => j._id === job._id) ?
+          <button id="disabled-btn" disabled={true}>ALREADY APPLIED!</button> :
+          <button
+            id={
+              job?.postedBy?.username === currUser?.username ?
+              "disabled-btn" :
+              "apply-btn"
+            }
+            onClick={() => applyJob(job?._id)}
+            disabled={job?.postedBy?.username === currUser.username ? true : false}
+          >
+            APPLY
+          </button>
+        }
       </div>
       <button id="back-btn" onClick={() => navigate("/jobs")}>
         BACK
