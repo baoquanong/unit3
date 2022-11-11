@@ -63,98 +63,104 @@ const EditJob = () => {
 
     return (
         <div id="edit-job-page">
-            <h1>EDIT JOB</h1>
-            <div id="edit-job">
-                <form id="edit-job-form" onSubmit={editJob} autoComplete="off">
-                    <div id="job-name">
-                        <label>
-                            JOB TITLE:
-                            <textarea
-                            type="text"
-                            name="title"
-                            required={true}
-                            value={job?.title}
-                            onChange={() => handleChange(event, "title")}
-                            />
-                        </label>
-                        <label required={true}>
-                            DESCRIPTION:
-                            <textarea
-                            rows="10"
-                            cols="30"
-                            name="description"
-                            required={true}
-                            value={job?.description}
-                            onChange={() => handleChange(event, "description")}
-                            />
-                        </label>
+            {
+                currUser == null ?
+                <h1 id="no-login">PLEASE LOG IN TO EDIT A JOB</h1> :
+                <>
+                    <h1>EDIT JOB</h1>
+                    <div id="edit-job">
+                        <form id="edit-job-form" onSubmit={editJob} autoComplete="off">
+                            <div id="job-name">
+                                <label>
+                                    JOB TITLE:
+                                    <textarea
+                                    type="text"
+                                    name="title"
+                                    required={true}
+                                    value={job?.title}
+                                    onChange={() => handleChange(event, "title")}
+                                    />
+                                </label>
+                                <label required={true}>
+                                    DESCRIPTION:
+                                    <textarea
+                                    rows="10"
+                                    cols="30"
+                                    name="description"
+                                    required={true}
+                                    value={job?.description}
+                                    onChange={() => handleChange(event, "description")}
+                                    />
+                                </label>
+                            </div>
+                            <div id="job-logs">
+                                <label>
+                                    JOB TYPE:
+                                    <select
+                                        name="type"
+                                        required={true}
+                                        value={job?.type}
+                                        onChange={() => handleChange(event, "type")}
+                                    >
+                                        <option>Select Type</option>
+                                        <option>Handywork</option>
+                                        <option>Caregiving</option>
+                                        <option>Events</option>
+                                        <option>Cleaning</option>
+                                        <option>Pets</option>
+                                        <option>Education</option>
+                                        <option>Others</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    COMPENSATION:
+                                    <input
+                                        type="number"
+                                        name="price"
+                                        required={true}
+                                        value={job?.price}
+                                        onChange={() => handleChange(event, "price")}
+                                    />
+                                </label>
+                                <label>
+                                    LOCATION:
+                                        <input
+                                        type="text"
+                                        name="location"
+                                        required={true}
+                                        value={job?.location}
+                                        onChange={() => handleChange(event, "location")}
+                                    />
+                                </label>
+                            </div>
+                            <div id="job-dates">
+                                <label>
+                                    START DATE:
+                                    <input
+                                        type="date"
+                                        id="start"
+                                        value={job?.start?.slice(0, 10)}
+                                        onChange={() => handleChange(event, "start")}
+                                        min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
+                                    />
+                                </label>
+                                <label>
+                                    END DATE:
+                                    <input
+                                        type="date"
+                                        id="end"
+                                        value={job?.end?.slice(0, 10)}
+                                        onChange={() => handleChange(event, "start")}
+                                        min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
+                                    />
+                                </label>
+                            </div>
+                            <button>UPDATE JOB</button>
+                        </form>
                     </div>
-                    <div id="job-logs">
-                        <label>
-                            JOB TYPE:
-                            <select
-                                name="type"
-                                required={true}
-                                value={job?.type}
-                                onChange={() => handleChange(event, "type")}
-                            >
-                                <option>Select Type</option>
-                                <option>Handywork</option>
-                                <option>Caregiving</option>
-                                <option>Events</option>
-                                <option>Cleaning</option>
-                                <option>Pets</option>
-                                <option>Education</option>
-                                <option>Others</option>
-                            </select>
-                        </label>
-                        <label>
-                            COMPENSATION:
-                            <input
-                                type="number"
-                                name="price"
-                                required={true}
-                                value={job?.price}
-                                onChange={() => handleChange(event, "price")}
-                            />
-                        </label>
-                        <label>
-                            LOCATION:
-                                <input
-                                type="text"
-                                name="location"
-                                required={true}
-                                value={job?.location}
-                                onChange={() => handleChange(event, "location")}
-                            />
-                        </label>
-                    </div>
-                    <div id="job-dates">
-                        <label>
-                            START DATE:
-                            <input
-                                type="date"
-                                id="start"
-                                value={job?.start?.slice(0, 10)}
-                                onChange={() => handleChange(event, "start")}
-                                min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
-                            />
-                        </label>
-                        <label>
-                            END DATE:
-                            <input
-                                type="date"
-                                id="end"
-                                value={job?.end?.slice(0, 10)}
-                                onChange={() => handleChange(event, "start")}
-                                min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
-                            />
-                        </label>
-                    </div>
-                    <button>UPDATE JOB</button>
-                </form>
-            </div>
-            <button onClick={() => navigate("/user/postedjobs")}>BACK</button>
+                    <button onClick={() => navigate("/user/postedjobs")}>BACK</button>
+                </>
+            }
         </div>
     );
 };
