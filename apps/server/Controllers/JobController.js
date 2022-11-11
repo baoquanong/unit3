@@ -126,7 +126,7 @@ router.put("/apply/:id", async (req, res) => {
           req.params.id,
           { $push: { applicants: req.body._id } },
           { new: true }
-        ).exec();
+        ).populate(["postedBy", "acceptedBy", "applicants"]).exec();
         res.status(200).json(applyJob);
       }
     } catch (error) {
@@ -146,7 +146,7 @@ router.put("/edit/:job", async (req, res) => {
         req.params.job,
         req.body,
         { new: true }
-      );
+      ).exec();
       if (editJob.length === 0) {
         res.status(400).json({ error: "Unable to find job to update" });
       } else {

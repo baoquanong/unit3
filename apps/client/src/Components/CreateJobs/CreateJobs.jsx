@@ -44,7 +44,7 @@ function CreateJobs() {
           console.log("success");
           navigate("/jobs");
         } else {
-          console.log(data.msg);
+          console.log("error:", data.error);
         }
       } catch (error) {
         console.log(error);

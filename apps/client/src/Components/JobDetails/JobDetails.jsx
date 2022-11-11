@@ -18,6 +18,7 @@ function JobDetails() {
   // setting up navigation
   const navigate = useNavigate();
 
+  // apply for job
   const applyJob = async (id) => {
     try {
       const response = await fetch(`/api/jobs/apply/${id}`, {
@@ -31,8 +32,9 @@ function JobDetails() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Successfully applied for job!");
+        // alert("Successfully applied for job!");
         console.log(data);
+        setState({...state, currViewedJob: data, myAppliedJobs: [...myApplied, data]});
         // navigate("/jobs");
       } else {
         alert("error:", data.error);

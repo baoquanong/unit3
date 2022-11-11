@@ -2,15 +2,24 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const User = require("../models/User"); // User schema model
 const seedUsers = require("../seed data/seedUsers") // seed data
+
+const saltRounds = 10;
 
 // ROUTES
 // seed route
 router.get("/seed", async (req, res) => {
     await User.deleteMany();
-    const users = await User.insertMany(seedUsers);
+    const encryptedUsers = seedUsers.map((user) => (
+        {
+            ...user,
+            password: bcrypt.hashSync(user.password, saltRounds)
+        }
+    ));
+    const users = await User.insertMany(encryptedUsers);
 
     res.json(users);
 });
