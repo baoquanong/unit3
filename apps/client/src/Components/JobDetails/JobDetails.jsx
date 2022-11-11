@@ -12,6 +12,7 @@ function JobDetails() {
   // set up state
   const currUser = JSON.parse(localStorage.getItem("currUser"));
   const [user, setUser] = useState(currUser);
+  const [error, setError] = useState("");
 
   // setting up navigation
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function JobDetails() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("successfully updated job!");
+        alert("Successfully applied for job!");
         console.log(data);
         // navigate("/jobs");
       } else {
@@ -42,6 +43,9 @@ function JobDetails() {
 
   return (
     <div id="job-details">
+      {
+
+      }
       <div id="curr-job">
         <h2>{job.title.toUpperCase()}</h2>
         <p id="posted-by">Posted By: {job.postedBy.username}</p>
@@ -62,7 +66,15 @@ function JobDetails() {
             <span>COMPENSATION: </span>${job.price ? job.price : "TBC"}
           </p>
         </div>
-        <button id="apply-btn" onClick={() => applyJob(job._id)}>
+        <button
+          id={
+            job.postedBy.username === currUser.username ?
+            "disabled-btn" :
+            "apply-btn"
+          }
+          onClick={() => applyJob(job._id)}
+          disabled={job.postedBy.username === currUser.username ? true : false}
+        >
           APPLY
         </button>
       </div>

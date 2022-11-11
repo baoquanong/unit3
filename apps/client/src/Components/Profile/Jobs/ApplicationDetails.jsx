@@ -4,14 +4,14 @@ const ApplicationDetails = ({ job }) => {
 
     return (
         <div className="applied">
-            <h4>{job?.jobTitle.toUpperCase()}</h4>
+            <h4>{job?.title?.toUpperCase()}</h4>
             <p>
                 <span>DESCRIPTION:</span>
-                {job?.jobDescription}
+                {job?.description}
             </p>
             <p>
                 <span>DATE:</span>
-                {job?.jobStart.slice(0, 10)} to {job?.jobEnd.slice(0, 10)}
+                {job?.start.slice(0, 10)} to {job?.end.slice(0, 10)}
             </p>
             <p>
                 <span>POSTED BY:</span>

@@ -46,7 +46,7 @@ function LoginPage() {
         console.log("successfully logged in!");
         // setState({...state, loggedIn: data.userInfo});
         localStorage.setItem("currUser", JSON.stringify(data.userInfo));
-        navigate("/user");
+        navigate("/jobs");
       } else {
         setError(data.error);
       }

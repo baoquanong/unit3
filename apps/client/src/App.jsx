@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomeLayout from "./Archive/HomeLayout";
@@ -25,11 +25,15 @@ export const DataContext = createContext();
 const App = () => {
     // setting up global state
     const [state, setState] = useState({
-        currViewedJob: {},
-        currViewedProfile: {},
-        jobToAccept: {},
-        currReviewing: {},
-        currEditJob: {},
+        allJobs: [], // array containing all jobs
+        myPostedJobs: [], // array containing jobs posted by current user
+        myAppliedJobs: [], // array containing jobs applied for by current user
+        myReviews: [], // array containing reviews for current user
+        currViewedJob: {}, // contains details of job currently being viewed
+        currViewedProfile: {}, // contains details of other user profile currently being viewed
+        jobToAccept: {}, // contains details of job user is about to accept applicant for
+        currReviewing: {}, // contains details of job user is leaving review for
+        currEditJob: {}, // contains details of job currently being edited
     });
 
     return (

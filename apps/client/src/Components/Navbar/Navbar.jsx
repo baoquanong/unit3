@@ -7,6 +7,9 @@ function Navbar() {
   // setting up navigation
   const navigate = useNavigate();
 
+  // setting up variable
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
+
   // function to logout
   const handleLogout = async () => {
     try {
@@ -35,16 +38,30 @@ function Navbar() {
   return (
     <div id="layout">
       <div id="navbar">
-        <div id="job-tabs">
-          <Link className="tab" to="/jobs">FIND JOBS</Link>
-          <Link className="tab" to="/jobs/create">CREATE A JOB</Link>
-        </div>
-        <h1><span>SIDE</span>HUSTLE</h1>
-        <div id="profile-tabs">
-          <Link className="tab" to="/user">PROFILE</Link>
-          <Link className="tab" to="/user/postedjobs">JOBS</Link>
-          <p className="tab" onClick={handleLogout}>LOGOUT</p>
-        </div>
+        {
+          currUser === null ?
+          <>
+            <h1><span>SIDE</span>HUSTLE</h1>
+            <div id="job-tabs">
+              <Link className="tab" to="/jobs">JOBS</Link>
+              <Link className="tab" to="/login">LOGIN</Link>
+              <Link className="tab" to="/signup">SIGN UP</Link>
+            </div>
+          </>
+          :
+          <>
+            <div id="job-tabs">
+              <Link className="tab" to="/jobs">FIND JOBS</Link>
+              <Link className="tab" to="/jobs/create">CREATE A JOB</Link>
+            </div>
+            <h1><span>SIDE</span>HUSTLE</h1>
+            <div id="profile-tabs">
+              <Link className="tab" to="/user">PROFILE</Link>
+              <Link className="tab" to="/user/postedjobs">JOBS</Link>
+              <p className="tab" onClick={handleLogout}>LOGOUT</p>
+            </div>
+          </>
+        }
       </div>
       <Outlet />
     </div>
