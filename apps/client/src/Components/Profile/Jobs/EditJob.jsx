@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../../App";
@@ -9,6 +9,10 @@ const EditJob = () => {
     const { state, setState } = useContext(DataContext);
     const job = state.currEditJob;
     const myPosted = state.myPostedJobs;
+
+    // variables
+    const currUser = JSON.parse(localStorage.getItem("currUser"));
+    const today = new Date();
 
     // setting up navigation
     const navigate = useNavigate();
@@ -25,6 +29,7 @@ const EditJob = () => {
     // function to edit job
     const editJob = async (event) => {
         event.preventDefault();
+
 
         try {
             const response = await fetch(`/api/jobs/edit/${job._id}`, {
@@ -132,6 +137,7 @@ const EditJob = () => {
                                 id="start"
                                 value={job?.start?.slice(0, 10)}
                                 onChange={() => handleChange(event, "start")}
+                                min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
                             />
                         </label>
                         <label>
@@ -141,12 +147,14 @@ const EditJob = () => {
                                 id="end"
                                 value={job?.end?.slice(0, 10)}
                                 onChange={() => handleChange(event, "start")}
+                                min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
                             />
                         </label>
                     </div>
                     <button>UPDATE JOB</button>
                 </form>
             </div>
+            <button onClick={() => navigate("/user/postedjobs")}>BACK</button>
         </div>
     );
 };
