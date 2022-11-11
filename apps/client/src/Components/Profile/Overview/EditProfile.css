@@ -10,7 +10,7 @@
     gap: 30px;
 }
 
-#edit-profile-page {
+#edit-profile-page > h1 {
     color: var(--tangerine);
     letter-spacing: 3px;
 }

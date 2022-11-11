@@ -19,9 +19,11 @@
 #find-jobs > h1 {
     margin: 40px 0 0;
 
-    color: grey;
-    letter-spacing: 8px;
-    font-size: 50px;
+    color: var(--smoke);
+    font-family: velourlight;
+    font-size: 35px;
+    letter-spacing: 7px;
+    word-spacing: 12px;
 }
 
 #filter-btn {

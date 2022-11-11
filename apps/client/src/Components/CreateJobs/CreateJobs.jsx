@@ -10,8 +10,7 @@ function CreateJobs() {
 
   // setting up variables
   const currUser = JSON.parse(localStorage.getItem("currUser"));
-  let date = new Date();
-  console.log("1");
+  const today = new Date();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,12 +42,12 @@ function CreateJobs() {
 
   return (
     <div id="create-job">
+      <h1 id="title">CREATE A JOB</h1>
       {
         currUser === null ?
-        <h1 id="no-login">PLEASE LOG IN TO CREATE A JOB</h1> :
+        <h2 id="no-login">PLEASE LOG IN TO CREATE A JOB</h2> :
         <>
           <div id="create">
-            <h1>CREATE A JOB</h1>
             <form
               id="create-form"
               method="post"
@@ -100,12 +99,17 @@ function CreateJobs() {
                     type="date"
                     name="start"
                     required={true}
-                    min={"2023-12-01"}
+                    min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
                   />
                 </label>
                 <label>
                   END DATE:
-                  <input type="date" name="end" required={true} />
+                  <input
+                    type="date"
+                    name="end"
+                    required={true}
+                    min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
+                  />
                 </label>
               </div>
               <button>POST JOB</button>

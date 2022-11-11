@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { DataContext } from "../../../App";
+import "./EditJob.css";
 
 const EditJob = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
     const job = state.currEditJob;
+    const myPosted = state.myPostedJobs;
 
     // setting up navigation
     const navigate = useNavigate();
@@ -17,14 +20,6 @@ const EditJob = () => {
             ...job,
             [`${field}`]: event.target.value
         }});
-    };
-
-    // function to update local storage array
-    const updateLocal = (updatedJob) => {
-        const jobs = JSON.parse(localStorage.getItem("currUserPostedJobs"));
-        const filteredJobs = jobs.filter((j) => j._id !== updatedJob._id);
-        filteredJobs.push(updatedJob);
-        localStorage.setItem("currUserPostedJobs", JSON.stringify(filteredJobs));
     };
 
     // function to edit job
@@ -45,7 +40,12 @@ const EditJob = () => {
             if (response.ok) {
                 console.log("successfully updated job!");
                 console.log("updated job:", data);
-                updateLocal(job);
+
+                const newPosted = myPosted.filter((j) => j._id !== job._id);
+                newPosted.unshift(job);
+
+                setState({...state, myPostedJobs: newPosted});
+
                 navigate("/user/postedjobs");
             } else {
                 console.log("error:", data.error)
@@ -57,68 +57,96 @@ const EditJob = () => {
     };
 
     return (
-        <div id="create-job">
-            <form id="create-job-form" onSubmit={editJob} autoComplete="off">
-                <div id="job-name">
-                <label>
-                    JOB TITLE:
-                    <input
-                    type="text"
-                    name="jobTitle"
-                    required={true}
-                    value={job.jobTitle}
-                    onChange={() => handleChange(event, "jobTitle")}
-                    />
-                </label>
-                <label required={true}>
-                    DESCRIPTION:
-                    <textarea
-                    rows="10"
-                    cols="30"
-                    name="jobDescription"
-                    required={true}
-                    value={job.jobDescription}
-                    onChange={() => handleChange(event, "jobDescription")}
-                    />
-                </label>
-                </div>
-                <div id="job-logs">
-                <label>
-                    JOB TYPE:
-                    <select name="jobType" required={true}>
-                        <option>Select Type</option>
-                        <option>Handywork</option>
-                        <option>Caregiving</option>
-                        <option>Events</option>
-                        <option>Cleaning</option>
-                        <option>Pets</option>
-                        <option>Education</option>
-                        <option>Others</option>
-                    </select>
-                </label>
-                <label>
-                    COMPENSATION:
-                    <input
-                    type="number"
-                    name="jobPrice"
-                    required={true}
-                    value={job.price}
-                    onChange={() => handleChange(event, "price")}
-                    />
-                </label>
-                <label>
-                    LOCATION:
-                    <input
-                    type="text"
-                    name="location"
-                    required={true}
-                    value={job.location}
-                    onChange={() => handleChange(event, "location")}
-                    />
-                </label>
-                </div>
-                <button>UPDATE JOB</button>
-            </form>
+        <div id="edit-job-page">
+            <h1>EDIT JOB</h1>
+            <div id="edit-job">
+                <form id="edit-job-form" onSubmit={editJob} autoComplete="off">
+                    <div id="job-name">
+                        <label>
+                            JOB TITLE:
+                            <textarea
+                            type="text"
+                            name="title"
+                            required={true}
+                            value={job?.title}
+                            onChange={() => handleChange(event, "title")}
+                            />
+                        </label>
+                        <label required={true}>
+                            DESCRIPTION:
+                            <textarea
+                            rows="10"
+                            cols="30"
+                            name="description"
+                            required={true}
+                            value={job?.description}
+                            onChange={() => handleChange(event, "description")}
+                            />
+                        </label>
+                    </div>
+                    <div id="job-logs">
+                        <label>
+                            JOB TYPE:
+                            <select
+                                name="type"
+                                required={true}
+                                value={job?.type}
+                                onChange={() => handleChange(event, "type")}
+                            >
+                                <option>Select Type</option>
+                                <option>Handywork</option>
+                                <option>Caregiving</option>
+                                <option>Events</option>
+                                <option>Cleaning</option>
+                                <option>Pets</option>
+                                <option>Education</option>
+                                <option>Others</option>
+                            </select>
+                        </label>
+                        <label>
+                            COMPENSATION:
+                            <input
+                                type="number"
+                                name="price"
+                                required={true}
+                                value={job?.price}
+                                onChange={() => handleChange(event, "price")}
+                            />
+                        </label>
+                        <label>
+                            LOCATION:
+                                <input
+                                type="text"
+                                name="location"
+                                required={true}
+                                value={job?.location}
+                                onChange={() => handleChange(event, "location")}
+                            />
+                        </label>
+                    </div>
+                    <div id="job-dates">
+                        <label>
+                            START DATE:
+                            <input
+                                type="date"
+                                id="start"
+                                value={job?.start?.slice(0, 10)}
+                                onChange={() => handleChange(event, "start")}
+                            />
+                        </label>
+                        <label>
+                            END DATE:
+                            <input
+                                type="date"
+                                id="end"
+                                value={job?.end?.slice(0, 10)}
+                                onChange={() => handleChange(event, "start")}
+                            />
+                        </label>
+                    </div>
+                    <button>UPDATE JOB</button>
+                </form>
+            </div>
         </div>
     );
 };

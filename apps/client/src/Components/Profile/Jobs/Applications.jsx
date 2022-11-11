@@ -52,11 +52,22 @@ const Applications = () => {
 
     return (
         <div id="applications">
-            <JobsHeader />
-            <h1>MY APPLICATIONS</h1>
-            <div id="applied-jobs">
-                {jobs}
-            </div>
+            {
+                user === null ?
+                <h2>PLEASE LOG IN TO VIEW YOUR JOBS</h2> :
+                <>
+                    <JobsHeader />
+                    <h1>MY APPLICATIONS</h1>
+                    <div id="applied-jobs">
+                        {
+                            myApplied.length === 0 ?
+                            <p id="error-msg">NO JOB APPLICATIONS YET!</p> :
+                            jobs
+                        }
+                    </div>
+                </>
+            }
+
         </div>
     );
 };

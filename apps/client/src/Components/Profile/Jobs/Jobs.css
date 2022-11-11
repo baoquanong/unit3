@@ -6,8 +6,9 @@
 #jobs-header > a {
     padding: 0 30px;
 
+    color: var(--smoke);
     text-decoration: none;
-    color: var(--midnight);
+    font-family: velourlight;
     font-weight: 700;
     letter-spacing: 1px;;
 }
@@ -34,7 +35,8 @@
     gap: 20px;
 }
 
-#posted-jobs > h2 {
+#posted-jobs > h2,
+#applications > h2 {
     margin: 100px 0 0;
     color: var(--tangerine);
     font-size: 40px;
@@ -44,12 +46,15 @@
 #posted-jobs > h1 {
     margin: 50px 0 0;
 
-    color: grey;
-    letter-spacing: 8px;
-    font-size: 50px;
+    color: var(--smoke);
+    font-family: velourlight;
+    font-size: 35px;
+    letter-spacing: 7px;
+    word-spacing: 12px;
 }
 
-#posted-listings > #error-msg {
+#posted-listings > #error-msg,
+#applied-jobs > #error-msg {
     margin-top: 50px;
     color: var(--tangerine);
     font-size: 25px;
@@ -189,23 +194,24 @@
 
 /* ====== Job Applications ====== */
 #applications {
-    background: var(--suede);
-    min-height: 85vh;
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
     padding: 50px 0 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
 #applications > h1 {
-    margin: 65px 0 0;
+    margin: 50px 0 0;
 
-    color: var(--midnight);
-    letter-spacing: 6px;
-    font-family: Covered By Your Grace;
-    font-size: 45px;
-    text-shadow: 2px 2px var(--mist);
+    color: var(--smoke);
+    font-family: velourlight;
+    font-size: 35px;
+    letter-spacing: 7px;
+    word-spacing: 12px;
 }
 
 #applied-jobs {
