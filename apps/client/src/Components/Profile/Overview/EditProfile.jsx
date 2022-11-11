@@ -51,7 +51,7 @@ const EditProfile = () => {
         // formatting inputs
         const userData = Object.fromEntries(new FormData(event.target));
         console.log("user data:", userData);
-        const userKeys = Object.keys(userData).sort().reverse().splice(4);
+        const userKeys = Object.keys(userData).sort().reverse().splice(3);
         console.log(userKeys);
         edits.skills = userKeys;
 
@@ -108,15 +108,6 @@ const EditProfile = () => {
                                         name="username"
                                         value={edits?.username}
                                         onChange={() => handleChange(event, "username")}
-                                    />
-                                </label>
-                                <label>
-                                    PASSWORD:
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        value={edits?.password}
-                                        onChange={() => handleChange(event, "password")}
                                     />
                                 </label>
                             </section>
