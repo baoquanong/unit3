@@ -42,7 +42,6 @@ const Preferences = () => {
 
             if (response.ok) {
                 console.log("successfully updated user details!");
-                // setState({...state, loggedIn: data.userInfo});
                 localStorage.setItem("currUser", JSON.stringify(data));
                 navigate("/jobs");
             } else {
@@ -65,7 +64,7 @@ const Preferences = () => {
                         autoComplete="off"
                         onSubmit={handleSubmit}
                     >
-                        <h1>WELCOME, {user?.username.toUpperCase()}</h1>
+                        <h1>WELCOME, {user?.username?.toUpperCase()}</h1>
                         <p id="blurb">
                             Tell us more about yourself and help others get to know you!<br />
                             Your preferences can always be updated later in your profile

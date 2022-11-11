@@ -1,0 +1,145 @@
+/* ====== Job Details ====== */
+#selection-page {
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
+    height: fit-content;
+    padding: 75px 0;
+    overflow-y: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 40px;
+}
+
+#selection-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+#selection-content > #selection-details {
+    background: url(../../../images/JobDescription.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 800px;
+    height: 656px;
+    /* margin: 50px 0 0; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#selection-details > h2 {
+    margin: 35px 0 0;
+
+    color: var(--slate);
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 25px;
+    max-width: 400px;
+}
+
+#selection-details > #posted-by {
+    margin: 5px 0 0;
+    color: var(--slate);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+#selection-details > #description {
+    margin: 30px 0 0;
+    max-width: 400px;
+
+    color: var(--slate);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#job-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#job-info > h3,
+#applicant-info > h3 {
+    margin: 30px 0 5px;
+    color: var(--slate);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#selection-details > #job-info > .detail,
+#applicant-info > #chosen-applicant {
+    background: var(--sunset);
+    padding: 5px 10px;
+    border-radius: 10px;
+
+    color: var(--slate);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#applicant-info > #chosen-applicant {
+    padding: 10px;
+
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#job-info > .detail > span {
+    color: white;
+}
+
+#applicant-info > #applicants {
+    max-width: 350px;
+    margin: 10px 0 0;
+}
+
+#applicant-info > #applicants > .applicant {
+    background: var(--tangerine);
+    padding: 5px 15px;
+
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#applicant-info > #applicants > .applicant:hover {
+    background: var(--taupe);
+    color: var(--tangerine);
+    cursor: pointer;
+}
+
+#selection-page > #back-btn {
+    background: var(--tangerine);
+    padding: 5px 15px;
+    border: none;
+    border: 2px solid var(--tangerine);
+    border-radius: 5px;
+
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#selection-page > #back-btn:hover {
+    background: white;
+    color: var(--tangerine);
+    cursor: pointer;
+}

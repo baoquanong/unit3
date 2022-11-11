@@ -1,26 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DataContext } from "../../App";
-import ReviewsOverview from "../Profile/Overview/ReviewsOverview";
 import "./OtherUser.css";
-import OtherUserReviews from "./OtherUserReviews";
 
-const OtherUser = ({ show, setShow }) => {
+const OtherUser = ({ setShow, user, reviews }) => {
     // setting up context
     const { state, setState } = useContext(DataContext);
-    const user = state.currViewedProfile;
-    const job = state.jobToAccept;
-
-    // setting up variables
-    const jobs = JSON.parse(localStorage.getItem("currUserPostedJobs"));
+    const myPosted = state.myPostedJobs;
+    const currJob = state.currViewedJob;
 
     // setting up navigation
     const navigate = useNavigate();
 
+    // mapping out reviews
+    const mappedReviews = reviews?.map((review) => {
+        return (
+            <div className="review">
+                <p id="msg">{review.message}</p>
+                <p id="score">{review.rating}/5</p>
+            </div>
+        );
+    });
+
+    // calculating score
+    const ratingSum = reviews?.reduce((total, review) => total + review.rating, 0);
+    const myAvg = ratingSum/(reviews?.length);
+
     // function to stop showing details
     const toggleShow = () => {
-        setShow({...show, userDetails: false});
+        setShow(false);
     };
 
     // function to select an applicant
@@ -28,7 +37,7 @@ const OtherUser = ({ show, setShow }) => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`/api/jobs/accept/${job._id}`, {
+            const response = await fetch(`/api/jobs/accept/${currJob._id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,9 +49,10 @@ const OtherUser = ({ show, setShow }) => {
 
             if (response.ok) {
                 console.log("successfully accepted applicant!");
-                const revIndex = jobs.indexOf((j) => j._id === job._id);
-                jobs[revIndex] = data;
-                localStorage.setItem("currUserPostedJobs", JSON.stringify(jobs));
+                const newPosted = myPosted?.filter((j) => j._id !== data._id);
+                newPosted.unshift(data);
+                setState({...state, myPostedJobs: newPosted, currViewedJob: data});
+                setShow(false);
             }
         }
         catch (error) {
@@ -65,7 +75,11 @@ const OtherUser = ({ show, setShow }) => {
                     </div>
                     <div className="about-div">
                         <h4>RATING:</h4>
-                        <p>4/5</p>
+                        {
+                            reviews.length === 0 ?
+                            <p>Not Available</p> :
+                            <p>{Math.round(myAvg)}/5</p>
+                        }
                     </div>
                     {
                         !user?.description ?
@@ -93,7 +107,17 @@ const OtherUser = ({ show, setShow }) => {
                     }
                 </div>
             </div>
-            <button onClick={selectApplicant}>SELECT {user?.username.toUpperCase()}</button>
+            <div id="reviews">
+                <h3>REVIEWS:</h3>
+                {
+                    reviews.length === 0 ?
+                    <p>No reviews available</p> :
+                    <div id="reviews-list">
+                        {mappedReviews}
+                    </div>
+                }
+            </div>
+            <button onClick={selectApplicant}>SELECT {user?.username?.toUpperCase()}</button>
         </div>
     );
 };

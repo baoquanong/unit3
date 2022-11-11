@@ -160,7 +160,7 @@ const EditJob = () => {
                                         type="date"
                                         id="end"
                                         value={job?.end?.slice(0, 10)}
-                                        onChange={() => handleChange(event, "start")}
+                                        onChange={() => handleChange(event, "end")}
                                         min={`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`}
                                     />
                                 </label>

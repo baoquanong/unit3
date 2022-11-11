@@ -111,6 +111,13 @@
     justify-content: center;
 }
 
+#pj-details > #job-content {
+    width: 250px;
+    min-height: 250px;
+    height: fit-content;
+    padding: 20px;
+}
+
 #pj-details > #job-content > #jd {
     color: var(--smoke);
     font-weight: 500;
@@ -146,6 +153,7 @@
 #applicants {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -196,6 +204,7 @@
 #applications {
     background: url(../../../images/PeopleBG.png);
     min-height: 86vh;
+    height: fit-content;
     padding: 50px 0 0;
 
     display: flex;
@@ -225,60 +234,61 @@
 
 /* ====== Application Details ====== */
 .applied {
-    background: var(--mist);
-    width: 190px;
-    min-height: 300px;
-    padding: 20px 30px;
-    border-radius: 15px;
-    border: 3px solid var(--tide);
-    box-shadow: 3px 3px 5px var(--tide);
+    box-shadow: 3px 3px 5px var(--smoke);
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
 }
 
 .applied > h4 {
-    background: var(--midnight);
-    margin: 0 0 10px;
-    padding: 10px 5px;
-    border-radius: 10px;
+    background: var(--taupe);
+    /* padding: 10px; */
+    width: 250px;
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
 
-    color: var(--shell);
+    color: white;
     text-align: center;
-    letter-spacing: 1.5px;
-    font-size: 16px;
+    letter-spacing: 1px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.applied > p {
-    /* margin: 0; */
+#applied-content {
+    background: var(--peach);
+    width: 230px;
+    height: 250px;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    color: var(--midnight);
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    font-style: italic;
-    letter-spacing: 1px;
+    justify-content: center;
+    gap: 15px;
 }
 
-.applied > p > span {
-    margin: 4px 0;
-    color: var(--fog);
+#applied-content > p {
+    color: var(--smoke);
+}
+
+#applied-content > #jd {
+    color: var(--smoke);
     font-weight: 700;
-    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
-.status {
-    margin: 15px 0 0;
-    padding: 10px 10px;
-
-    font-style: normal;
-
+#applied-content > #poster {
+    margin: 5px 0 0;
+    font-style: italic;
 }
 
 #pending,
@@ -301,5 +311,5 @@
 
 #selected {
     background: var(--tide);
-    color: var(--fog);
+    color: white;
 }

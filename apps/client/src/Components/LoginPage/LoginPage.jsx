@@ -45,9 +45,10 @@ function LoginPage() {
       if (response.ok) {
         console.log("successfully logged in!");
         // setState({...state, loggedIn: data.userInfo});
-        localStorage.setItem("currUser", JSON.stringify(data.userInfo));
+        localStorage.setItem("currUser", JSON.stringify(data));
         navigate("/jobs");
       } else {
+        console.log("error:", data.error);
         setError(data.error);
       }
     }

@@ -5,8 +5,16 @@ import { DataContext } from "../../../App";
 import "./Profile.css";
 
 function Profile({ user }) {
+  // setting up context
+  const { state, setState } = useContext(DataContext);
+  const myReviews = state.myReviews;
+
   // setting up navigate
   const navigate = useNavigate();
+
+  // calculating score
+  const ratingSum = myReviews.reduce((total, review) => total + review.rating, 0);
+  const myAvg = ratingSum/(myReviews.length);
 
   return (
     <div id="profile">
@@ -18,7 +26,11 @@ function Profile({ user }) {
         }
         
         <h2>{user?.username.toUpperCase()}</h2>
-        <p id="rating">Average Rating: 4/5</p>
+        {
+          myReviews.length === 0 ?
+          <p id="rating">No rating available</p> :
+          <p id="rating">Average Rating: {Math.round(myAvg)}/5</p>
+        }
         {
           !user?.description ?
           <></> :

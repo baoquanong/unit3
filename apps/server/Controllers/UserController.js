@@ -2,15 +2,24 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const User = require("../models/User"); // User schema model
 const seedUsers = require("../seed data/seedUsers") // seed data
+
+const saltRounds = 10;
 
 // ROUTES
 // seed route
 router.get("/seed", async (req, res) => {
     await User.deleteMany();
-    const users = await User.insertMany(seedUsers);
+    const encryptedUsers = seedUsers.map((user) => (
+        {
+            ...user,
+            password: bcrypt.hashSync(user.password, saltRounds)
+        }
+    ));
+    const users = await User.insertMany(encryptedUsers);
 
     res.json(users);
 });
@@ -23,11 +32,12 @@ router.post("/login", async (req, res) => {
         if (user.length === 0) {
             res.status(400).json({ error: "No user found"})
         } else {
-            if (user.password === req.body.password) {
+            const loginPass = bcrypt.compareSync(req.body.password, user.password);
+            if (loginPass) {
                 req.session.userID = user._id;
-                res.json({ userInfo: user });
+                res.json(user);
             } else {
-                res.status(400).json({ error: "Please enter correct password"});
+                res.status(400).json({ error: "Please enter correct password" });
             }
         }
     }
@@ -44,7 +54,10 @@ router.post("/signup", async (req, res) => {
         if (user.length !== 0) {
             res.status(409).json({ error: "Account with this email already exists. Please log in or use an alternative email" })
         } else if (user.length === 0) {
-            const newUser = await User.create(req.body);
+            const newUser = await User.create({
+                ...req.body,
+                password: bcrypt.hashSync(req.body.password, saltRounds)
+            });
             res.status(201).json({ userInfo: newUser });
         }
     }

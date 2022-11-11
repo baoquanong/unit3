@@ -59,7 +59,7 @@ const ReviewsOverview = ({ user }) => {
                 <h1>REVIEWS</h1>
                 <p id="static">HERE'S WHAT OTHERS HAD TO SAY ABOUT YOU...</p>
             </div>
-            <div className="listing" id="reviews">
+            <div className="listing" id="reviews-ov">
                 <div id="review-listing">
                     {
                         myReviews.length === 0 ?

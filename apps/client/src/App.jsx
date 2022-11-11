@@ -17,6 +17,7 @@ import EditProfile from "./Components/Profile/Overview/EditProfile"
 
 import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
 import EditJob from "./Components/Profile/Jobs/EditJob";
+import ApplicantSelection from "./Components/Profile/Jobs/ApplicantSelection";
 import Applications from "./Components/Profile/Jobs/Applications";
 import SubmitReview from "./Components/SubmitReview/SubmitReview";
 
@@ -52,6 +53,7 @@ const App = () => {
                             <Route path="/user" element={<Overview />} />
                             <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
+                            <Route path="/user/postedjobs/:id" element={<ApplicantSelection />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
                             <Route path="/submit-review" element={<SubmitReview />} />
                             <Route path="/user/edit/job" element={<EditJob />} />
