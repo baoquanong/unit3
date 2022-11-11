@@ -59,6 +59,12 @@ const PostedJobDetails = ({ job }) => {
         navigate("/submit-review");
     }
 
+    // function to see more details
+    const seeDetails = () => {
+        setState({...state, currViewedJob: job});
+        navigate(`/user/postedjobs/${job._id}`);
+    }
+
     return (
         <div id="pj-details">
             <h4>{job?.title?.toUpperCase()}</h4>
@@ -87,7 +93,7 @@ const PostedJobDetails = ({ job }) => {
                         job.acceptedBy ?
                         <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button> :
                         <>
-                            <button>VIEW MORE DETAILS</button>
+                            <button onClick={seeDetails}>VIEW MORE DETAILS</button>
                             <button onClick={editJob}>EDIT</button>
                             <button onClick={() => deleteJob(job._id)}>DELETE</button>
                         </>
