@@ -170,7 +170,7 @@ function FindJobs() {
               id="others"
               name="filterJobs"
               type="radio"
-              value="others"
+              value="Others"
               onClick={handleFilter}
             />
           </label>

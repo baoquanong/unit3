@@ -19,7 +19,28 @@ router.get("/:user", async (req, res) => {
 
     if ("userID" in req.session) {
         try {
-            const reviews = await Review.find({ postedFor: user }).populate("postedBy").exec();
+            const reviews = await Review.find({ postedFor: user }).populate("job").exec();
+            if (reviews.length === 0) {
+                res.status(400).json({ error: "No reviews found for this user" });
+            } else {
+                res.status(200).json(reviews);
+            }
+        }
+        catch (error) {
+            res.status(500).json({ error: error });
+        }
+    } else {
+        res.status(500).json({ error: "No user logged in"});
+    }
+});
+
+// get all posted reviews for a user
+router.get("/posted/:user", async (req, res) => {
+    const { user } = req.params;
+
+    if ("userID" in req.session) {
+        try {
+            const reviews = await Review.find({ postedBy: user }).populate("job").exec();
             if (reviews.length === 0) {
                 res.status(400).json({ error: "No reviews found for this user" });
             } else {
@@ -45,7 +66,7 @@ router.post("/new", async (req, res) => {
                 if (!newReview) {
                     res.status(400).json({ error: "Unable to add new review" });
                 } else {
-                    res.status(201).json({ newReview });
+                    res.status(201).json(newReview);
                 }
             }
             catch (error) {

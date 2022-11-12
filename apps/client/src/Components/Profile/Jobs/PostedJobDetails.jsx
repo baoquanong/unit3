@@ -93,7 +93,11 @@ const PostedJobDetails = ({ job }) => {
                         job.acceptedBy ?
                         <>
                             <button onClick={seeDetails}>VIEW MORE DETAILS</button>
-                            <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button>
+                            {
+                                state?.myPostedReviews?.some((review) => review?.job?._id === job?._id) ?
+                                <button disabled={true} id="already-reviewed">ALREADY REVIEWED</button> :
+                                <button onClick={leaveReview}>REVIEW {job.acceptedBy.username.toUpperCase()}</button>
+                            }
                         </>
                         :
                         <>

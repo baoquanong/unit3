@@ -124,7 +124,7 @@ const seedJobs = [
   },
   {
     postedBy: "636e8c396b97f87d3f88c3b8",
-    acceptedBy: "636e8c396b97f87d3f88c3bf",
+    acceptedBy: "636e8c396b97f87d3f88c3b5",
     applicants: ["636e8c396b97f87d3f88c3b5", "636e8c396b97f87d3f88c3b7", "636e8c396b97f87d3f88c3bf"],
     title: "Waiter Wanted",
     description: "Wanted - banquet restaurant server for wedding",

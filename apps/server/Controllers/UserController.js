@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
         const user = await User.findOne({email: req.body.email}).exec();
 
         if (user.length === 0) {
-            res.status(400).json({ error: "No user found"})
+            res.status(400).json({ error: "No user found" })
         } else {
             const loginPass = bcrypt.compareSync(req.body.password, user.password);
             if (loginPass) {
