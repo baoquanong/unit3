@@ -11,6 +11,7 @@ const SubmitReview = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
     const reviewing = state.currReviewing;
+    const myPostedReviews = state.myPostedReviews;
 
     // setting up navigate
     const navigate = useNavigate();
@@ -58,7 +59,8 @@ const SubmitReview = () => {
             if (response.ok) {
                 console.log("successfully added review");
                 console.log("review:", data);
-                alert("successfully added review!");
+
+                // alert("successfully added review!");
                 navigate("/user/postedjobs")
             } else {
                 console.log("error:", data.error);

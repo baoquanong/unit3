@@ -30,6 +30,7 @@ const App = () => {
         myPostedJobs: [], // array containing jobs posted by current user
         myAppliedJobs: [], // array containing jobs applied for by current user
         myReviews: [], // array containing reviews for current user
+        myPostedReviews: [], // array containing reviews posted by current user
         currViewedJob: {}, // contains details of job currently being viewed
         currViewedProfile: {}, // contains details of other user profile currently being viewed
         jobToAccept: {}, // contains details of job user is about to accept applicant for
