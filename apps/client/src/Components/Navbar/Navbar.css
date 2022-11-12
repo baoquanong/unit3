@@ -19,12 +19,18 @@ body {
 }
 
 #navbar > h1 {
+    padding: 15px 0 0;
+
     color: var(--fog);
+    font-family: velourlight;
     font-size: 75px;
-    letter-spacing: 2px;
+    letter-spacing: 7px;
+    text-shadow: 3px 3px var(--tangerine);
 }
 
 #navbar > h1 > span {
+    padding: 0;
+
     writing-mode: vertical-lr;
     font-size: 25px;
     letter-spacing: 0px;

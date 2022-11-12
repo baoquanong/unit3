@@ -16,10 +16,10 @@ const SubmitReview = () => {
     const navigate = useNavigate();
 
     // setting up state
-    const poster = JSON.parse(localStorage.getItem("currUser"));
+    const currUser = JSON.parse(localStorage.getItem("currUser"));
 
     const [review, setReview] = useState({
-        postedBy: poster._id,
+        postedBy: currUser._id,
         postedFor: reviewing.acceptedBy._id,
         job: reviewing._id,
         message: "",
@@ -59,6 +59,7 @@ const SubmitReview = () => {
                 console.log("successfully added review");
                 console.log("review:", data);
                 alert("successfully added review!");
+                navigate("/user/postedjobs")
             } else {
                 console.log("error:", data.error);
                 setError(data.error);
@@ -71,9 +72,8 @@ const SubmitReview = () => {
 
     return (
         <div id="review-page">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/3c489553324483.5930258da9303.jpg" />
             <h1>LEAVE A REVIEW</h1>
-            <p>
+            <p id="blurb">
                 We're glad you found someone suitable for the job! <br />
                 Let them know how they did so that they'll do even better next time!
                 <br />
@@ -81,48 +81,49 @@ const SubmitReview = () => {
                 Your review will be displayed on their public profile. <br />
                 Please only leave a review if the job has been completed.
             </p>
-
-            <form id="review-form" onSubmit={submitReview}>
-                <div id="review-info">
-                    <p>
-                        <span>Currently Reviewing: </span>
-                        {reviewing?.acceptedBy?.username.toUpperCase()}
-                    </p>
-                    <p>
-                        <span>Job Done: </span>
-                        {reviewing?.jobTitle.toUpperCase()}
-                    </p>
-                </div>
-                <section>
-                    <p>RATING:</p>
-                    <div id="score-options">
-                        {
-                            ratings.map((rating, index) => {
-                                return (
-                                    <label key={index} className="score" htmlFor={rating}>
-                                        <input type="radio" name="rating" value={rating} />
-                                        {rating}
-                                    </label>
-                                )
-                            })
-                        }
+            <div id="review">
+                <form id="review-form" onSubmit={submitReview}>
+                    <div id="review-info">
+                        <p>
+                            <span>Currently Reviewing: </span>
+                            {reviewing?.acceptedBy?.username?.toUpperCase()}
+                        </p>
+                        <p>
+                            <span>Job Done: </span>
+                            {reviewing?.title?.toUpperCase()}
+                        </p>
                     </div>
-                </section>
-                <section>
-                        <p>COMMENTS/FEEDBACK:</p>
-                        <textarea
-                            name="message"
-                            value={review.message}
-                            onChange={handleChange}
-                        ></textarea>
-                </section>
-                {
-                    error === "" ?
-                    <></> :
-                    <p id="error-msg">{error}</p>
-                }
-                <button>SUBMIT REVIEW</button>
-            </form>
+                    <section>
+                        <p>RATING:</p>
+                        <div id="score-options">
+                            {
+                                ratings.map((rating, index) => {
+                                    return (
+                                        <label key={index} className="score" htmlFor={rating}>
+                                            <input type="radio" name="rating" value={rating} />
+                                            {rating}
+                                        </label>
+                                    )
+                                })
+                            }
+                        </div>
+                    </section>
+                    <section>
+                            <p>COMMENTS/FEEDBACK:</p>
+                            <textarea
+                                name="message"
+                                value={review.message}
+                                onChange={handleChange}
+                            ></textarea>
+                    </section>
+                    {
+                        error === "" ?
+                        <></> :
+                        <p id="error-msg">{error}</p>
+                    }
+                    <button>SUBMIT REVIEW</button>
+                </form>
+            </div>
             <button onClick={() => navigate("/user/postedjobs")}>BACK TO JOBS</button>
         </div>
     );

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomeLayout from "./Archive/HomeLayout";
@@ -17,6 +17,7 @@ import EditProfile from "./Components/Profile/Overview/EditProfile"
 
 import PostedJobs from "./Components/Profile/Jobs/PostedJobs"
 import EditJob from "./Components/Profile/Jobs/EditJob";
+import ApplicantSelection from "./Components/Profile/Jobs/ApplicantSelection";
 import Applications from "./Components/Profile/Jobs/Applications";
 import SubmitReview from "./Components/SubmitReview/SubmitReview";
 
@@ -25,10 +26,15 @@ export const DataContext = createContext();
 const App = () => {
     // setting up global state
     const [state, setState] = useState({
-        currViewedJob: {},
-        currViewedProfile: {},
-        currReviewing: {},
-        currEditJob: {},
+        allJobs: [], // array containing all jobs
+        myPostedJobs: [], // array containing jobs posted by current user
+        myAppliedJobs: [], // array containing jobs applied for by current user
+        myReviews: [], // array containing reviews for current user
+        currViewedJob: {}, // contains details of job currently being viewed
+        currViewedProfile: {}, // contains details of other user profile currently being viewed
+        jobToAccept: {}, // contains details of job user is about to accept applicant for
+        currReviewing: {}, // contains details of job user is leaving review for
+        currEditJob: {}, // contains details of job currently being edited
     });
 
     return (
@@ -47,6 +53,7 @@ const App = () => {
                             <Route path="/user" element={<Overview />} />
                             <Route path="/user/edit" element={<EditProfile />} />
                             <Route path="/user/postedjobs" element={<PostedJobs />} />
+                            <Route path="/user/postedjobs/:id" element={<ApplicantSelection />} />
                             <Route path="/user/appliedjobs" element={<Applications />} />
                             <Route path="/submit-review" element={<SubmitReview />} />
                             <Route path="/user/edit/job" element={<EditJob />} />

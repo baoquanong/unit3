@@ -17,7 +17,7 @@ function SignupPage() {
     username: "",
     password: "",
     pwConfirm: "",
-    contact: ""
+    phoneNumber: ""
   });
 
   const [error, setError] = useState("");
@@ -134,8 +134,8 @@ function SignupPage() {
                 type="tel"
                 pattern="[0-9]{8}"
                 required={true}
-                value={userDetails.contact}
-                onChange={() => handleChange(event, "contact")}
+                value={userDetails.phoneNumber}
+                onChange={() => handleChange(event, "phoneNumber")}
               />
             </label>
           </div>        

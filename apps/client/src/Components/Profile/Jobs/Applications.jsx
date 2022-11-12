@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { DataContext } from "../../../App";
 import "./Jobs.css";
@@ -9,44 +9,13 @@ import ApplicationDetails from "./ApplicationDetails";
 const Applications = () => {
     // setting up context
     const { state, setState } = useContext(DataContext);
-
-    // setting up state
-    const [appliedJobs, setAppliedJobs] = useState([]);
+    const myApplied = state.myAppliedJobs;
 
     // setting up variables
     const user = JSON.parse(localStorage.getItem("currUser"));
 
-    // function to fetch jobs
-    const getJobs = async () => {
-        try {
-            const response = await fetch(`/api/jobs/applied/${user._id}`, {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log("successfully fetched");
-                console.log("applied jobs:", data);
-                setAppliedJobs(data);
-            } else {
-                console.log(data.error);
-            }
-        }
-        catch (error) {
-            console.log("error:", error);
-        }
-    };
-
-    useEffect(() => {
-        getJobs();
-    }, []);
-
     // mapping out the jobs
-    const jobs = appliedJobs.map((job, index) => {
+    const jobs = myApplied?.map((job, index) => {
         return (
             <ApplicationDetails job={job} key={index} />
         );
@@ -54,11 +23,22 @@ const Applications = () => {
 
     return (
         <div id="applications">
-            <JobsHeader />
-            <h1>MY APPLICATIONS</h1>
-            <div id="applied-jobs">
-                {jobs}
-            </div>
+            {
+                user === null ?
+                <h2>PLEASE LOG IN TO VIEW YOUR JOBS</h2> :
+                <>
+                    <JobsHeader />
+                    <h1>MY APPLICATIONS</h1>
+                    <div id="applied-jobs">
+                        {
+                            myApplied?.length === 0 ?
+                            <p id="error-msg">NO JOB APPLICATIONS YET!</p> :
+                            jobs
+                        }
+                    </div>
+                </>
+            }
+
         </div>
     );
 };

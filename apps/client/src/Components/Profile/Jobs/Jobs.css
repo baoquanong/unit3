@@ -6,8 +6,9 @@
 #jobs-header > a {
     padding: 0 30px;
 
+    color: var(--smoke);
     text-decoration: none;
-    color: var(--midnight);
+    font-family: velourlight;
     font-weight: 700;
     letter-spacing: 1px;;
 }
@@ -24,28 +25,52 @@
 
 /* ====== Posted Jobs ====== */
 #posted-jobs {
-    background: var(--suede);
-    min-height: 85vh;
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
     padding: 50px 0 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+}
+
+#posted-jobs > h2,
+#applications > h2 {
+    margin: 100px 0 0;
+    color: var(--tangerine);
+    font-size: 40px;
+    letter-spacing: 5px;
 }
 
 #posted-jobs > h1 {
-    margin: 65px 0 0;
+    margin: 50px 0 0;
 
-    color: var(--midnight);
-    letter-spacing: 6px;
-    font-family: Covered By Your Grace;
-    font-size: 45px;
-    text-shadow: 2px 2px var(--mist);
+    color: var(--smoke);
+    font-family: velourlight;
+    font-size: 35px;
+    letter-spacing: 7px;
+    word-spacing: 12px;
 }
 
-#posted-content {
+#posted-listings > #error-msg,
+#applied-jobs > #error-msg {
+    margin-top: 50px;
+    color: var(--tangerine);
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#posted-listings {
+    max-width: 60vw;
+    margin: 50px 0 100px;
+
     display: flex;
-    gap: 75px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 #posted-content > #posted-listings {
@@ -59,52 +84,65 @@
 
 /* ====== Posted Jobs Details ====== */
 #pj-details {
-    background: var(--mist);
-    width: 190px;
-    min-height: 300px;
-    padding: 20px 30px;
-    border-radius: 15px;
-    border: 3px solid var(--tide);
-    box-shadow: 3px 3px 5px var(--tide);
+    box-shadow: 3px 3px 5px var(--smoke);
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
 }
 
 #pj-details > h4 {
-    background: var(--midnight);
-    margin: 0 0 10px;
-    padding: 10px 5px;
-    border-radius: 10px;
+    background: var(--taupe);
+    /* padding: 10px; */
+    width: 250px;
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
 
-    color: var(--shell);
+    color: white;
     text-align: center;
-    letter-spacing: 1.5px;
-    font-size: 16px;
+    letter-spacing: 1px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#pj-details > label {
+#pj-details > #job-content {
+    width: 250px;
+    min-height: 250px;
+    height: fit-content;
+    padding: 20px;
+}
+
+#pj-details > #job-content > #jd {
+    color: var(--smoke);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+#pj-details > #job-content > label {
     margin: 0;
-    font-size: 15px;
-    color: var(--fog);
+
+    color: var(--smoke);
     font-weight: 700;
     font-style: normal;
     text-align: center;
+    letter-spacing: 1px;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 5px;
 }
 
-label > p,
-.applicant > p,
-label > #applicants > p
-{
+#no-msg {
     margin: 0;
-    color: var(--midnight);
+
+    color: var(--smoke);
     text-align: center;
     font-size: 14px;
     font-weight: 500;
@@ -114,71 +152,75 @@ label > #applicants > p
 
 #applicants {
     display: flex;
-    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 .applicant {
-    background: var(--midnight);
+    background: var(--sunshine);
     padding: 3px 5px;
-    border-radius: 2px;
+    border-radius: 3px;
+
+    color: var(--smoke);
+    font-weight: 500;
 }
 
 .applicant > p {
     color: var(--fog);
 }
 
-.applicant > p:hover {
-    color: var(--shell);
-    font-style: normal;
-    font-weight: 700;
-    cursor: pointer;
-}
+#job-content > #job-buttons {
+    max-width: 200px;
+    margin-top: 5px;
 
-#pj-details > #job-buttons {
-    margin-top: 15px;
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 #job-buttons > button {
-    background: var(--shell);
-    border: 2px solid var(--fog);
+    background: var(--tangerine);
+    border: none;
     border-radius: 5px;
-    padding: 4px 10px;
+    padding: 5px 10px;
 
-    color: var(--fog);
+    color: white;
     font-family: Raleway;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 #job-buttons > button:hover {
-    background: var(--midnight);
-    border: 2px solid var(--midnight);
+    background: var(--taupe);
 
-    color: var(--cherry);
+    color: var(--smoke);
     cursor: pointer;
 }
 
 /* ====== Job Applications ====== */
 #applications {
-    background: var(--suede);
-    min-height: 85vh;
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
+    height: fit-content;
     padding: 50px 0 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
 #applications > h1 {
-    margin: 65px 0 0;
+    margin: 50px 0 0;
 
-    color: var(--midnight);
-    letter-spacing: 6px;
-    font-family: Covered By Your Grace;
-    font-size: 45px;
-    text-shadow: 2px 2px var(--mist);
+    color: var(--smoke);
+    font-family: velourlight;
+    font-size: 35px;
+    letter-spacing: 7px;
+    word-spacing: 12px;
 }
 
 #applied-jobs {
@@ -192,60 +234,61 @@ label > #applicants > p
 
 /* ====== Application Details ====== */
 .applied {
-    background: var(--mist);
-    width: 190px;
-    min-height: 300px;
-    padding: 20px 30px;
-    border-radius: 15px;
-    border: 3px solid var(--tide);
-    box-shadow: 3px 3px 5px var(--tide);
+    box-shadow: 3px 3px 5px var(--smoke);
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
 }
 
 .applied > h4 {
-    background: var(--midnight);
-    margin: 0 0 10px;
-    padding: 10px 5px;
-    border-radius: 10px;
+    background: var(--taupe);
+    /* padding: 10px; */
+    width: 250px;
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
 
-    color: var(--shell);
+    color: white;
     text-align: center;
-    letter-spacing: 1.5px;
-    font-size: 16px;
+    letter-spacing: 1px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.applied > p {
-    /* margin: 0; */
+#applied-content {
+    background: var(--peach);
+    width: 230px;
+    height: 250px;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    color: var(--midnight);
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    font-style: italic;
-    letter-spacing: 1px;
+    justify-content: center;
+    gap: 15px;
 }
 
-.applied > p > span {
-    margin: 4px 0;
-    color: var(--fog);
+#applied-content > p {
+    color: var(--smoke);
+}
+
+#applied-content > #jd {
+    color: var(--smoke);
     font-weight: 700;
-    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
-.status {
-    margin: 15px 0 0;
-    padding: 10px 10px;
-
-    font-style: normal;
-
+#applied-content > #poster {
+    margin: 5px 0 0;
+    font-style: italic;
 }
 
 #pending,
@@ -268,5 +311,5 @@ label > #applicants > p
 
 #selected {
     background: var(--tide);
-    color: var(--fog);
+    color: white;
 }

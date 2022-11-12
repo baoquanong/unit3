@@ -1,7 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { DataContext } from "../../../App";
+
 const ReviewsOverview = ({ user }) => {
+    // set up context
+    const { state, setState } = useContext(DataContext);
+    const myReviews = state.myReviews;
+
     // setting up navigation
     const navigate = useNavigate();
 
@@ -23,8 +29,7 @@ const ReviewsOverview = ({ user }) => {
             if (response.ok) {
                 console.log("successfully fetched reviews!");
                 console.log("your reviews:", data);
-                setReviews(data);
-                localStorage.setItem("currUserReviews", JSON.stringify(data));
+                setState({...state, myReviews: data});
             } else {
                 console.log("error:", data.error);
             }
@@ -39,8 +44,7 @@ const ReviewsOverview = ({ user }) => {
     }, []);
 
     // mapping out posted reviews
-    const reviewsArr = reviews.slice(0, 3);
-    const overview = reviewsArr.map((review, index) => {
+    const overview = myReviews?.map((review, index) => {
         return (
             <div className="review-overview" key={index}>
                 <p id="msg">{review.message}</p>
@@ -55,9 +59,13 @@ const ReviewsOverview = ({ user }) => {
                 <h1>REVIEWS</h1>
                 <p id="static">HERE'S WHAT OTHERS HAD TO SAY ABOUT YOU...</p>
             </div>
-            <div className="listing" id="reviews">
+            <div className="listing" id="reviews-ov">
                 <div id="review-listing">
-                    {overview}
+                    {
+                        myReviews.length === 0 ?
+                        <p className="no-msg">NO REVIEWS POSTED YET!</p> :
+                        overview
+                    }
                 </div>
             </div>
         </div>

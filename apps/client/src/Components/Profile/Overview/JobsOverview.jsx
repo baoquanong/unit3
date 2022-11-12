@@ -1,53 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-const JobsOverview = ({ user }) => {
+import { DataContext } from "../../../App";
+
+const JobsOverview = () => {
+    // setting up context
+    const { state, setState } = useContext(DataContext);
+    const myJobs = state.myPostedJobs;
+
     //setting up navigation
     const navigate = useNavigate();
 
-    // setting up state
-    const [jobs, setJobs] = useState([]);
-
-    // function to fetch all posted jobs
-    const getJobs = async () => {
-        try {
-            const response = await fetch(`/api/jobs/posted/${user._id}`, {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log("successfully fetched posted jobs");
-                console.log("posted jobs:", data)
-                setJobs(data); // updating state
-                localStorage.setItem("currUserPostedJobs", JSON.stringify(data)); // updating local storage
-            } else {
-                console.log("error:", error);
-            }
-        }
-        catch (error) {
-            console.log("error:", error)
-        }
-    };
-
-    useEffect(() => {
-        getJobs();
-    }, []);
-
     // mapping out posted jobs
-    const jobsArr = jobs.slice(0, 3);
+    const jobsArr = myJobs.slice(0, 3);
     const overview = jobsArr.map((jobs, index) => {
         return (
             <div className="job-overview" key={index}>
                 <div id="top">
-                    <p id="title">{jobs.jobTitle.toUpperCase()}</p>
-                    <p id="applicants">{jobs.applicants.length} Applicants</p>
+                    <p id="title">{jobs?.title?.toUpperCase()}</p>
+                    <p id="applicants">{jobs?.applicants?.length} Applicants</p>
                 </div>
-                <p id="date">{jobs.jobStart.slice(0, 10)} to {jobs.jobEnd.slice(0, 10)}</p>
+                <p id="date">{jobs?.start?.slice(0, 10)} to {jobs?.end?.slice(0, 10)}</p>
             </div>
         );
     });
@@ -60,8 +33,8 @@ const JobsOverview = ({ user }) => {
             </div>
             <div className="listing">
                 {
-                    jobs.length === 0 ?
-                    <p>No jobs posted yet!</p> :
+                    myJobs.length === 0 ?
+                    <p className="no-msg">NO JOBS POSTED YET!</p> :
                     overview
                 }
             </div>

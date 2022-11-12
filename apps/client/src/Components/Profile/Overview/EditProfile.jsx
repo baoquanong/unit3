@@ -51,7 +51,7 @@ const EditProfile = () => {
         // formatting inputs
         const userData = Object.fromEntries(new FormData(event.target));
         console.log("user data:", userData);
-        const userKeys = Object.keys(userData).sort().reverse().splice(4);
+        const userKeys = Object.keys(userData).sort().reverse().splice(3);
         console.log(userKeys);
         edits.skills = userKeys;
 
@@ -73,7 +73,7 @@ const EditProfile = () => {
             navigate("/user");
           } else {
             console.log("results:", data);
-            // setError(data.error);
+            setError(data.error);
           }
         }
         catch (error) {
@@ -82,16 +82,16 @@ const EditProfile = () => {
     };
 
     return (
-        <div id="edit-profile">
+        <div id="edit-profile-page">
             {
                 original === null ?
-                <h1>Please log in to edit your profile</h1> :
-                <>
-                    <h1>EDIT PROFILE</h1>
+                <h1>PLEASE LOG IN TO EDIT A PROFILE</h1> :
+                <div id="edit-profile">
                     <form id="edit-profile-form" onSubmit={handleUpdate} autoComplete="off">
+                        <h1>EDIT PROFILE</h1>    
                         <div id="inputs">
                             <section id="edit-info">
-                                <img src="https://api.multiavatar.com/Sally.png" />
+                                <img src={edits?.img} />
                                 <label>
                                     EMAIL:
                                     <input
@@ -108,15 +108,6 @@ const EditProfile = () => {
                                         name="username"
                                         value={edits?.username}
                                         onChange={() => handleChange(event, "username")}
-                                    />
-                                </label>
-                                <label>
-                                    PASSWORD:
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        value={edits?.password}
-                                        onChange={() => handleChange(event, "password")}
                                     />
                                 </label>
                             </section>
@@ -139,9 +130,9 @@ const EditProfile = () => {
                             <></> :
                             <p id="error-msg">{error}</p>
                         }
-                        <button id="update-btn">Update Profile</button>
+                        <button id="update-btn">UPDATE PROFILE</button>
                     </form>
-                </>
+                </div>
             }
         </div>
     );

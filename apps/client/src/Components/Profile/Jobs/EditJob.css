@@ -1,32 +1,26 @@
-#create-job {
-    background: url(../../images/PeopleBG.png);
-    height: 86vh;
-    overflow-y: hidden;
+#edit-job-page {
+    background: url(../../../images/PeopleBG.png);
+    min-height: 86vh;
+    /* padding-top: 50px; */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
 }
 
-#create-job > h1 {
+#edit-job-page > h1 {
     margin: 0;
 
     color: var(--smoke);
-    font-family: velourlight;
-    font-size: 35px;
-    letter-spacing: 7px;
-    word-spacing: 12px;
+    font-family: newyork;
+    font-size: 40px;
+    letter-spacing: 10px;
 }
 
-#create-job > h2 {
-    color: var(--tangerine);
-    letter-spacing: 3px;
-}
-
-#create {
-    background: url(../../images/CreateJob.png);
+#edit-job {
+    background: url(../../../images/CreateJob.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -40,7 +34,7 @@
     gap: 40px;
 }
 
-#create-form {
+#edit-job-form {
     /* padding: 0 0 10px; */
     display: flex;
     flex-direction: column;
@@ -103,7 +97,7 @@ select, option {
     font-family: Raleway;
 }
 
-#create-form > #error-msg {
+#edit-job-form > #error-msg {
     margin: 0;
     padding: 0;
     color: var(--cherry);
@@ -111,7 +105,8 @@ select, option {
     letter-spacing: 1px;
 }
 
-#create-form > button {
+#edit-job-form > button,
+#edit-job-page > button {
     background: var(--tangerine);
     padding: 5px 15px;
     margin: 0 0 10px;
@@ -126,7 +121,12 @@ select, option {
     letter-spacing: 1px;
 }
 
-#create-form > button:hover {
+#edit-job-page > button {
+    margin: 0;
+}
+
+#edit-job-form > button:hover,
+#edit-job-page > button:hover {
     background: white;
     color: var(--tangerine);
     cursor: pointer;
