@@ -62,7 +62,7 @@ Mary is looking for a part time income, she is able to login and review the list
 
 ## Wire Frame
 
-![Project Wireframe](./apps/client/public/wireframe.png)
+![Project Wireframe](./apps/client/public/wireframe.PNG)
 
 ## Future Developments
 
