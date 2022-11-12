@@ -19,7 +19,9 @@
 - A link to your hosted working app in the URL section of your Github repo
 - A team git repository hosted on Github, with a link to your hosted project, and frequent commits from every team member dating back to the very beginning of the project.
 - A readme.md file with:
+
   - Project Statement 
+
   - User stories – who are your users, what do they want, and why?
   - Wireframes – sketches of major views / interfaces in your application
   - Explaination on how to nagivate the app
@@ -38,7 +40,15 @@
 - JavaScript
 - CSS
 - Git & GitHub
-- Cyclic 
+- Cyclic
+
+## Project Statement
+
+We felt that with the options available in the market, it is difficulit to find short term help. With SideHustle, we hope to bridge the demand and supply of short term help by allowing users to be able to request and offer help within their skill sets.
+
+## User Stories
+
+Sally is going overseas for a week and have noone to help take care of her cats. She is able to login to SideHustle and create a job posting. The posting will be listed on the homepage for everyone to apply. After posting, she is able to review all her applicants and select the person who will help her cat sit for a week.
 
 ## Project Statement
 
@@ -58,6 +68,7 @@ Mary is looking for a part time income, she is able to login and review the list
 
 -Ability to add jobs to favourites
 -Ability to communicate with applicants in app before accepting job
+
 
 ## Credits 
 
