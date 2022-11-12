@@ -46,7 +46,7 @@
 
 ## Project Statement
 
-We felt that with the options available in the market, it is difficulit to find short term help. With SideHustle, we hope to bridge the demand and supply of short term help by allowing users to be able to request and offer help within their skill sets.
+We felt that with the options available in the market, it is difficulit to find short term help. SideHustle is a marketplace where we hope to bridge the demand and supply of short term help by allowing users to be able to request and offer help within their skill sets.
 
 ## User Stories
 
