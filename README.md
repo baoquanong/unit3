@@ -41,6 +41,8 @@
 - CSS
 - Git & GitHub
 - Cyclic
+- Express Sessions
+- bcrypt
 
 ## Project Statement
 
