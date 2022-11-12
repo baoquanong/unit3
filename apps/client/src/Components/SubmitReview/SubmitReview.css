@@ -1,45 +1,54 @@
 #review-page {
-    background: var(--suede);
-    padding: 0 0 100px;
-    overflow-y: hidden;
+    background: url(../../images/PeopleBG.png);
+    min-height: 86vh;
+    width: 100vw;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-}
-
-#review-page > p {
-    /* margin: 10px 0 0; */
-    color: var(--sunset);
-    text-align: center;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-#review-page > img {
-    margin: 0;
-
-    max-width: 100vw;
-    width: 100vw;
-    height: 500px;
-    object-fit: cover;
-    object-position: 50% 25%;
+    /* justify-content: center; */
 }
 
 #review-page > h1 {
-    margin: 40px 0 0;
+    margin: 75px 0 20px;
 
-    color: var(--tide);
-    letter-spacing: 6px;
-    font-family: Covered By Your Grace;
-    font-size: 45px;
-    text-shadow: 2px 2px var(--mist);
+    color: var(--smoke);
+    letter-spacing: 8px;
+    font-size: 50px;
+}
+
+#review-page > #blurb {
+    margin: 0 0 30px;
+
+    color: var(--smoke);
+    text-align: center;
+}
+
+#review {
+    background: url(../../images/Review.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 1200px;
+    height: 532px;
+    /* margin: 50px 0 0; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 #review-info {
-    /* margin: 20px 0 0; */
+    margin: 0 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,7 +56,7 @@
 }
 
 #review-info > p {
-    color: var(--tide);
+    color: var(--smoke);
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -55,25 +64,15 @@
 
 #review-info > p > span {
     padding: 0 5px 0 0;
-    color: var(--fog);
-    font-size: 15px;
+
+    color: white;
+    /* font-size: 15px; */
     font-weight: 500;
     letter-spacing: 1px;
 }
 
-#review-form {
-    background: var(--mist);
-    margin: 30px 0 0;
-    padding: 30px 50px;
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
 #review-form > section {
+    margin: 0 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +80,7 @@
 }
 
 #review-form > section > p {
-    color: var(--fog);
+    color: white;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -93,7 +92,7 @@
 }
 
 .score {
-    color: var(--tide);
+    color: var(--smoke);
     font-weight: 500;
 
     display: flex;
@@ -103,9 +102,11 @@
 }
 
 #review-form > section > textarea {
-    width: 280px;
+    background: white;
+    width: 350px;
     height: 80px;
     padding: 10px;
+    border: none;
 
     color: var(--midnight);
     font-family: Raleway;
@@ -114,24 +115,28 @@
 
 #review-form > button,
 #review-page > button {
-    background: var(--sunset);
-    padding: 5px 10px;
+    background: var(--tangerine);
+    padding: 5px 15px;
     margin: 10px 0 0;
-    border-radius: 5px;
     border: none;
-    border: 2px solid var(--sunset);
+    /* border: 2px solid var(--tangerine); */
+    border-radius: 5px;
 
-    color: var(--fog);
+    color: white;
     font-family: Raleway;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-#review-form > button:hover,
-#review-page > button:hover {
-    background: var(--shell);
-    box-shadow: 2px 2px var(--sunset);
+#review-form > button:hover {
+    background: white;
+    color: var(--tangerine);
+    cursor: pointer;
+}
 
-    color: var(--cherry);
+#review-page > button:hover {
+    background: var(--sunshine);
+    /* color: var(--tangerine); */
     cursor: pointer;
 }

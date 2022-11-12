@@ -4,30 +4,25 @@ const ApplicationDetails = ({ job }) => {
 
     return (
         <div className="applied">
-            <h4>{job?.jobTitle.toUpperCase()}</h4>
-            <p>
-                <span>DESCRIPTION:</span>
-                {job?.jobDescription}
-            </p>
-            <p>
-                <span>DATE:</span>
-                {job?.jobStart.slice(0, 10)} to {job?.jobEnd.slice(0, 10)}
-            </p>
-            <p>
-                <span>POSTED BY:</span>
-                {job?.postedBy?.username}
-            </p>
-            {
-                job.status === open ?
-                <p id="pending">PENDING RESULTS</p> :
-                <>
-                    {
-                        job.acceptedBy._id === user._id ?
-                        <p id="selected">SELECTED</p> :
-                        <p id="not-selected">NOT SELECTED</p>
-                    }
-                </>
-            }
+            <h4>{job?.title?.toUpperCase()}</h4>
+            <div id="applied-content">
+                <p id="jd">{job?.description}</p>
+                <p id="duration">{job?.start?.slice(0, 10)} to {job?.end?.slice(0, 10)}</p>
+                <p>${job?.price}</p>
+                <p>Singapore {job?.location}</p>
+                <p id="poster">Posted by {job?.postedBy?.username}</p>
+                {
+                    job?.status === open ?
+                    <p id="pending">PENDING RESULTS</p> :
+                    <>
+                        {
+                            job?.acceptedBy?._id === user?._id ?
+                            <p id="selected">SELECTED</p> :
+                            <p id="not-selected">NOT SELECTED</p>
+                        }
+                    </>
+                }
+            </div>
         </div>
     );
 };
