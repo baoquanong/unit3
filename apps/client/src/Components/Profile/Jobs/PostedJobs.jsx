@@ -13,6 +13,35 @@ const PostedJobs = () => {
 
     const currUser = JSON.parse(localStorage.getItem("currUser"));
 
+    // function to get all posted reviews
+    const getPosted = async () => {
+        try {
+            const response = await fetch(`/api/reviews/posted/${currUser._id}`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log("successfully fetched reveiws!");
+                console.log("posted reviews:", data);
+                setState({...state, myPostedReviews: data});
+            } else {
+                console.log("error:", data.error);
+            }
+        }
+        catch (error) {
+            console.log("error:", error);
+        }
+    };
+
+    useEffect(() => {
+        getPosted();
+    }, []);
+
     return (
         <div id="posted-jobs">
             {

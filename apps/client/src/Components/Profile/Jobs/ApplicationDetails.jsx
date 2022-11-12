@@ -10,9 +10,12 @@ const ApplicationDetails = ({ job }) => {
                 <p id="duration">{job?.start?.slice(0, 10)} to {job?.end?.slice(0, 10)}</p>
                 <p>${job?.price}</p>
                 <p>Singapore {job?.location}</p>
-                <p id="poster">Posted by {job?.postedBy?.username}</p>
+                <p id="poster">
+                    Posted by {job?.postedBy?.username}<br />
+                    ({job?.postedBy?.phoneNumber})
+                </p>
                 {
-                    job?.status === open ?
+                    job?.status === "open" ?
                     <p id="pending">PENDING RESULTS</p> :
                     <>
                         {

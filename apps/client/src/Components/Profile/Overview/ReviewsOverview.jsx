@@ -28,10 +28,10 @@ const ReviewsOverview = ({ user }) => {
 
             if (response.ok) {
                 console.log("successfully fetched reviews!");
-                console.log("your reviews:", data);
+                console.log("reviews for you:", data);
                 setState({...state, myReviews: data});
             } else {
-                console.log("error:", data.error);
+                console.log("error:", data?.error);
             }
         }
         catch (error) {
@@ -48,7 +48,10 @@ const ReviewsOverview = ({ user }) => {
         return (
             <div className="review-overview" key={index}>
                 <p id="msg">{review.message}</p>
-                <p id="posted-by">Posted By: {review.postedBy.username}</p>
+                <div id="rating-info">
+                    <p id="rating-score">Rating: {review?.rating}/5</p>
+                    <p id="rating-score">Job Type: {review?.job?.type}</p>
+                </div>
             </div>
         );
     });

@@ -193,11 +193,21 @@
     letter-spacing: 1px;
 }
 
+#job-buttons > button#already-reviewed {
+    background: grey;
+}
+
 #job-buttons > button:hover {
     background: var(--taupe);
 
     color: var(--smoke);
     cursor: pointer;
+}
+
+#job-buttons > button#already-reviewed:hover {
+    background: grey;
+    color: white;
+    cursor: auto;
 }
 
 /* ====== Job Applications ====== */
@@ -272,7 +282,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 #applied-content > p {
@@ -289,6 +299,9 @@
 #applied-content > #poster {
     margin: 5px 0 0;
     font-style: italic;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 500;
 }
 
 #pending,
@@ -303,13 +316,14 @@
     letter-spacing: 2px;
 }
 
-#pending,
+#pending {
+    background: var(--sunset);
+}
+
 #not-selected {
     background: gray;
-    color: var(--suede);
 }
 
 #selected {
-    background: var(--tide);
-    color: white;
+    background: var(--mist);
 }
