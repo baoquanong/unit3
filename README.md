@@ -63,4 +63,4 @@ Mary is looking for a part time income, she is able to login and review the list
 
 ## Credits
 
-This is a joint effort of [Clarissa](https://github.com/enclar) and [Bao Quan](https://github.com/baoquanong). The partnership has be nothing short of amazing. Looking forwards to work together again.
+This is a joint effort of [Clarissa](https://github.com/enclar) and [Bao Quan](https://github.com/baoquanong). The partnership has be nothing short of amazing. Looking forward to work together again.

@@ -27,7 +27,7 @@ router.get("/seed", async (req, res) => {
 // login route
 router.post("/login", async (req, res) => {
     try {
-        const user = await User.findOne({email: req.body.email}).exec();
+        const user = await User.find({email: req.body.email}).exec();
 
         if (user.length === 0) {
             res.status(400).json({ error: "No user found"})
