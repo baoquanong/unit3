@@ -42,7 +42,7 @@ const OtherUser = ({ setShow, user, reviews }) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ acceptedBy: user._id }),
+                body: JSON.stringify({ acceptedBy: user._id, status: "completed" }),
             });
             
             const data = await response.json();
