@@ -48,12 +48,12 @@ function LoginPage() {
         localStorage.setItem("currUser", JSON.stringify(data));
         navigate("/jobs");
       } else {
-        console.log("error:", data.error);
-        setError(data.error);
+        console.log("server error:", data.error);
+        // setError(data.error);
       }
     }
     catch (error) {
-      console.log(error);
+      console.log("client error:", error);
     }
   };
   
