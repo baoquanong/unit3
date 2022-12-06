@@ -25,26 +25,48 @@ router.get("/seed", async (req, res) => {
 });
 
 // login route
+// router.post("/login", async (req, res) => {
+//     try {
+//         const user = await User.findOne({email: req.body.email}).exec();
+
+//         if (user.length === 0) {
+//             res.status(400).json({ error: "No user found" })
+//         } else {
+//             const loginPass = bcrypt.compareSync(req.body.password, user.password);
+//             if (loginPass) {
+//                 req.session.userID = user._id;
+//                 res.json(user);
+//             } else {
+//                 res.status(400).json({ error: "Please enter correct password" });
+//             }
+//         }
+//     }
+//     catch (error) {
+//         res.status(500).json({ error: error, type: "server" });
+//     }
+// });
+
+// login test
 router.post("/login", async (req, res) => {
     try {
-        const user = await User.findOne({email: req.body.email}).exec();
+        const user = await User.findOne({ email: req.body.email }).exec();
 
-        if (user.length === 0) {
-            res.status(400).json({ error: "No user found" })
+        if (!user) {
+            res.status(400).json({ error: "No user found" });
         } else {
             const loginPass = bcrypt.compareSync(req.body.password, user.password);
             if (loginPass) {
                 req.session.userID = user._id;
-                res.json(user);
+                res.status(200).json(user);
             } else {
-                res.status(400).json({ error: "Please enter correct password" });
+                res.status(400).json({ error: "Wrong password" });
             }
         }
-    }
-    catch (error) {
+    } catch (error) {
         res.status(500).json({ error: error });
     }
 });
+
 
 // create new user route
 router.post("/signup", async (req, res) => {
