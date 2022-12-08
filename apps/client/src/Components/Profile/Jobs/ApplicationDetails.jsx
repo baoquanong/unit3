@@ -15,7 +15,7 @@ const ApplicationDetails = ({ job }) => {
                     ({job?.postedBy?.phoneNumber})
                 </p>
                 {
-                    job?.status === "open" ?
+                    !job?.acceptedBy ?
                     <p id="pending">PENDING RESULTS</p> :
                     <>
                         {
