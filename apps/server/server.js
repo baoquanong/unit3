@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
+const MongodbSession = require("connect-mongodb-session")(session);
 const path = require("path");
 // const { appendFile } = require("fs");
 
@@ -14,6 +15,10 @@ const UserController = require("./Controllers/UserController");
 
 const port = process.env.PORT ?? 3000;
 const app = express();
+const sessionStore = new MongodbSession({
+  uri: process.env.MONGO_URI,
+  collection: "userSessions"
+})
 
 // MONGODB CONNECTION
 const mongoURI = process.env.MONGO_URI;
@@ -27,7 +32,7 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    // cookie: { secure: true }
+    store: sessionStore
   })
 );
 
