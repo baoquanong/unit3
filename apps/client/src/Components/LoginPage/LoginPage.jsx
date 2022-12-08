@@ -49,7 +49,7 @@ function LoginPage() {
         navigate("/jobs");
       } else {
         console.log("server error:", data.error);
-        // setError(data.error);
+        setError(data.error);
       }
     }
     catch (error) {
