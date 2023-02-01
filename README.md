@@ -4,8 +4,8 @@
 
 email | password
 --- | --- |
-[sally@mail.com] | 1234
-[mary@mail.com] | 1234
+`sally@mail.com` | 1234
+`mary@mail.com`| 1234
 
 ###
 
