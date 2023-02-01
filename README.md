@@ -2,10 +2,11 @@
 
 [View Project!](https://side-hustle.cyclic.app/)
 
-Logins
-
+email | password
+--- | --- |
 sally@mail.com | 1234
 mary@mail.com | 1234
+
 ###
 
 ## Project Brief
