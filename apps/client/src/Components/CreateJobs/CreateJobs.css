@@ -1,7 +1,8 @@
 #create-job {
     background: url(../../images/PeopleBG.png);
     height: 86vh;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
+    padding: 50px 0;
 
     display: flex;
     flex-direction: column;
