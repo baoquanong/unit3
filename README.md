@@ -4,8 +4,8 @@
 
 email | password
 --- | --- |
-sally@​&#65279;mail.com | 1234
-mary@​&#65279;mail.com| 1234
+sally1@​&#65279;mail.com | pass1234
+mary@​&#65279;mail.com| hello
 
 ###
 
